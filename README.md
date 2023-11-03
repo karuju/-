@@ -70,3 +70,7 @@ MVPリリース<br>
 通知...LINE Messaging API SDK for Ruby<br>
 フロントにはReactを使用予定。画面のイメージとしては、https://designnokoto.com/ のようにジャケット写真がサムネイル形式で表示されるようにしたいと考えています。
 レコメンド...協調フィルタリングやコンテンツベースフィルタリング
+
+
+### 画面遷移図
+Figma：https://www.figma.com/file/uaQ8wuYqvlyXxsOZyJxE0b/%E5%8D%92%E6%A5%AD%E8%A9%A6%E9%A8%93?type=whiteboard&node-id=0%3A1&t=mXPECUuNOV71DMi9-1
