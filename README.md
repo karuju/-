@@ -73,4 +73,4 @@ MVPリリース<br>
 
 
 ### 画面遷移図
-Figma：https://www.figma.com/file/uaQ8wuYqvlyXxsOZyJxE0b/%E5%8D%92%E6%A5%AD%E8%A9%A6%E9%A8%93?type=whiteboard&node-id=0%3A1&t=mXPECUuNOV71DMi9-1
+Figma：https://www.figma.com/file/livijeVNxzPBBhLRh1Of3E/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=GXtCeFHPiGB4iBTF-1
