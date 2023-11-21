@@ -74,3 +74,6 @@ MVPリリース<br>
 
 ### 画面遷移図
 Figma：https://www.figma.com/file/livijeVNxzPBBhLRh1Of3E/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=GXtCeFHPiGB4iBTF-1
+
+### ER図
+draw.io : [![Image from Gyazo](https://i.gyazo.com/4d03d7508dd403eead2a10215242ba1b.png)](https://gyazo.com/4d03d7508dd403eead2a10215242ba1b)
