@@ -31,15 +31,30 @@
     <%= form.text_area :introduction %>
   </div>
 
-  <div>
-    <%= form.label :sex, style: "display: block" %>
-    <%= form.number_field :sex %>
-  </div>
+  <%= form.radio_button :sex, :male %>
+  <%= form.label :sex_male, "男性" %>
+  
+  <%= form.radio_button :sex, :female %>
+  <%= form.label :sex_female, "女性" %>
+
+  <%= form.radio_button :sex, :not_to_say %>
+  <%= form.label :sex_female, "選択しない" %>
 
   <div>
     <%= form.label :birthday, style: "display: block" %>
     <%= form.date_field :birthday %>
   </div>
+
+  <div>
+  <%= form.label :password, style: "display: block" %>
+  <%= form.password_field :password %>
+</div>
+
+  <div>
+  <%= form.label :password_confirmation, style: "display: block" %>
+  <%= form.password_field :password_confirmation %>
+  </div>
+
 
   <div>
     <%= form.submit %>

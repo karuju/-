@@ -29,6 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_095258) do
     t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "posts", "users"
