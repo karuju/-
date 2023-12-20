@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # 未ログインでアクセスしようとしたページのURLをセッションに保存しておく
   def store_location
     if request.get? && !request.xhr?
-      session[:forwarding_url] = request.forwarding_url
+      session[:forwarding_url] = request.url
     end
   end
 end

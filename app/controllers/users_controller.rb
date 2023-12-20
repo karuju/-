@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :store_location, only: %i[ show ]
   before_action :require_login, only: %i[ show ]
 
   # GET /users or /users.json
