@@ -1,2 +1,54 @@
-<h1>Songs#search</h1>
-<p>Find me in app/views/songs/search.html.erb</p>
+<!-- app/views/songs/search_result.html.erb -->
+
+  <div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_with(model: @song, url: songs_path, method: :post) do |form| %>
+            <!-- 正しい情報が表示されているかどうかをユーザーがチェックするチェックボックス -->
+            <div class="check_correct">
+              <%= form.check_box :correct_info, { id: "correct_info" } %>
+              <%= form.label :correct_info, "この情報が正しい" %>
+
+              <div class="to_track_page">
+              <% if @song.uri.include?('spotify:track') %> 
+                <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+                  <i class="fa-brands fa-spotify"></i><%= @song.name %>
+                <% end %>
+              <% else %>
+                <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+                  <i class="fa-brands fa-youtube"></i><%= @song.name %>
+                <% end %>
+              <%end%>
+              <%= @song.artist.name %>
+              <% if @song.image.present? %>
+                <%= image_tag @song.image %>
+              <% end %>
+              </div>
+            </div>
+
+            <!-- URL入力欄 -->
+            <div class="url_form">
+              <%= form.label :manual_uri, "URL" %>
+              <%= form.url_field :manual_uri, class: "form-control", placeholder: 'https://~' %>
+            </div>
+
+            <!-- 隠しフィールドとして検索結果のURIを設定 -->
+            <%= form.hidden_field :uri, value: @song.uri %>
+            <%= form.hidden_field :name, value: @song.name %>
+            <%= form.hidden_field :artist_name, value: @song.artist.name %>
+            <%= form.hidden_field :image, value: @song.image %>
+
+            <!-- 保存ボタン -->
+            <%= form.submit "保存", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
