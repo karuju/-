@@ -28,6 +28,10 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
+
+# 環境変数設定
+/.env
+
 /config/master.key
 
 /app/assets/builds/*

@@ -57,6 +57,13 @@ gem "sorcery"
 # 日本語化
 gem 'rails-i18n', '~> 7.0.0'
 
+#Spotify api
+gem "rspotify"
+gem "dotenv-rails"
+
+#Youtube api
+gem "google-apis-youtube_v3"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

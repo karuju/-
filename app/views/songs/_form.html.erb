@@ -1,0 +1,11 @@
+<%= form_with model: Song.new, url: search_songs_path, method: :get do |form| %>
+  <div class="mb-3">
+  <%= form.label :name, class: "form-label" %> 
+  <%= form.text_field :name, class: "form-control" %>
+</div>
+<div class="mb-3">
+  <%= form.label :artist_name, class: "form-label" %> 
+  <%= form.text_field :artist_name, class: "form-control" %>
+</div>
+<%= form.submit "取得", class: "btn btn-primary", data: { disable_with: '取得', toggle: "modal", target: "search_result", whatever: @song }%>
+<% end %>
