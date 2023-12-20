@@ -7,6 +7,7 @@ class UserSessionsController < ApplicationController
 
     if @user
       redirect_to(session[:forwarding_url] || root_path )
+      session.delete(:forwarding_url)
     else
       render :new
     end
