@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
-  validates :song, presence: true
+  #validates :song, presence: true
 
   has_one :post_song
   has_one :song, through: :post_song
