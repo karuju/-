@@ -24,6 +24,7 @@ class SongsController < ApplicationController
         @song.image = youtube_result[:thumbnail_url]
       end
     else
+
     end
   
     search_result = @song.uri
@@ -35,7 +36,6 @@ class SongsController < ApplicationController
     end
 =end
   
-    #render 'songs/search_result', locals: { uri: @song.uri, image_url: @song.image}
   end
 
   def show
