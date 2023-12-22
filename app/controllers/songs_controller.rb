@@ -45,18 +45,21 @@ class SongsController < ApplicationController
   def create
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
     @song = Song.find_or_initialize_by(name: song_params[:name], artist: artist, image: song_params[:image])
+    
+    if @song.new_record?
+      if song_params[:correct_info] == '1'
+        @song.uri = params[:song][:uri]
+      else
+        @song.uri = params[:song][:manual_uri]
+      end
 
-    if song_params[:correct_info] == '1'
-      @song.uri = params[:song][:uri]
+      if @song.save
+        redirect_to song_path(@song)
+      else
+        render new
+      end
     else
-      @song.uri = params[:song][:manual_uri]
-    end
-
-
-    if @song.save
       redirect_to song_path(@song)
-    else
-      render new
     end
   end
 
