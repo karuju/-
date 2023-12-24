@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @song = Song.find(params[:song_id])
-
+raise
     respond_to do |format|
       if @post.save
         PostSong.create!(post: @post, song: @song) # PostSongを作成
@@ -68,6 +68,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :text)
+      params.require(:post).permit(:title, :content, :text, :song_id)
     end
 end
