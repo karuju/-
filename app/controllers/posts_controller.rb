@@ -22,8 +22,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
+    @song = Song.find(song_params[:song_id])
     @post = Post.new(post_params)
-    @song = Song.find(params[:song_id])
 raise
     respond_to do |format|
       if @post.save
@@ -68,6 +68,10 @@ raise
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :text, :song_id)
+      params.require(:post).permit(:title, :content)
+    end
+
+    def song_params
+      params.require(:song).permit(:id)
     end
 end

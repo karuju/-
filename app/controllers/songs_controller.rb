@@ -2,6 +2,10 @@ class SongsController < ApplicationController
   def index
   end
 
+  def new
+    @song = Song.new
+  end
+
   
   def search
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
@@ -59,7 +63,7 @@ class SongsController < ApplicationController
         render new
       end
     else
-      redirect_to song_path(@song)
+       redirect_to song_path(@song)
     end
   end
 

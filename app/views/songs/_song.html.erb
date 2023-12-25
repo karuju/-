@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "songs_create" do %>
+<div class="songs_create" %>
 <div class="container">
   <div class="to_track_page">
   <% if @song.uri.include?('spotify:track') %> 
@@ -18,4 +18,4 @@
   <% if @song.image.present? %>
   <%= image_tag @song.image %>
   <% end %>
-<% end %>
+</div>

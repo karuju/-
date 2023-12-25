@@ -1,6 +1,4 @@
-<%= turbo_frame_tag "songs_create" do %>
-   <%= render "songs/form", song: @song %>
-<% end %>
+
 <br>
 
 <%= form_with(model: post, data: { turbo: false } ) do |form| %>
@@ -27,7 +25,6 @@
   </div>
   <% if @song.present? %>
     <%= form.hidden_field :song_id, value: @song.id %> <!-- ここに追加 -->
-    <%= form.collection_select :song_id, Song.all, :id, :name %>
   <% end %>
   <div>
     <%= form.submit %>

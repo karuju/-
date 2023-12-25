@@ -10,7 +10,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= form_with(model: @song, url: songs_path, method: :post) do |form| %>
+          <%= form_with(model: @song, data: { turbo: false }) do |form| %>
             <!-- 正しい情報が表示されているかどうかをユーザーがチェックするチェックボックス -->
             <div class="check_correct">
               <%= form.check_box :correct_info, { id: "correct_info" } %>
