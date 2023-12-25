@@ -22,10 +22,12 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
+    @song = Song.find(song_params[:song_id])
     @post = Post.new(post_params)
-
+raise
     respond_to do |format|
       if @post.save
+        PostSong.create!(post: @post, song: @song) # PostSongを作成
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -66,6 +68,10 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :text)
+      params.require(:post).permit(:title, :content)
+    end
+
+    def song_params
+      params.require(:song).permit(:id)
     end
 end

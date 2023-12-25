@@ -1,0 +1,21 @@
+<div class="songs_create" %>
+<div class="container">
+  <div class="to_track_page">
+  <% if @song.uri.include?('spotify:track') %> 
+    <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+      <i class="fa-brands fa-spotify"></i><%= @song.name %>
+    <% end %>
+  <% elsif @song.uri.include?('http') %>
+    <%= link_to @song.uri, target: :_blank, rel: "noopener noreferrer" do %>
+      <i class="fa-solid fa-globe"></i><%= @song.name %>
+    <% end%>
+  <% else %>
+    <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+      <i class="fa-brands fa-youtube"></i><%= @song.name %>
+    <% end %>
+  <%end%>
+  <%= @song.artist.name %>
+  <% if @song.image.present? %>
+  <%= image_tag @song.image %>
+  <% end %>
+</div>

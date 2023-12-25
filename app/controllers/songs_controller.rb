@@ -2,6 +2,10 @@ class SongsController < ApplicationController
   def index
   end
 
+  def new
+    @song = Song.new
+  end
+
   
   def search
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
@@ -24,6 +28,7 @@ class SongsController < ApplicationController
         @song.image = youtube_result[:thumbnail_url]
       end
     else
+
     end
   
     search_result = @song.uri
@@ -35,7 +40,6 @@ class SongsController < ApplicationController
     end
 =end
   
-    #render 'songs/search_result', locals: { uri: @song.uri, image_url: @song.image}
   end
 
   def show
@@ -45,18 +49,21 @@ class SongsController < ApplicationController
   def create
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
     @song = Song.find_or_initialize_by(name: song_params[:name], artist: artist, image: song_params[:image])
+    
+    if @song.new_record?
+      if song_params[:correct_info] == '1'
+        @song.uri = params[:song][:uri]
+      else
+        @song.uri = params[:song][:manual_uri]
+      end
 
-    if song_params[:correct_info] == '1'
-      @song.uri = params[:song][:uri]
+      if @song.save
+        redirect_to song_path(@song)
+      else
+        render new
+      end
     else
-      @song.uri = params[:song][:manual_uri]
-    end
-
-
-    if @song.save
-      redirect_to song_path(@song)
-    else
-      render new
+       redirect_to song_path(@song)
     end
   end
 

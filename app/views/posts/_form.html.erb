@@ -1,9 +1,7 @@
-<div class="searching_song">
-<%= render "songs/form", song: @song %>
-</div>
+
 <br>
 
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, data: { turbo: false } ) do |form| %>
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -25,12 +23,9 @@
     <%= form.label :content, style: "display: block" %>
     <%= form.text_field :content %>
   </div>
-
-  <div>
-    <%= form.label :text, style: "display: block" %>
-    <%= form.text_field :text %>
-  </div>
-
+  <% if @song.present? %>
+    <%= form.hidden_field :song_id, value: @song.id %> <!-- ここに追加 -->
+  <% end %>
   <div>
     <%= form.submit %>
   </div>
