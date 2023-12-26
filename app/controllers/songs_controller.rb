@@ -58,14 +58,15 @@ class SongsController < ApplicationController
       end
 
       if @song.save
-        redirect_to song_path(@song)
+        session[:song_id] = @song.id
+        redirect_to new_post_path(@song)
       else
         render new
       end
     else
     end
-    session[:song_id] = @song.id
-    redirect_to song_path(@song)
+    #session[:song_id] = @song.id
+    #redirect_to song_path(@song)
   end
 
   def edit
