@@ -63,14 +63,24 @@ class SongsController < ApplicationController
         render new
       end
     else
-       redirect_to song_path(@song)
     end
+    session[:song_id] = @song.id
+    redirect_to song_path(@song)
   end
 
   def edit
   end
 
   def update
+    artist = Artist.find_by(name: song_params[:artist_name])
+    @song = Song.find_by(name: song_params[:name], artist: artist, image: song_params[:image])
+    if song_params[:correct_info] == '1'
+      @song.uri = params[:song][:uri]
+    else
+      @song.uri = params[:song][:manual_uri]
+    end
+    session[:song_id] = @song.id
+    redirect_to new_post_path(@song)
   end
 
   def destroy

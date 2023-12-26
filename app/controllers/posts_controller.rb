@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @song = Song.find(session[:song_id])
   end
 
   # GET /posts/1/edit
