@@ -22,4 +22,6 @@ RUN bundle install
 RUN yarn install
 COPY . /app
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
