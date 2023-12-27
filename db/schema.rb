@@ -10,11 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_22_091929) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_27_021237) do
   create_table "artists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "uri"
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author", null: false
+    t.integer "category"
+    t.text "summary"
+    t.string "uri"
+    t.string "publisher"
+    t.date "published_year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "director"
+    t.string "leading_actor"
+    t.integer "category"
+    t.text "summary"
+    t.string "distributer"
+    t.date "published_year"
+    t.string "uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "novels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author", null: false
+    t.integer "category"
+    t.text "summary"
+    t.string "uri"
+    t.string "publisher"
+    t.date "published_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
