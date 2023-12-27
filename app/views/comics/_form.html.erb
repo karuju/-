@@ -1,0 +1,14 @@
+
+  <div class="searching_comic">
+    <%= form_with(model: Comic.new, data: { turbo: false }) do |form| %>
+      <div class="mb-3">
+      <%= form.label :title, class: "form-label" %> 
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :author, class: "form-label" %> 
+      <%= form.text_field :author, class: "form-control" %>
+    </div>
+    <%= form.submit "保存", class: "btn btn-primary", data: { disable_with: '取得' }%>
+    <% end %>
+  </div>
