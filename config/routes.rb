@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :artists, only: %i[index show new create edit update destroy]
+  resources :movies
+  resources :novels
+  resources :comics
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

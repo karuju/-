@@ -21,3 +21,9 @@ COPY .ruby-version /app/.ruby-version
 RUN bundle install
 RUN yarn install
 COPY . /app
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000

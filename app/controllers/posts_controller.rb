@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @song = Song.find(session[:song_id])
   end
 
   # GET /posts/1/edit
@@ -22,12 +23,11 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @song = Song.find(song_params[:song_id])
-    @post = Post.new(post_params)
-raise
+    @post = Post.new(title: params[:post][:title], content: params[:post][:content])
+
     respond_to do |format|
       if @post.save
-        PostSong.create!(post: @post, song: @song) # PostSongを作成
+        PostSong.create!(post_id: @post.id, song_id: params[:post][:song_id]) # PostSongを作成
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -68,10 +68,7 @@ raise
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :song_id)
     end
 
-    def song_params
-      params.require(:song).permit(:id)
-    end
 end

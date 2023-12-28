@@ -1,0 +1,15 @@
+<h1>Movie#show</h1>
+<p>Find me in app/views/movies/show.html.erb</p>
+<%= render "movie", movie: @movie %>
+
+<div class="link_button">
+<%= link_to "一覧", movies_path %>
+</div>
+<div class="link_button">
+<%= link_to "編集", edit_movie_path(@movie) %>
+</div>
+<div class="link_button">
+<%= link_to movie_path(@movie), data: { turbo_method: :delete, turbo_confirm: t('削除しますか？') } do %>
+削除
+<% end %>
+</div>

@@ -1,4 +1,26 @@
 <div id="<%= dom_id post %>">
+
+  <p>
+  <strong>Song_title:</strong>
+  <% if post.song.uri.include?('spotify:track') %> 
+    <%= link_to post.song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+      <i class="fa-brands fa-spotify"></i><%= post.song.name %>
+    <% end %>
+  <% elsif post.song.uri.include?('http') %>
+    <%= link_to post.song.uri, target: :_blank, rel: "noopener noreferrer" do %>
+      <i class="fa-solid fa-globe"></i><%= post.song.name %>
+    <% end%>
+  <% else %>
+    <%= link_to "https://www.youtube.com/watch?v=#{post.song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+      <i class="fa-brands fa-youtube"></i><%= post.song.name %>
+    <% end %>
+  <% end %>  
+  </p>
+
+  <p>
+  <strong>Song_image:</strong>
+  <%= image_tag post.song.image %>
+  </p>
   <p>
     <strong>Title:</strong>
     <%= post.title %>
@@ -8,6 +30,7 @@
     <strong>Content:</strong>
     <%= post.content %>
   </p>
+
 
 
 </div>

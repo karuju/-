@@ -24,7 +24,7 @@
     <%= form.text_field :content %>
   </div>
   <% if @song.present? %>
-    <%= form.hidden_field :song_id, value: @song.id %> <!-- ここに追加 -->
+    <%= form.hidden_field :song_id, value: @song.id %> 
   <% end %>
   <div>
     <%= form.submit %>
