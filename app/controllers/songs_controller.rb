@@ -59,7 +59,7 @@ class SongsController < ApplicationController
 
       if @song.save
         session[:song_id] = @song.id
-        redirect_to new_post_path(@song)
+        redirect_to contents_new_path(@song)
       else
         render new
       end
@@ -81,7 +81,7 @@ class SongsController < ApplicationController
       @song.uri = params[:song][:manual_uri]
     end
     session[:song_id] = @song.id
-    redirect_to new_post_path(@song)
+    redirect_to contents_new_path(@song)
   end
 
   def destroy
