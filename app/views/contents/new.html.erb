@@ -7,9 +7,9 @@
 
 
 <div class="content-radiobutton">
-  <input type="radio" id="comic-radio" name="content-type" onChange="showForm()" value="comic">Comic<br>
-  <input type="radio" id="novel-radio" name="content-type" onChange="showForm()" value="novel">Novel<br>
-  <input type="radio" id="movie-radio" name="content-type" onChange="showForm()" value="movie">Movie<br>
+  <input type="radio" id="comic-radio" name="content-type" value="comic">Comic<br>
+  <input type="radio" id="novel-radio" name="content-type" value="novel">Novel<br>
+  <input type="radio" id="movie-radio" name="content-type" value="movie">Movie<br>
 </div>
 
 <div class="content-form">
@@ -27,25 +27,7 @@
 
 </div>
 
-<script>
-document.getElementsByName('content-type').forEach((elem) => {
-  elem.addEventListener('change', (event) => {
-    console.log(event.target.value); // This will log 'comic', 'novel', or 'movie'
-  });
-});
-</script>
 
-<script>
-function showForm() {
-  var comicForm = document.getElementById('comic-form');
-  var novelForm = document.getElementById('novel-form');
-  var movieForm = document.getElementById('movie-form');
-
-  comicForm.style.display = document.getElementById('comic-radio').checked ? 'block' : 'none';
-  novelForm.style.display = document.getElementById('novel-radio').checked ? 'block' : 'none';
-  movieForm.style.display = document.getElementById('movie-radio').checked ? 'block' : 'none';
-}
-</script>
 
 
 
