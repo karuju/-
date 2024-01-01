@@ -14,7 +14,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+  
     @song = Song.find(session[:song_id])
+    @comic = Comic.find(session[:comic_id])
+    @novel = Novel.find(session[:novel_id])
+    @movie = Movie.find(session[:movie_id])
+
   end
 
   # GET /posts/1/edit
@@ -30,6 +35,7 @@ class PostsController < ApplicationController
         PostSong.create!(post_id: @post.id, song_id: params[:post][:song_id]) # PostSongを作成
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
+        reset_session
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }

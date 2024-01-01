@@ -15,10 +15,10 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    @movie = Movie.find_or_initialize_by(movie_params)
     if @movie.save
       session[:movie_id] = @movie.id
-      #redirect_to new_post_path(@movie)
+      redirect_to new_post_path(@movie)
     else
       render new
     end
@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(movie_params)
     if @movie.save
       session[:movie_id] = @movie.id
-      #redirect_to new_post_path(@movie, @song)
+      redirect_to new_post_path(@movie, @song)
     else
       render new
     end

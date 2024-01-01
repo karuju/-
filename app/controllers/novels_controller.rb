@@ -4,7 +4,7 @@ class NovelsController < ApplicationController
 
   def new
     @novel = Novel.new
-    #@song = Song.find(session[:song_id])
+    @song = Song.find(session[:song_id])
   end
 
   def search
@@ -15,10 +15,10 @@ class NovelsController < ApplicationController
   end
 
   def create
-    @novel = Novel.new(novel_params)
+    @novel = Novel.find_or_initialize_by(novel_params)
     if @novel.save
       session[:novel_id] = @novel.id
-      #redirect_to new_post_path(@novel)
+      redirect_to new_post_path(@novel)
     else
       render new
     end

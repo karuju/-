@@ -3,6 +3,19 @@
   <%= render "songs/song", song: @song %> 
 </div>
 
+<div class="content-info">
+<% if @comic.present? %>
+  <%= render "comics/comic", comic: @comic %> 
+<% end %>
+<% if @novel.present? %>
+  <%= render "novels/novel", novel: @novel %> 
+<% end %>
+<% if @movie.present? %>
+  <%= render "movies/movie", movie: @movie %> 
+<% end %>
+</div>
+
+
 <div class="form">
   <%= render "form", post: @post %>
 </div>
