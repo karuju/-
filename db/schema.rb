@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_27_021237) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_01_114018) do
   create_table "artists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "uri"
@@ -29,6 +29,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_27_021237) do
     t.date "published_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "contentable_id", null: false
+    t.string "contentable_type", null: false
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_contents_on_post_id"
   end
 
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -99,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_27_021237) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "contents", "posts"
   add_foreign_key "post_songs", "posts"
   add_foreign_key "post_songs", "songs"
   add_foreign_key "posts", "users"
