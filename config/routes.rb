@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :movies
   resources :novels
   resources :comics
+  resources :boards
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
