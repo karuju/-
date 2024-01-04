@@ -15,10 +15,10 @@ class ComicsController < ApplicationController
   end
 
   def create
-    @comic = Comic.new(comic_params)
+    @comic = Comic.find_or_initialize_by(comic_params)
     if @comic.save
       session[:comic_id] = @comic.id
-      #redirect_to new_post_path(@comic)
+      redirect_to new_post_path(@comic)
     else
       render new
     end

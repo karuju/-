@@ -7,7 +7,7 @@
 </div>
 <div class="link_button">
 <%= link_to "編集", edit_novel_path(@novel) %>
-</div>q
+</div>
 <div class="link_button">
 <%= link_to novel_path(@novel), data: { turbo_method: :delete, turbo_confirm: t('削除しますか？') } do %>
 削除

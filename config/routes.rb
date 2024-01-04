@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'contents/new'
 
   resources :users
   resources :posts

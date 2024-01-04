@@ -26,6 +26,16 @@
   <% if @song.present? %>
     <%= form.hidden_field :song_id, value: @song.id %> 
   <% end %>
+  <% if @comic.present? %>
+    <%= form.hidden_field :contentable_id, value: @comic.id %> 
+    <%= form.hidden_field :contentable_type, value: 0 %> 
+  <% elsif @novel.present? %>
+    <%= form.hidden_field :contentable_id, value: @novel.id %> 
+    <%= form.hidden_field :contentable_type, value: 1 %> 
+  <% elsif @movie.present? %>
+    <%= form.hidden_field :contentable_id, value: @movie.id %> 
+    <%= form.hidden_field :contentable_type, value: 2 %> 
+  <% end %>
   <div>
     <%= form.submit %>
   </div>

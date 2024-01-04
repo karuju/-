@@ -14,7 +14,16 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+  
     @song = Song.find(session[:song_id])
+    if session[:comic_id]
+    @comic = Comic.find(session[:comic_id])
+    elsif session[:novel_id]
+    @novel = Novel.find(session[:novel_id])
+    elsif session[:movie_id]
+    @movie = Movie.find(session[:movie_id])
+    end
+
   end
 
   # GET /posts/1/edit
@@ -28,8 +37,20 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         PostSong.create!(post_id: @post.id, song_id: params[:post][:song_id]) # PostSongを作成
+        if session[:comic_id]
+        Content.create!(post_id: @post.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
+        elsif session[:novel_id]
+          Content.create!(post_id: @post.id, contentable_id:session[:novel_id], contentable_type: 'Novel')
+        elsif session[:movie_id]
+        Content.create!(post_id: @post.id, contentable_id:session[:movie_id], contentable_type: 'Movie')
+        end
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
+        session[:song_id].clear
+        session[:comic_id].clear
+        session[:novel_id].clear
+        session[:movie_id].clear
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
