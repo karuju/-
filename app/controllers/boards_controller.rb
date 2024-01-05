@@ -13,6 +13,7 @@ class BoardsController < ApplicationController
   # GET /boards/new
   def new
     @board = Board.new
+    @song = Song.find(session[:song_id])
   end
 
   # GET /boards/1/edit
@@ -21,7 +22,7 @@ class BoardsController < ApplicationController
 
   # POST /boards or /boards.json
   def create
-    @board = Board.new(board_params)
+    @board = Board.new(title: params[:board][:title], content: params[:board][:content])
 
     respond_to do |format|
       if @board.save
@@ -32,6 +33,7 @@ class BoardsController < ApplicationController
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
     end
+    session[:song_id].clear
   end
 
   # PATCH/PUT /boards/1 or /boards/1.json
@@ -65,6 +67,6 @@ class BoardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_params
-      params.fetch(:board, {})
+      params.require(:post).permit(:title, :content, :song_id)
     end
 end

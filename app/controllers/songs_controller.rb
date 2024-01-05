@@ -59,7 +59,7 @@ class SongsController < ApplicationController
 
       if @song.save
         session[:song_id] = @song.id
-        redirect_to contents_new_path(@song)
+        redirect_based_on_creation_type(@song)
       else
         render new
       end
@@ -81,7 +81,7 @@ class SongsController < ApplicationController
       @song.uri = params[:song][:manual_uri]
     end
     session[:song_id] = @song.id
-    redirect_to contents_new_path(@song)
+    redirect_based_on_creation_type(@song)
   end
 
   def destroy
@@ -92,5 +92,12 @@ class SongsController < ApplicationController
     params.require(:song).permit(:name, :artist_name, :uri, :manual_uri, :image, :correct_info)
   end
 
+  def redirect_based_on_creation_type(song)
+    if session[:creation_type] == 'post'
+      redirect_to contents_new_path(song)
+    elsif session[:creation_type] == 'board'
+      redirect_to new_board_path(song)
+    end
+  end
 
 end

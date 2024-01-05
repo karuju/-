@@ -12,6 +12,19 @@
   <% end %>
 
   <div>
+  <%= form.label :title, style: "display: block" %>
+  <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_field :content %>
+  </div>
+  <% if @song.present? %>
+    <%= form.hidden_field :song_id, value: @song.id %> 
+  <% end %>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
