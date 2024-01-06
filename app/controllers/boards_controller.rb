@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: %i[ show edit update destroy ]
+  before_action :require_login, only: %i[ new create edit update destroy ]
+
 
   # GET /boards or /boards.json
   def index
@@ -8,6 +10,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
+    @song = Song
   end
 
   # GET /boards/new
@@ -26,6 +29,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
+        BoardSong.create!(board_id: @board.id, song_id: params[:board][:song_id]) #BoardSongを作成
         format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
         format.json { render :show, status: :created, location: @board }
       else

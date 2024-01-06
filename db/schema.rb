@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_04_064039) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_06_053259) do
   create_table "artists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "uri"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "board_songs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "board_id"
+    t.bigint "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_songs_on_board_id"
+    t.index ["song_id"], name: "index_board_songs_on_song_id"
   end
 
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -118,6 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_064039) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "board_songs", "boards"
+  add_foreign_key "board_songs", "songs"
   add_foreign_key "boards", "users"
   add_foreign_key "contents", "posts"
   add_foreign_key "post_songs", "posts"
