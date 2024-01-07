@@ -48,11 +48,10 @@ class PostsController < ApplicationController
         end
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
-        session[:song_id].clear
-        session[:comic_id].clear
-        session[:novel_id].clear
-        session[:movie_id].clear
-
+        session[:song_id] = nil
+        session[:comic_id] = nil
+        session[:novel_id] = nil
+        session[:movie_id] = nil
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }

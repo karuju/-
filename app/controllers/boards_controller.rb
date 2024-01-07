@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
 
   # POST /boards or /boards.json
   def create
-    @board = Board.new(title: params[:board][:title], content: params[:board][:content])
+    @board = current_user.boards.new(title: params[:board][:title], content: params[:board][:content])
 
     respond_to do |format|
       if @board.save
@@ -37,7 +37,7 @@ class BoardsController < ApplicationController
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
     end
-    session[:song_id].clear
+    session[:song_id] = nil
   end
 
   # PATCH/PUT /boards/1 or /boards/1.json
