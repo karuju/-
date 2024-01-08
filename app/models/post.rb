@@ -4,6 +4,6 @@ class Post < ApplicationRecord
   #validates :song, presence: true
 
   belongs_to :user
-  has_one :post_song
+  has_one :post_song, dependent: :destroy
   has_one :song, through: :post_song
 end

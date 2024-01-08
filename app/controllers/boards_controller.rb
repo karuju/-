@@ -33,6 +33,7 @@ class BoardsController < ApplicationController
         format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
         format.json { render :show, status: :created, location: @board }
       else
+        @song = Song.find(session[:song_id])
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
