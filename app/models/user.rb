@@ -9,4 +9,5 @@ class User < ApplicationRecord
   enum sex: { male: 0, female: 1, not_to_say: 2 }
 
   has_many :boards
+  has_many :posts
 end
