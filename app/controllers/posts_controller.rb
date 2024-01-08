@@ -53,6 +53,8 @@ class PostsController < ApplicationController
         session[:novel_id] = nil
         session[:movie_id] = nil
       else
+        @song = Song.find(session[:song_id])
+        set_content
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -86,6 +88,16 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_content
+      if session[:comic_id]
+        @comic = Comic.find(session[:comic_id])
+      elsif session[:novel_id]
+        @novel = Novel.find(session[:novel_id])
+      elsif session[:movie_id]
+        @movie = Movie.find(session[:movie_id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
