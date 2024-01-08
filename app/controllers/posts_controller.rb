@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    
   end
 
   # GET /posts/new
@@ -32,7 +34,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(title: params[:post][:title], content: params[:post][:content])
+    @post = current_user.posts.new(title: params[:post][:title], content: params[:post][:content])
 
     respond_to do |format|
       if @post.save
@@ -46,11 +48,10 @@ class PostsController < ApplicationController
         end
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
-        session[:song_id].clear
-        session[:comic_id].clear
-        session[:novel_id].clear
-        session[:movie_id].clear
-
+        session[:song_id] = nil
+        session[:comic_id] = nil
+        session[:novel_id] = nil
+        session[:movie_id] = nil
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
