@@ -2,8 +2,13 @@
 
 <%= render @board %>
 
+
 <div>
-  <%= link_to "Edit this board", edit_board_path(@board) %> |
+<%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
+</div>
+
+<div>
+  <%= link_to "Edit this board", edit_board_path(@board) %> 
   <%= link_to "Back to boards", boards_path %>
 
   <%= button_to "Destroy this board", @board, method: :delete %>

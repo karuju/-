@@ -5,4 +5,5 @@ class Board < ApplicationRecord
   belongs_to :user
   has_one :board_song, dependent: :destroy
   has_one :song, through: :board_song
+  has_many :answers
 end

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_06_053259) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_08_063135) do
+  create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_answers_on_board_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
   create_table "artists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "uri"
@@ -127,6 +137,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_06_053259) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "answers", "boards"
+  add_foreign_key "answers", "users"
   add_foreign_key "board_songs", "boards"
   add_foreign_key "board_songs", "songs"
   add_foreign_key "boards", "users"

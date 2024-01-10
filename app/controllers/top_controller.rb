@@ -12,4 +12,10 @@ class TopController < ApplicationController
     session[:creation_type] = 'board'
     redirect_to new_song_path
   end
+
+  def create_answer
+    session[:creation_type] = 'answer'
+    redirect_to contents_new_path
+  end
+
 end
