@@ -2,8 +2,9 @@
 
 <%= render @board %>
 
+
 <div>
-<%= link_to "Create an Answer", new_answer_path %>
+<%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
 </div>
 
 <div>

@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find_or_initialize_by(movie_params)
     if @movie.save
       session[:movie_id] = @movie.id
-      redirect_to new_post_path(@movie)
+      set_redirect_path
     else
       render new
     end
@@ -44,6 +44,14 @@ class MoviesController < ApplicationController
   private
   def movie_params
     params.require(:movie).permit(:title, :director, :leading_actor, :category, :summary, :uri,  :distributer, :published_year)
+  end
+
+  def set_redirect_path
+    if session[:creation_type] == 'answer'
+      redirect_to new_board_answer_path(session[:board_id], @movie)
+    else
+      redirect_to new_post_path(@movie)
+    end
   end
 
 end

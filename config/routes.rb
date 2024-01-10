@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :answers
   get 'contents/new'
 
   resources :users
@@ -14,7 +13,14 @@ Rails.application.routes.draw do
   resources :movies
   resources :novels
   resources :comics
-  resources :boards
+
+  resources :boards do
+    resources :answers, only: %i[new create destroy] do
+      collection do
+        get :save_session
+      end
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -23,6 +29,7 @@ Rails.application.routes.draw do
 
   get 'create_post', to: 'top#create_post'
   get 'create_board', to: 'top#create_board'
+  get 'create_answer', to: 'top#create_answer'
   get "login", to: 'user_sessions#new'
   post "login", to: 'user_sessions#create'
   delete "logout", to: 'user_sessions#destroy'

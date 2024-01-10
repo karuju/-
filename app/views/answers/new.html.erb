@@ -1,27 +1,26 @@
 <h1>New answer</h1>
-
-<div class="content-radiobutton">
-  <input type="radio" id="comic-radio" name="content-type" value="comic">Comic<br>
-  <input type="radio" id="novel-radio" name="content-type" value="novel">Novel<br>
-  <input type="radio" id="movie-radio" name="content-type" value="movie">Movie<br>
+<div class="song-info">
+  <%= render "songs/song", song: @song %> 
 </div>
 
-<div class="content-form">
-  <div id="comic-form" style="display: none;">
-  <%= render "comics/form", comic: @comic %>
-  </div>
+<div class="content-info">
+<% if @comic.present? %>
+  <%= render "comics/comic", comic: @comic %> 
+<% end %>
+<% if @novel.present? %>
+  <%= render "novels/novel", novel: @novel %> 
+<% end %>
+<% if @movie.present? %>
+  <%= render "movies/movie", movie: @movie %> 
+<% end %>
+</div>
 
-  <div id="novel-form" style="display: none;">
-    <%= render "novels/form", comic: @novel %>
-  </div>
 
-  <div id="movie-form" style="display: none;">
-    <%= render "movies/form", movie: @movie %>
-  </div>
+<div class="form">
+  <%= render "form", answer: @answer %>
 </div>
 
 <br>
 
-<div>
-  <%= link_to "Back to answers", answers_path %>
-</div>
+
+

@@ -18,7 +18,7 @@ class ComicsController < ApplicationController
     @comic = Comic.find_or_initialize_by(comic_params)
     if @comic.save
       session[:comic_id] = @comic.id
-      redirect_to new_post_path(@comic)
+      set_redirect_path
     else
       render new
     end
@@ -44,5 +44,13 @@ class ComicsController < ApplicationController
   private
   def comic_params
     params.require(:comic).permit(:title, :author, :category, :summary, :uri, :publisher, :published_year)
+  end
+
+  def set_redirect_path
+    if session[:creation_type] == 'answer'
+      redirect_to new_board_answer_path(session[:board_id], @comic)
+    else
+      redirect_to new_post_path(@comic)
+    end
   end
 end
