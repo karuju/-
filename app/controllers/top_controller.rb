@@ -1,4 +1,6 @@
 class TopController < ApplicationController
+  before_action :require_login, only: %i[ create_post create_board create_answer ]
+
   def index
   end
 

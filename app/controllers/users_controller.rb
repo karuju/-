@@ -24,10 +24,10 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-raise
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        login(@user.email, user_params[:password])
+        format.html { redirect_to user_path(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,10 +51,11 @@ raise
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    @user.assign_boards_and_answers_and_posts_to_deleted_user
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
