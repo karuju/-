@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :answers
 
-  private
 
   def assign_boards_and_answers_and_posts_to_deleted_user
     deleted_user_id = 1
