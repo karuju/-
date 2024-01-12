@@ -1,5 +1,9 @@
 class ContentsController < ApplicationController
   def new
-    @song = Song.find(session[:song_id])
+    if session[:board_id]
+      @song = Board.find(session[:board_id]).song
+    else
+      @song = Song.find(session[:song_id])
+    end
   end
 end
