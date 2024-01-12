@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
   def new
     @board = Board.find(params[:board_id])
     @answer = @board.answers.build
-    @song = Song.find(session[:song_id])
+    @song = @board.song
     if session[:comic_id]
       @comic = Comic.find(session[:comic_id])
     elsif session[:novel_id]
