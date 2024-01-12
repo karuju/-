@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :comics
 
   resources :boards do
-    resources :answers, only: %i[new create destroy] do
+    resources :answers, only: %i[index show new create destroy] do
       collection do
         get :save_session
       end

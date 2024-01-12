@@ -2,11 +2,20 @@
 
 <%= render @board %>
 
+<div>
+<h3>Answers</h3>
+</div>
 
+<%= turbo_frame_tag 'answers' do %>
+  <%= render @board.answers %>
+<% end %>
+<br>
 <div>
 <%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
 </div>
 
+<br>
+<br>
 <div>
   <%= link_to "Edit this board", edit_board_path(@board) %> 
   <%= link_to "Back to boards", boards_path %>

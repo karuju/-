@@ -42,7 +42,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to boards_path(@board), notice: "Answer was successfully created." }
+        format.html { redirect_to board_path(@board), notice: "Answer was successfully created." }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new, status: :unprocessable_entity }
