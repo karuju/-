@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: %i[ show edit update destroy ]
+  before_action :require_login, only: %i[ save_session new create edit update destroy ]
 
   # GET /answers or /answers.json
   def index
