@@ -6,4 +6,5 @@ class Board < ApplicationRecord
   has_one :board_song, dependent: :destroy
   has_one :song, through: :board_song
   has_many :answers, dependent: :destroy
+  has_many :likes, as: :likeable
 end

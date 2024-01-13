@@ -3,4 +3,5 @@ class Answer < ApplicationRecord
 
   belongs_to :user, presence: true
   belongs_to :board, presence: true
+  has_many :likes, as: :likeable
 end
