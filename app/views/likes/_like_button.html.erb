@@ -1,5 +1,6 @@
 <!-- いいねしているとき -->
 <% if current_user.likes.exists?(likeable: @likeable) %> 
+<div class="liked" >
   <%= render 'likes/destroy' %>
 </div>
 

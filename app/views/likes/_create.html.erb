@@ -1,4 +1,4 @@
-<div class="liked">
+<div class="like_create">
   <%= link_to likes_path(likeable_type: @likeable.class.to_s, likeable_id: @likeable.id), data: { "turbo-method": :post} do %>
     <i class="fa-regular fa-heart"></i>
   <% end %>
