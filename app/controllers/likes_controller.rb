@@ -10,6 +10,8 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
         format.turbo_stream
         format.html { set_redirect }
       end
+    else
+      Rails.logger.error @like.errors.full_messages.join("\n")
     end
   end
 
@@ -22,6 +24,8 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
         format.turbo_stream
         format.html { set_redirect }
       end
+    else
+      Rails.logger.error @like.errors.full_messages.join("\n")
     end
   end
 
