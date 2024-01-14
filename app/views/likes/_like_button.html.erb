@@ -1,0 +1,14 @@
+<!-- いいねしているとき -->
+<% if current_user.likes.exists?(likeable: @likeable) %> 
+  <%= render 'likes/destroy' %>
+</div>
+
+
+<!-- いいねしていないとき -->
+<% else %>
+
+<div class="unliked">
+<%= render 'likes/create' %>
+</div>
+
+<% end %>

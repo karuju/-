@@ -1,0 +1,6 @@
+<div class="unliked">
+<%= link_to like_path(current_user.likes.find_by(likeable: @likeable)), data: { "turbo-method": :delete} do %>
+  <i class="fa-solid fa-heart"></i>
+<% end %>
+</div>
+

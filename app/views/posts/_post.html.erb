@@ -31,6 +31,10 @@
     <%= post.content %>
   </p>
 
+  <p>
+  <% @likeable = post %>
+  <%= render 'likes/like_button' %>
+  </p>
 
 
 </div>
