@@ -5,15 +5,24 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
   def create
     set_likeable
     @like = current_user.likes.build(likeable: @likeable)
-    @like.save
-    set_redirect
+    if @like.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html { set_redirect }
+      end
+    end
   end
 
   def destroy
     @like = current_user.likes.find_by(params[:id])
     @likeable = @like.likeable
     @like.destroy
-    set_redirect
+    if @like.destroy
+      respond_to do |format|
+        format.turbo_stream
+        format.html { set_redirect }
+      end
+    end
   end
 
   private
@@ -29,7 +38,7 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
     when 'Board'
       redirect_to boards_path
     when 'Answer'
-      redirect_to post_path(@likeable)
+      redirect_to post_path(@likeable_id)
     else
       redirect_to root_path
     end
