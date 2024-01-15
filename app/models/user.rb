@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :answers
   has_many :likes
+  has_many :artist_lists
+  has_many :artists, through: :artist_lists
 
 
   def assign_boards_and_answers_and_posts_to_deleted_user
@@ -19,5 +21,17 @@ class User < ApplicationRecord
     Board.where(user_id: id).update_all(user_id: deleted_user_id)
     Answer.where(user_id: id).update_all(user_id: deleted_user_id)
     Post.where(user_id: id).update_all(user_id: deleted_user_id)
+  end
+
+  def add_to_artist_list(artist)
+    artists << artist
+  end
+
+  def remove_from_artist_list(artist)
+    artists.destroy(artist)
+  end
+
+  def listed_artist?(artist)
+    artists.include?(artist)
   end
 end

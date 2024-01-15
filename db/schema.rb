@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_12_084233) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_15_011530) do
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_084233) do
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_answers_on_board_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "artist_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_lists_on_artist_id"
+    t.index ["user_id", "artist_id"], name: "index_artist_lists_on_user_id_and_artist_id", unique: true
+    t.index ["user_id"], name: "index_artist_lists_on_user_id"
   end
 
   create_table "artists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -150,6 +160,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_084233) do
 
   add_foreign_key "answers", "boards"
   add_foreign_key "answers", "users"
+  add_foreign_key "artist_lists", "artists"
+  add_foreign_key "artist_lists", "users"
   add_foreign_key "board_songs", "boards"
   add_foreign_key "board_songs", "songs"
   add_foreign_key "boards", "users"

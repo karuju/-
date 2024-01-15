@@ -18,6 +18,12 @@
   </p>
 
   <p>
+    <strong>Artist:</strong>
+    <%= post.song.artist.name %>
+    <%= render 'artist_lists/list_in_button', post: post, artist: post.song.artist %>      
+  </p>
+
+  <p>
   <strong>Song_image:</strong>
   <%= image_tag post.song.image %>
   </p>

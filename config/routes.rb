@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'contents/new'
 
-  resources :users
+  resources :users do
+    collection do 
+      get 'artist_lists', to: 'artist_lists#index'
+    end
+  end
   resources :posts
   resources :songs, only: %i[index show new create edit update destroy] do
     collection do 
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: %i[create destroy]
+  resources :artist_lists, only: %i[create destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
