@@ -37,8 +37,9 @@
 </p>
 
 <p>
-
+  <% if current_user %>
   <% @likeable = board %>
   <%= render 'likes/like_button' %>
+  <% end %>
 </p>
 </div>
