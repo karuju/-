@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   validates :content, presence: true
   #validates :song, presence: true
 
-  belongs_to :user, presence: true
+  belongs_to :user
   has_one :post_song, dependent: :destroy
   has_one :song, through: :post_song
+  has_many :likes, as: :likeable
 end

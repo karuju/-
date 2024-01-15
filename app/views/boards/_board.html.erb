@@ -30,4 +30,10 @@
   <strong>Content:</strong>
   <%= board.content %>
 </p>
+
+<p>
+
+  <% @likeable = board %>
+  <%= render 'likes/like_button' %>
+</p>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_08_063135) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_12_084233) do
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -67,6 +67,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_063135) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_contents_on_post_id"
+  end
+
+  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id", "likeable_type", "likeable_id"], name: "index_likes_on_user_id_and_likeable_type_and_likeable_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -143,6 +154,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_063135) do
   add_foreign_key "board_songs", "songs"
   add_foreign_key "boards", "users"
   add_foreign_key "contents", "posts"
+  add_foreign_key "likes", "users"
   add_foreign_key "post_songs", "posts"
   add_foreign_key "post_songs", "songs"
   add_foreign_key "posts", "users"
