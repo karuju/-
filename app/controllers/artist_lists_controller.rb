@@ -12,6 +12,7 @@ class ArtistListsController < ApplicationController
     current_user.add_to_artist_list(@artist)
     flash[:success] = "アーティストリストに登録しました"
     redirect_to send("#{item_type.model_name.param_key}_path", @item)
+  end
 
   def destroy
     artist_list = current_user.artist_lists.find(params[:id])
@@ -19,5 +20,4 @@ class ArtistListsController < ApplicationController
     current_user.remove_from_artist_list(@artist)
     redirect_to artist_lists_users_path, success: "アーティストリストから削除しました", status: :see_other
   end
-end
 end
