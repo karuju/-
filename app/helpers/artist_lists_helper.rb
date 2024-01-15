@@ -1,0 +1,2 @@
+module ArtistListsHelper
+end

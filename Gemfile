@@ -65,6 +65,11 @@ gem "dotenv-rails"
 #Youtube api
 gem "google-apis-youtube_v3"
 
+#検索とページネーション
+gem "ransack"
+gem "kaminari"
+gem "bootstrap4-kaminari-views"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

@@ -18,6 +18,14 @@
 </p>
 
 <p>
+  <strong>Artist:</strong>
+  <%= board.song.artist.name %>
+  <% if current_user %>
+  <%= render 'artist_lists/list_in_button', item: board, artist: board.song.artist %>      
+  <% end %>
+</p>
+
+<p>
 <strong>Song_image:</strong>
 <%= image_tag board.song.image %>
 </p>
@@ -32,8 +40,9 @@
 </p>
 
 <p>
-
+  <% if current_user %>
   <% @likeable = board %>
   <%= render 'likes/like_button' %>
+  <% end %>
 </p>
 </div>
