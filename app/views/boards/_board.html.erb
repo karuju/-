@@ -1,48 +1,24 @@
 <div id="<%= dom_id board %>">
+  <div class="song-info">
+    <%= render 'songs/song', item: board %>
+  </div>
 
-<p>
-<strong>Song_title:</strong>
-<% if board.song.uri.include?('spotify:track') %> 
-  <%= link_to board.song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
-    <i class="fa-brands fa-spotify"></i><%= board.song.name %>
-  <% end %>
-<% elsif board.song.uri.include?('http') %>
-  <%= link_to board.song.uri, target: :_blank, rel: "noopener noreferrer" do %>
-    <i class="fa-solid fa-globe"></i><%= board.song.name %>
-  <% end%>
-<% else %>
-  <%= link_to "https://www.youtube.com/watch?v=#{board.song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
-    <i class="fa-brands fa-youtube"></i><%= board.song.name %>
-  <% end %>
-<% end %>  
-</p>
+  <div class="board-info">
+    <div class="board-title">
+      <strong>Title:</strong>
+      <%= board.title %>
+    </div>
 
-<p>
-  <strong>Artist:</strong>
-  <%= board.song.artist.name %>
-  <% if current_user %>
-  <%= render 'artist_lists/list_in_button', item: board, artist: board.song.artist %>      
-  <% end %>
-</p>
+    <div class="board-content">
+      <strong>Content:</strong>
+      <%= board.content %>
+    </div>
+  </div>
 
-<p>
-<strong>Song_image:</strong>
-<%= image_tag board.song.image %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= board.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= board.content %>
-</p>
-
-<p>
-  <% if current_user %>
-  <% @likeable = board %>
-  <%= render 'likes/like_button' %>
-  <% end %>
-</p>
+  <div class="like_button">
+    <% if current_user %>
+      <% @likeable = board %>
+      <%= render 'likes/like_button' %>
+    <% end %>
+  </div>
 </div>

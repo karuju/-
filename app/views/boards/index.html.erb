@@ -1,20 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Boards</h1>
-<div class="pager">
-<%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
-</div>
-<div id="boards">
-  <% @boards.each do |board| %>
-    <%= render board %>
-    <p>
-      <%= link_to "Show this board", board %>
-    </p>
-  <% end %>
-</div>
+  <h1>Boards</h1>
+  <div class="pager">
+    <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
+  </div>
 
-<div class="pager">
-<%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
-</div>
+  <div id="boards">
+    <% @boards.each do |board| %>
+      <%= render board %>
+      <p>
+        <%= link_to "Show this board", board %>
+      </p>
+    <% end %>
+  </div>
 
-<%= link_to "New board", create_board_path %>
+  <div class="pager">
+  <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <div class="create-model">
+    <%= link_to "New board", create_board_path %>
+  </div>
+</div>

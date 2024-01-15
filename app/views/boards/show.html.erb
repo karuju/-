@@ -1,24 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @board %>
+  <%= render @board %>
 
-<div>
-<h3>Answers</h3>
-</div>
+  <div>
+    <h3>Answers</h3>
+  </div>
 
-<%= turbo_frame_tag 'answers' do %>
-  <%= render @board.answers %>
-<% end %>
-<br>
-<div>
-<%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
-</div>
+  <%= turbo_frame_tag 'answers' do %>
+    <%= render @board.answers %>
+  <% end %>
+  <br>
 
-<br>
-<br>
-<div>
-  <%= link_to "Edit this board", edit_board_path(@board) %> 
-  <%= link_to "Back to boards", boards_path %>
+  <div class="create-model">
+    <%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
+  </div>
 
-  <%= button_to "Destroy this board", @board, method: :delete %>
+  <br>
+  <br>
+  <div class="model-operation">
+    <%= link_to "Edit this board", edit_board_path(@board) %> 
+    <%= link_to "Back to boards", boards_path %>
+
+    <%= button_to "Destroy this board", @board, method: :delete %>
+  </div>
 </div>

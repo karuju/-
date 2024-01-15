@@ -1,50 +1,24 @@
 <div id="<%= dom_id post %>">
+  <div class="song-info">
+    <%= render 'songs/song', item: post %>
+  </div>
 
-  <p>
-  <strong>Song_title:</strong>
-  <% if post.song.uri.include?('spotify:track') %> 
-    <%= link_to post.song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
-      <i class="fa-brands fa-spotify"></i><%= post.song.name %>
-    <% end %>
-  <% elsif post.song.uri.include?('http') %>
-    <%= link_to post.song.uri, target: :_blank, rel: "noopener noreferrer" do %>
-      <i class="fa-solid fa-globe"></i><%= post.song.name %>
-    <% end%>
-  <% else %>
-    <%= link_to "https://www.youtube.com/watch?v=#{post.song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
-      <i class="fa-brands fa-youtube"></i><%= post.song.name %>
-    <% end %>
-  <% end %>  
-  </p>
+  <div class="content-info">
+    <div class="content-title">
+      <strong>Title:</strong>
+      <%= post.title %>
+    </div>
+  
+    <div class="content-explain">
+        <strong>Content:</strong>
+        <%= post.content %>
+    </div>
+  </div>
 
-  <p>
-    <strong>Artist:</strong>
-    <%= post.song.artist.name %>
+  <div class="like_button">
     <% if current_user %>
-    <%= render 'artist_lists/list_in_button', item: post, artist: post.song.artist %>      
+      <% @likeable = post %>
+      <%= render 'likes/like_button' %>
     <% end %>
-  </p>
-
-  <p>
-  <strong>Song_image:</strong>
-  <%= image_tag post.song.image %>
-  </p>
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= post.content %>
-  </p>
-
-  <p>
-  <% if current_user %>
-    <% @likeable = post %>
-    <%= render 'likes/like_button' %>
-  <% end %>
-  </p>
-
-
+  </div>
 </div>

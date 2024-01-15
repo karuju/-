@@ -1,20 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
-<div class="pager">
-<%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
-</div>
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
-</div>
+  <h1>Posts</h1>
+  <div class="pager">
+  <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
 
-<%= link_to "New post", create_post_path %>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <%= render post %>
+      <p>
+        <%= link_to "Show this post", post %>
+      </p>
+    <% end %>
+  </div>
 
-<div class="pager">
-<%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+  <div class="pager">
+  <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
+
+  <div class="create-model">
+    <%= link_to "New post", create_post_path %>
+  </div>
 </div>

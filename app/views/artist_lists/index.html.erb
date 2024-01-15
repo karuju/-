@@ -1,7 +1,11 @@
-<h1>ArtistLists#index</h1>
-<p>Find me in app/views/artist_lists/index.html.erb</p>
-<% if current_user.artists.present? %>
-  <%= render partial: 'artist', collection: @artists %>
-<% else %>
-  アーティストリストは空です
-<% end %>
+<div class="container">
+  <h1>ArtistLists#index</h1>
+  <p>Find me in app/views/artist_lists/index.html.erb</p>
+  <div class="listed-artists">
+    <% if current_user.artists.present? %>
+      <%= render partial: 'artist', collection: @artists %>
+    <% else %>
+      アーティストリストは空です
+    <% end %>
+  </div>
+</div>
