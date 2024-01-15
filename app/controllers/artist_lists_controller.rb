@@ -13,9 +13,9 @@ class ArtistListsController < ApplicationController
   end
 
   def destroy
-    @artist = current_user.artist_lists.find(params[:id])
-    @post = Post.find(params[:post_id])
+    artist_list = current_user.artist_lists.find(params[:id])
+    @artist = Artist.find(artist_list.artist_id)
     current_user.remove_from_artist_list(@artist)
-    redirect_to post_path(@post), success: "アーティストリストから削除しました", status: :see_other
+    redirect_to artist_lists_users_path, success: "アーティストリストから削除しました", status: :see_other
   end
 end
