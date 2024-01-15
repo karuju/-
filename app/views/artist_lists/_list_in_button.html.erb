@@ -1,7 +1,7 @@
 <% if current_user.listed_artist?(artist) %>
   リストに登録済み
 <% else %>
-  <%= link_to artist_lists_path(artist_id: artist.id, post_id: post.id), data: { "turbo-method": :post } do %>
+  <%= link_to artist_lists_path(artist_id: artist.id, item_id: item.id, item_type: item.class.to_s), data: { "turbo-method": :post } do %>
   リストに入れる
   <% end %>
 <% end %>

@@ -6,11 +6,12 @@ class ArtistListsController < ApplicationController
 
   def create
     @artist = Artist.find(params[:artist_id])
-    @post = Post.find(params[:post_id])
+    #@post = Post.find(params[:post_id])
+    item_type = params[:item_type].constantize
+    @item = item_type.find(params[:item_id])
     current_user.add_to_artist_list(@artist)
     flash[:success] = "アーティストリストに登録しました"
-    redirect_to post_path(@post)
-  end
+    redirect_to send("#{item_type.model_name.param_key}_path", @item)
 
   def destroy
     artist_list = current_user.artist_lists.find(params[:id])
@@ -18,4 +19,5 @@ class ArtistListsController < ApplicationController
     current_user.remove_from_artist_list(@artist)
     redirect_to artist_lists_users_path, success: "アーティストリストから削除しました", status: :see_other
   end
+end
 end

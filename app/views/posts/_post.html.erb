@@ -21,7 +21,7 @@
     <strong>Artist:</strong>
     <%= post.song.artist.name %>
     <% if current_user %>
-    <%= render 'artist_lists/list_in_button', post: post, artist: post.song.artist %>      
+    <%= render 'artist_lists/list_in_button', item: post, artist: post.song.artist %>      
     <% end %>
   </p>
 
