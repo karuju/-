@@ -1,13 +1,17 @@
-<h1>Top#index</h1>
-<p>Find me in app/views/top/index.html.erb</p>
+<div class="container">
+  <h1>Top#index</h1>
+  <p>Find me in app/views/top/index.html.erb</p>
 
-<h3>
-<%= link_to "Boards一覧", boards_path %>
-<br>
-<%= link_to "Posts一覧", posts_path %>
-<br>
-<%= link_to "ログインページへ", login_path %>
-<br>
-<%= link_to "Post作成", create_post_path %>
-<br>
-<%= link_to "Board作成", create_board_path %>
+  <div class="main">
+    <h3>
+    <%= link_to "Boards一覧", boards_path %>
+    <br>
+    <%= link_to "Posts一覧", posts_path %>
+    <br>
+    <%= link_to "ログインページへ", login_path %>
+    <br>
+    <%= link_to "Post作成", create_post_path %>
+    <br>
+    <%= link_to "Board作成", create_board_path %>
+  </div> 
+</div>
