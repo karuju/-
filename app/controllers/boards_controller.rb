@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
 
   # GET /boards or /boards.json
   def index
-    @boards = Board.all
+    @boards = Board.all.order(created_at: :desc).page(params[:page])
   end
 
   # GET /boards/1 or /boards/1.json

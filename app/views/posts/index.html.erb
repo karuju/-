@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Posts</h1>
-
+<div class="pager">
+<%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+</div>
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
@@ -12,3 +14,7 @@
 </div>
 
 <%= link_to "New post", create_post_path %>
+
+<div class="pager">
+<%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+</div>
