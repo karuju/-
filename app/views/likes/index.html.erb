@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>お気に入り一覧</h1>
+  <% @likes.each do |like| %>
+    <% if like.likeable_type == 'Post' %>
+    <div class="post">
+      <%= link_to like.likeable.title, post_path(like.likeable) %>
+    </div>
+    <% elsif like.likeable_type == 'Board' %>
+    <div class="board">
+      <%= link_to like.likeable.title, board_path(like.likeable) %>
+    </div>
+    <% elsif like.likeable_type == 'Answer' %>
+    <div class="answer">
+      <%= link_to like.likeable.body, board_path(like.likeable.board) %>
+    </div>
+    <% end %>
+  <% end %>
+
+</div>
