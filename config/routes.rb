@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do 
       get 'artist_lists', to: 'artist_lists#index'
+      get 'likes', to: 'likes#index'
     end
   end
   resources :posts

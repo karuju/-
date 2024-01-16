@@ -2,6 +2,10 @@ class LikesController < ApplicationController
 include ActionView::RecordIdentifier #モデルオブジェクトに関連するHTML要素のIDやクラス名を生成するためヘルパーメソッドを使えるようにする
   before_action :require_login
 
+  def index
+    @likes = current_user.likes.includes(:likeable)
+  end
+
   def create
     set_likeable
     @like = current_user.likes.build(likeable: @likeable)
@@ -16,7 +20,7 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
   end
 
   def destroy
-    @like = current_user.likes.find_by(params[:id])
+    @like = Like.find(params[:id])
     @likeable = @like.likeable
     @like.destroy
     if @like.destroy
