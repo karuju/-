@@ -1,17 +1,30 @@
 <div id="<%= dom_id post %>">
+
+  <div class="user">
+
+  <div class="content-title">
+    <strong>Title:</strong>
+    <%= post.title %>
+  </div>
+  <strong>作成者</strong>
+  <%= post.user.name %>
+  </div>
   <div class="song-info">
     <%= render 'songs/song_info', item: post %>
   </div>
 
   <div class="content-info">
     <div class="content-title">
-      <strong>Title:</strong>
-      <%= post.title %>
+      <strong>Content-Title:</strong>
+      <%= post.content.contentable.title %>
+      <strong>Author:</strong>
+      <%= post.content.contentable.author %>
     </div>
+
   
     <div class="content-explain">
-        <strong>Content:</strong>
-        <%= post.content %>
+        <strong>Body:</strong>
+        <%= post.body %>
     </div>
   </div>
 
