@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_083800) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_16_093806) do
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -76,6 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_083800) do
     t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "answer_id"
+    t.index ["answer_id"], name: "fk_rails_a1873bd348"
     t.index ["post_id"], name: "index_contents_on_post_id"
   end
 
@@ -165,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_083800) do
   add_foreign_key "board_songs", "boards"
   add_foreign_key "board_songs", "songs"
   add_foreign_key "boards", "users"
+  add_foreign_key "contents", "answers"
   add_foreign_key "contents", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "post_songs", "posts"
