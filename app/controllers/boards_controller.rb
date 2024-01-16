@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
 
   # POST /boards or /boards.json
   def create
-    @board = current_user.boards.new(title: params[:board][:title], content: params[:board][:content])
+    @board = current_user.boards.new(title: params[:board][:title], body: params[:board][:body])
 
     respond_to do |format|
       if @board.save
@@ -72,6 +72,6 @@ class BoardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_params
-      params.require(:post).permit(:title, :content, :song_id)
+      params.require(:post).permit(:title, :body, :song_id)
     end
 end

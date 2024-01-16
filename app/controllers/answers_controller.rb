@@ -43,8 +43,17 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
+        if session[:comic_id]
+          Content.create!(answer_id: @answer.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
+        elsif session[:novel_id]
+          Content.create!(answer_id: @answer.id, contentable_id:session[:novel_id], contentable_type: 'Novel')
+        elsif session[:movie_id]
+          Content.create!(answer_id: @answer.id, contentable_id:session[:movie_id], contentable_type: 'Movie')
+        end
+
         format.html { redirect_to board_path(@board), notice: "Answer was successfully created." }
         format.json { render :show, status: :created, location: @answer }
+        clear_session
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @answer.errors, status: :unprocessable_entity }

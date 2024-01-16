@@ -1,4 +1,9 @@
 <div id="<%= dom_id board %>">
+
+  <div class="user">
+    <strong>作成者</strong>
+    <%= board.user.name %>
+  </div>
   <div class="song-info">
     <%= render 'songs/song_info', item: board %>
   </div>
@@ -9,9 +14,9 @@
       <%= board.title %>
     </div>
 
-    <div class="board-content">
-      <strong>Content:</strong>
-      <%= board.content %>
+    <div class="board-body">
+      <strong>Body:</strong>
+      <%= board.body %>
     </div>
   </div>
 

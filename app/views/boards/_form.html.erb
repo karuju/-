@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
   </div>
   <% if @song.present? %>
     <%= form.hidden_field :song_id, value: @song.id %> 
