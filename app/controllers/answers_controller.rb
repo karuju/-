@@ -41,6 +41,8 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.new(answer_params)
     @answer.board = @board
 
+    clear_session
+
     respond_to do |format|
       if @answer.save
         format.html { redirect_to board_path(@board), notice: "Answer was successfully created." }

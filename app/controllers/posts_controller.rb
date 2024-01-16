@@ -48,10 +48,7 @@ class PostsController < ApplicationController
         end
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
-        session[:song_id] = nil
-        session[:comic_id] = nil
-        session[:novel_id] = nil
-        session[:movie_id] = nil
+        clear_session
       else
         @song = Song.find(session[:song_id])
         set_content
@@ -105,4 +102,12 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body, :song_id)
     end
 
+    def clear_session
+      session[:creation_type] = nil
+      session[:song_id] = nil
+      session[:board_id] = nil
+      session[:comic_id] = nil
+      session[:novel_id] = nil
+      session[:movie_id] = nil
+    end
 end
