@@ -11,8 +11,9 @@
 
   <p>
     <strong>Image:</strong>
-    <%= user.image %>
+    <%= image_tag(user.image.present? ? user.image_url : 'user_default.jpg') %>
   </p>
+
 
   <p>
     <strong>Introduction:</strong>

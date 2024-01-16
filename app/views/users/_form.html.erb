@@ -23,7 +23,8 @@
 
   <div>
     <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
+    <%= form.file_field :image, accept: 'image/*', class: 'form-control' %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div>
