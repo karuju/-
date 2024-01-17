@@ -2,9 +2,15 @@ class Song < ApplicationRecord
   validates :name, presence: true
   
   belongs_to :artist
-  has_many :post_songs
-  has_many :posts, through: :post_songs
-
-  has_many :board_songs
-  has_many :board, through: :board_songs
+  has_many :posts
+  has_many :boards
+  
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
+=begin
+  def self.ransackable_associations(auth_object = nil)
+    ["artist"] #アソシエーション先を記述
+  end
+=end
 end

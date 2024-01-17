@@ -16,12 +16,20 @@
     <% end %>  
   </div>  
 
+  <%= content_tag :div, id: "artist-#{item.song.artist.id}" do %>
+  <!-- content -->
+  <% end %>
+
   <div class="artist">
     <strong>Artist:</strong>
     <%= item.song.artist.name %>
-    <% if current_user %>
-      <%= render 'artist_lists/list_in_button', item: item, artist: item.song.artist %>      
-    <% end %>
+    <div class="artist-list-in-button>
+      <%= turbo_frame_tag "artist-#{item.song.artist.id}".encode('UTF-8')  do %>
+        <% if current_user %>
+          <%= render 'artist_lists/list_in_button', item: item, artist: item.song.artist %>   
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div class="song-image">

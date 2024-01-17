@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_093806) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_17_131749) do
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -39,15 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_093806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "board_songs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "board_id"
-    t.bigint "song_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_board_songs_on_board_id"
-    t.index ["song_id"], name: "index_board_songs_on_song_id"
-  end
-
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
@@ -55,6 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_093806) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "song_id"
+    t.index ["song_id"], name: "index_boards_on_song_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
@@ -117,21 +110,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_093806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_songs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "song_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_post_songs_on_post_id"
-    t.index ["song_id"], name: "index_post_songs_on_song_id"
-  end
-
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.string "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "song_id"
+    t.index ["song_id"], name: "index_posts_on_song_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -164,14 +150,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_093806) do
   add_foreign_key "answers", "users"
   add_foreign_key "artist_lists", "artists"
   add_foreign_key "artist_lists", "users"
-  add_foreign_key "board_songs", "boards"
-  add_foreign_key "board_songs", "songs"
+  add_foreign_key "boards", "songs"
   add_foreign_key "boards", "users"
   add_foreign_key "contents", "answers"
   add_foreign_key "contents", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "post_songs", "posts"
-  add_foreign_key "post_songs", "songs"
+  add_foreign_key "posts", "songs"
   add_foreign_key "posts", "users"
   add_foreign_key "songs", "artists"
 end

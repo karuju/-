@@ -17,8 +17,13 @@
     <div class="content-title">
       <strong>Content-Title:</strong>
       <%= post.content.contentable.title %>
+      <% if post.content.contentable.respond_to?(:author) %>
       <strong>Author:</strong>
       <%= post.content.contentable.author %>
+      <% elsif post.content.contentable.respond_to?(:director) %>
+      <strong>Director:</strong>
+      <%= post.content.contentable.director %>
+      <% end %>
     </div>
 
   

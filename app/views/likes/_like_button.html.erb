@@ -1,5 +1,5 @@
 
-<%= turbo_frame_tag "like-button" do %>
+<%= turbo_frame_tag "like-button-#{@likeable.class.to_s}-#{@likeable.id}" do %>
   <div class="like-controll-button">
   <% if current_user.likes.exists?(likeable: @likeable) %> 
   <div class="liked" >
@@ -8,7 +8,6 @@
     <% end %>
   </div>
 
-  <!-- いいねしていないとき -->
   <% else %>
 
   <div class="unliked">

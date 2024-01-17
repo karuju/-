@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "artist-#{@item.songs.artist.id}" do %>
+  <%= render 'artist_lists/list_in_button', item: @item, artist: @item.songs.artist %>
+<% end %>

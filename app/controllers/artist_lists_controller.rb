@@ -10,8 +10,7 @@ class ArtistListsController < ApplicationController
     item_type = params[:item_type].constantize
     @item = item_type.find(params[:item_id])
     current_user.add_to_artist_list(@artist)
-    flash[:success] = "アーティストリストに登録しました"
-    redirect_to send("#{item_type.model_name.param_key}_path", @item)
+
   end
 
   def destroy

@@ -4,8 +4,7 @@ class Post < ApplicationRecord
   #validates :song, presence: true
 
   belongs_to :user
-  has_one :post_song, dependent: :destroy
-  has_one :song, through: :post_song
+  belongs_to :song
   has_many :likes, as: :likeable
   has_one :content #, as: :contentable
   has_one :comic, through: :contents, source: :contentable, source_type: 'Comic'
