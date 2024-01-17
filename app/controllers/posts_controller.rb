@@ -34,11 +34,10 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(title: params[:post][:title], body: params[:post][:body])
+    @post = current_user.posts.new(title: params[:post][:title], body: params[:post][:body], song_id: params[:post][:song_id])
 
     respond_to do |format|
       if @post.save
-        PostSong.create!(post_id: @post.id, song_id: params[:post][:song_id]) # PostSongを作成
         if session[:comic_id]
         Content.create!(post_id: @post.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
         elsif session[:novel_id]

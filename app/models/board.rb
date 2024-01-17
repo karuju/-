@@ -3,8 +3,15 @@ class Board < ApplicationRecord
   validates :body, presence: true
 
   belongs_to :user
-  has_one :board_song, dependent: :destroy
-  has_one :song, through: :board_song
+  belongs_to :song
   has_many :answers, dependent: :destroy
   has_many :likes, as: :likeable
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["song"]  #アソシエーション先を記述
+  end
 end

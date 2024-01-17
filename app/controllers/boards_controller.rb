@@ -5,7 +5,9 @@ class BoardsController < ApplicationController
 
   # GET /boards or /boards.json
   def index
-    @boards = Board.all.order(created_at: :desc).page(params[:page])
+    @q = Board.ransack(params[:q])
+    @boards = @q.result(distinct: true).includes(:song).page(params[:page]).order(created_at: :desc)
+    #@boards = Board.all.order(created_at: :desc).page(params[:page])
   end
 
   # GET /boards/1 or /boards/1.json
@@ -25,11 +27,11 @@ class BoardsController < ApplicationController
 
   # POST /boards or /boards.json
   def create
-    @board = current_user.boards.new(title: params[:board][:title], body: params[:board][:body])
-
+    @board = current_user.boards.new(title: params[:board][:title], body: params[:board][:body], song_id:params[:board][:song_id])
+    
     respond_to do |format|
       if @board.save
-        BoardSong.create!(board_id: @board.id, song_id: params[:board][:song_id]) #BoardSongを作成
+        
         format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
         format.json { render :show, status: :created, location: @board }
       else
