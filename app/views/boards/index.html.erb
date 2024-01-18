@@ -1,6 +1,10 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
+  <div class="search-field">
+    <%= render 'boards/search' %>
+  </div>
+
   <h1>Boards</h1>
   <div class="pager">
     <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
