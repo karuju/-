@@ -10,7 +10,7 @@
   <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
 <%= turbo_frame_tag 'posts' do %>
-  <div id="posts">
+  <div id="posts" class="d-flex flex-row mb-3" >
     <% @posts.each do |post| %>
       <%= render post %>
       <p>

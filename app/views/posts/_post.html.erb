@@ -33,10 +33,16 @@
     </div>
   </div>
 
-  <div class="like_button">
+  <div class="like-button">
     <% if current_user %>
       <% @likeable = post %>
       <%= render 'likes/like_button' %>
+    <% end %>
+  </div>
+
+  <div class="twitter">
+    <%= link_to "https://twitter.com/share?url=#{post_url(post)}&text=【投稿しました】%0a%0a#{post.title}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+      <i class="fab fa-twitter"></i>
     <% end %>
   </div>
 </div>
