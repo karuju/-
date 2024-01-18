@@ -3,7 +3,7 @@ class TopController < ApplicationController
 
   def index
     @boards = Board.order(created_at: :desc).limit(3)
-    @boards = Board.order(created_at: :desc).limit(3)
+    @posts = Post.order(created_at: :desc).limit(3)
   end
 
   def create_post
