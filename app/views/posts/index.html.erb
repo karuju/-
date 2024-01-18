@@ -1,16 +1,9 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
-  <%= search_form_for @q, html: { data: { turbo_frame: "posts" } } do |f| %>
-  <%= f.label :song_name_cont, 'Song Title' %>
-  <%= f.search_field :song_name_cont %>
-
-  <%= f.label :song_artist_name_cont, 'Artist Name' %>
-  <%= f.search_field :song_artist_name_cont %>
-
-  <%= f.submit %>
-<% end %>
-<%= link_to "リセット", request.path, class: "btn btn-outline-secondary" %>
+  <div class="search-field">
+    <%= render 'shared/search', frame_id: 'posts' %>
+  </div>
 
   <h1>Posts</h1>
   <div class="pager">
@@ -21,11 +14,11 @@
     <% @posts.each do |post| %>
       <%= render post %>
       <p>
-        <%= link_to "Show this post", post %>
+        <%= link_to "Show this post", post, data: { turbo: false }  %>
       </p>
     <% end %>
   </div>
-  <% end %>
+<% end %>
 
   <div class="pager">
   <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
