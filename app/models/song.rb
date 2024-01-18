@@ -8,9 +8,9 @@ class Song < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["name"]
   end
-=begin
+
   def self.ransackable_associations(auth_object = nil)
     ["artist"] #アソシエーション先を記述
   end
-=end
+
 end

@@ -1,11 +1,22 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
+  <%= search_form_for @q, html: { data: { turbo_frame: "posts" } } do |f| %>
+  <%= f.label :song_name_cont, 'Song Title' %>
+  <%= f.search_field :song_name_cont %>
+
+  <%= f.label :song_artist_name_cont, 'Artist Name' %>
+  <%= f.search_field :song_artist_name_cont %>
+
+  <%= f.submit %>
+<% end %>
+<%= link_to "リセット", request.path, class: "btn btn-outline-secondary" %>
+
   <h1>Posts</h1>
   <div class="pager">
   <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
-
+<%= turbo_frame_tag 'posts' do %>
   <div id="posts">
     <% @posts.each do |post| %>
       <%= render post %>
@@ -14,6 +25,7 @@
       </p>
     <% end %>
   </div>
+  <% end %>
 
   <div class="pager">
   <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
