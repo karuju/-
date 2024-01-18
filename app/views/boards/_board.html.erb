@@ -2,6 +2,7 @@
 
   <div class="user">
     <strong>作成者</strong>
+    <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.jpg'), size: '40x40' %>
     <%= board.user.name %>
   </div>
   <div class="song-info">

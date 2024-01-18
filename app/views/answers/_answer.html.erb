@@ -5,9 +5,12 @@
     <div class="content-title">
       <strong>Content-Title:</strong>
       <%= answer.content.contentable.title %>
+      <% if answer.content.contentable.respond_to?(:author) %>
       <strong>Author:</strong>
-      <% if answer.content.contentable.author %>
-        <%= answer.content.contentable.author %>
+      <%= answer.content.contentable.author %>
+      <% elsif answer.content.contentable.respond_to?(:director) %>
+      <strong>Director:</strong>
+      <%= answer.content.contentable.director %>
       <% end %>
     </div>
     <div class="content-explain">
