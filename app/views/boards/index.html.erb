@@ -9,15 +9,11 @@
   <div class="pager">
     <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
   </div>
-
+  <%= turbo_frame_tag "boards" do %>
   <div id="boards">
-    <% @boards.each do |board| %>
-      <%= render board %>
-      <p>
-        <%= link_to "Show this board", board %>
-      </p>
-    <% end %>
+    <%= render @boards %>
   </div>
+  <% end %>
 
   <div class="pager">
   <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
