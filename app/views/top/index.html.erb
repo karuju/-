@@ -5,8 +5,31 @@
   <div class="main">
     <h3>
     <%= link_to "Boards一覧", boards_path %>
+    <div id="boards" class="row">
+      <% @boards.each do |board| %>
+        <div class="post col-md-4 border">
+          <%= render board %>
+          <p>
+            <%= link_to "Show this board", board, data: { turbo: false } %>
+          </p>
+        </div >
+      <% end %>
+    </div>
+
+
     <br>
     <%= link_to "Posts一覧", posts_path %>
+    <div id="boards" class="row">
+      <% @boards.each do |board| %>
+        <div class="post col-md-4 border">
+          <%= render board %>
+          <p>
+            <%= link_to "Show this board", board, data: { turbo: false } %>
+          </p>
+        </div >
+      <% end %>
+    </div>
+  
     <br>
     <%= link_to "ログインページへ", login_path %>
     <br>

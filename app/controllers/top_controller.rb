@@ -2,6 +2,8 @@ class TopController < ApplicationController
   before_action :require_login, only: %i[ create_post create_board create_answer ]
 
   def index
+    @boards = Board.order(created_at: :desc).limit(3)
+    @boards = Board.order(created_at: :desc).limit(3)
   end
 
   def create_post
