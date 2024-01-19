@@ -23,8 +23,7 @@ RUN yarn install
 COPY . /app
 
 COPY entrypoint.sh /usr/bin/
-RUN chmod a+x bin/render-build.sh
-# RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
 
