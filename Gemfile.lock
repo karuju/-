@@ -387,6 +387,7 @@ DEPENDENCIES
   rails (~> 7.0.8)
   rails-i18n (~> 7.0.0)
   ransack
+  rest-client
   rspotify
   sassc-rails
   selenium-webdriver

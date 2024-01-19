@@ -63,6 +63,7 @@ gem 'rails-i18n', '~> 7.0.0'
 #Spotify api
 gem "rspotify"
 gem "dotenv-rails"
+gem "rest-client"
 
 #Youtube api
 gem "google-apis-youtube_v3"
