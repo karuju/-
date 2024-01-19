@@ -3,7 +3,7 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
   before_action :require_login
 
   def index
-    @likes = current_user.likes.includes(:likeable)
+    @likes = current_user.likes.includes(:likeable).order(created_at: :desc)
   end
 
   def create
