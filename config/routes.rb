@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'likes', to: 'likes#index'
     end
   end
+  resource :profile, only: %i[show edit update]
   resources :posts
   resources :songs, only: %i[index show new create edit update destroy] do
     collection do 

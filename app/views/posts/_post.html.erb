@@ -7,7 +7,9 @@
     </div>
     <strong>作成者</strong>
     <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.jpg'), size: '40x40' %>
-    <%= post.user.name %>
+    <%= link_to profile_path(post.user), data: {turbo: :false} do %>
+      <%= post.user.name %>
+    <% end %>
   </div>
 
   <div class="song-info">
