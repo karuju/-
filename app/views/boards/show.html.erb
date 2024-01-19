@@ -3,6 +3,7 @@
 
   <%= render @board %>
 
+<!-- 回答エリア -->
   <div>
     <h3>Answers</h3>
   </div>
@@ -14,14 +15,5 @@
 
   <div class="create-model">
     <%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
-  </div>
-
-  <br>
-  <br>
-  <div class="model-operation">
-    <%= link_to "Edit this board", edit_board_path(@board) %> 
-    <%= link_to "Back to boards", boards_path %>
-
-    <%= button_to "Destroy this board", @board, method: :delete %>
   </div>
 </div>

@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :artist_lists
   has_many :artists, through: :artist_lists
 
+  def own?(object)
+    id == object&.user_id
+  end
+
 
   def assign_boards_and_answers_and_posts_to_deleted_user
     deleted_user_id = 1

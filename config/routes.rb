@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'contents/new'
 
-  resources :users do
+  resources :users, only: %i[new show create destroy] do
     collection do 
       get 'artist_lists', to: 'artist_lists#index'
       get 'likes', to: 'likes#index'

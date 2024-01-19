@@ -7,7 +7,7 @@
     </div>
     <strong>作成者</strong>
     <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.jpg'), size: '40x40' %>
-    <%= link_to profile_path(post.user), data: {turbo: :false} do %>
+    <%= link_to user_path(post.user), data: {turbo: :false} do %>
       <%= post.user.name %>
     <% end %>
   </div>
@@ -48,4 +48,6 @@
       <i class="fab fa-twitter"></i>
     <% end %>
   </div>
+
+  <%= render 'shared/edit_and_delete', item: post %>
 </div>

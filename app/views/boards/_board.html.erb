@@ -3,7 +3,10 @@
   <div class="user">
     <strong>作成者</strong>
     <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.jpg'), size: '40x40' %>
-    <%= board.user.name %>
+    <%= link_to user_path(board.user), data: {turbo: :false} do %>
+      <%= board.user.name %>
+    <% end %>
+
   </div>
   <div class="song-info">
     <%= render 'songs/song_info', item: board %>
@@ -33,5 +36,5 @@
     <% end %>
   </div>
 
-
+  <%= render 'shared/edit_and_delete', item: board %>
 </div>
