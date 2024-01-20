@@ -8,7 +8,7 @@
     <div class="detail-right">
       <div class="user">
         <strong>作成者</strong>
-        <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.jpg'), size: '40x40' %>
+        <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), size: '40x40' %>
         <%= link_to user_path(board.user), data: {turbo: :false} do %>
           <%= board.user.name %>
         <% end %>

@@ -6,7 +6,7 @@
       <%= post.title %>
     </div>
     <strong>作成者</strong>
-    <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.jpg'), size: '40x40' %>
+    <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '40x40' %>
     <%= link_to user_path(post.user), data: {turbo: :false} do %>
       <%= post.user.name %>
     <% end %>
