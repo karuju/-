@@ -74,6 +74,9 @@ gem "ransack"
 gem "kaminari"
 gem "bootstrap4-kaminari-views"
 
+# 環境別の設定
+gem 'config'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

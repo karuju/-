@@ -42,7 +42,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   # letter_opener_webの設定
   config.action_mailer.delivery_method = :letter_opener_web
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -71,4 +71,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
+  
 end
