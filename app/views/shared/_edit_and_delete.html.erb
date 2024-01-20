@@ -1,4 +1,4 @@
-<% if current_user.own?(item) %>
+<% if current_user && current_user.own?(item) %>
 <div class='d-flex justify-content-start'>
   <%= link_to "edit_#{item}_path(item)", id: "button-edit-#{item.id}" do %>
     <i class='bi bi-pencil-fill'></i>

@@ -1,0 +1,25 @@
+<% content_for(:title, t('.title')) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <h1><%= "パスワード再設定" %></h1>
+      <%= form_with model: @user, url: password_reset_path(@token), method: :patch do |form| %>
+
+       <div class="mb-3">
+            <%= form.label :email, class: "form-label" %>
+            <br><%= @user.email %>
+       </div>
+        <div class="mb-3">
+            <%= form.label :password, class: "form-label" %> 
+            <%= form.password_field :password, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :password_confirmation, class: "form-label" %> 
+            <%= form.password_field :password_confirmation, class: "form-control" %>
+        </div>
+        <%= form.submit "送信", class: "btn btn-primary"%>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
