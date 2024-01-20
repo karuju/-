@@ -4,16 +4,18 @@
   <%= render @board %>
 
 <!-- 回答エリア -->
-  <div>
-    <h3>Answers</h3>
-  </div>
+  <div class="Answers_area">
+    <div>
+      <h3>Answers</h3>
+    </div>
 
-  <%= turbo_frame_tag 'answers' do %>
-    <%= render @board.answers %>
-  <% end %>
-  <br>
+    <%= turbo_frame_tag 'answers' do %>
+      <%= render @board.answers %>
+    <% end %>
+    <br>
 
-  <div class="create-model">
-    <%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
-  </div>
+    <div class="create-model">
+      <%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
+    </div>
+    </div>
 </div>
