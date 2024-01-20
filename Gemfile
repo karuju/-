@@ -56,6 +56,7 @@ gem "sassc-rails"
 gem "sorcery"
 gem "carrierwave"
 gem "mini_magick"
+gem 'meta-tags'
 
 # 日本語化
 gem 'rails-i18n', '~> 7.0.0'
