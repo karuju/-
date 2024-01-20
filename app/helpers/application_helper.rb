@@ -4,6 +4,7 @@ module ApplicationHelper
     assign_meta_tags if display_meta_tags.blank?
     display_meta_tags
   end
+=end
 
   def default_meta_tags
     {
@@ -21,9 +22,9 @@ module ApplicationHelper
         # { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
       ],
       og: {
-        site_name: site,
-        title: title,
-        description: description, 
+        site_name: :site,
+        title: :title,
+        description: :description, 
         type: 'website',
         url: request.original_url,
         image: image_url('ogp.png'),
@@ -31,12 +32,9 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@ツイッターのアカウント名',
-      },
-      fb: {
-        app_id: '自身のfacebookのapplication ID'
+        site: '@',
+        image: image_url('ogp.png')
       }
     }
   end
-=end
 end
