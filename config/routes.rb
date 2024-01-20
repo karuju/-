@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'contents/new'
 
   resources :users, only: %i[new show create destroy] do
