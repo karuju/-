@@ -56,6 +56,7 @@ gem "sassc-rails"
 gem "sorcery"
 gem "carrierwave"
 gem "mini_magick"
+gem 'meta-tags'
 
 # 日本語化
 gem 'rails-i18n', '~> 7.0.0'
@@ -63,6 +64,7 @@ gem 'rails-i18n', '~> 7.0.0'
 #Spotify api
 gem "rspotify"
 gem "dotenv-rails"
+gem "rest-client"
 
 #Youtube api
 gem "google-apis-youtube_v3"

@@ -1,0 +1,10 @@
+<% if current_user.own?(item) %>
+<div class='d-flex justify-content-start'>
+  <%= link_to "edit_#{item}_path(item)", id: "button-edit-#{item.id}" do %>
+    <i class='bi bi-pencil-fill'></i>
+  <% end %>
+  <%= link_to "#{item}_path(item)", id: "button-delete-#{item.id}", data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+    <i class="bi bi-trash-fill"></i>
+  <% end %>
+</div>
+<% end %>

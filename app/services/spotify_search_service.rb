@@ -8,7 +8,9 @@ class SpotifySearchService
     artists = RSpotify::Artist.search(@artist_name)
     spotify_artist = artists.first
     if spotify_artist
+      if spotify_artist.images.present?
       image_url = spotify_artist.images[1]['url']
+      end
       artist_uri = spotify_artist.uri
 
       # アーティストの全アルバムを取得

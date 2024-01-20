@@ -4,14 +4,10 @@
     <%= user.name %>
   </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
 
   <p>
     <strong>Image:</strong>
-    <%= image_tag(user.image.present? ? user.image_url : 'user_default.jpg') %>
+    <%= image_tag(user.image.present? ? user.image_url : 'user_default.png') %>
   </p>
 
 
@@ -20,14 +16,5 @@
     <%= user.introduction %>
   </p>
 
-  <p>
-    <strong>Sex:</strong>
-    <%= user.sex %>
-  </p>
-
-  <p>
-    <strong>Birthday:</strong>
-    <%= user.birthday %>
-  </p>
 
 </div>
