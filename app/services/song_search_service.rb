@@ -1,6 +1,6 @@
-#Songs#createから分けるかも
-=begin
 class SongSearchService
+  #Songs#createから分けるかも
+=begin
   def initialize(song)
     @song = song
   end
@@ -22,5 +22,5 @@ class SongSearchService
 
     @song.save
   end
-end
 =end
+end
