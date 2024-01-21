@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_114033) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_21_062350) do
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -151,16 +151,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_114033) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
-  add_foreign_key "answers", "boards"
-  add_foreign_key "answers", "users"
-  add_foreign_key "artist_lists", "artists"
-  add_foreign_key "artist_lists", "users"
-  add_foreign_key "boards", "songs"
-  add_foreign_key "boards", "users"
-  add_foreign_key "contents", "answers"
-  add_foreign_key "contents", "posts"
-  add_foreign_key "likes", "users"
-  add_foreign_key "posts", "songs"
-  add_foreign_key "posts", "users"
-  add_foreign_key "songs", "artists"
 end
