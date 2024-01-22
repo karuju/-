@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: %i[ show edit update destroy ]
-  before_action :require_login, only: %i[ new create edit update destroy ]
+  skip_before_action :require_login, only: %i[ index show ]
 
 
   # GET /boards or /boards.json

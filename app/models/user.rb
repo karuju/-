@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   enum sex: { male: 0, female: 1, not_to_say: 2 }
+  enum role: { user: 0, admin: 1 }
 
   has_many :boards
   has_many :posts

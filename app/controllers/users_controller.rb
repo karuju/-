@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :store_location, only: %i[ show ]
-  before_action :require_login, only: %i[ show ]
+  skip_before_action :require_login, only: %i[ new create ]
 
   # GET /users or /users.json
   def index
