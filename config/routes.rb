@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   resources :comics
 
   resources :boards do
+    member do
+      post 'change_status', to: 'boards#change_status'
+    end
     resources :answers, only: %i[index show new create destroy] do
       collection do
         get :save_session

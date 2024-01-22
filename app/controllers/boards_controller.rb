@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[ show edit update destroy ]
+  before_action :set_board, only: %i[ show change_status edit update destroy ]
   skip_before_action :require_login, only: %i[ index show ]
 
 
@@ -18,6 +18,11 @@ class BoardsController < ApplicationController
   def new
     @board = Board.new
     @song = Song.find(session[:song_id])
+  end
+
+  def change_status
+    @board.update(status: 1)
+    redirect_to board_path(@board)
   end
 
   # GET /boards/1/edit
