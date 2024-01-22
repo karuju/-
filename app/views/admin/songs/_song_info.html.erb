@@ -1,0 +1,35 @@
+  
+  <div class="detail-left">
+  <div class="song-image">
+    <%= image_tag item.song.image, size: '100x100' %>
+  </div>
+</div>
+<div class="detail-right">
+  <div class="song-title">
+    <strong>Song_title:</strong>
+    <% if item.song.uri.include?('spotify:track') %> 
+      <%= link_to item.song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+        <i class="fa-brands fa-spotify"></i><%= item.song.name %>
+      <% end %>
+    <% elsif item.song.uri.include?('http') %>
+      <%= link_to item.song.uri, target: :_blank, rel: "noopener noreferrer" do %>
+        <i class="fa-solid fa-globe"></i><%= item.song.name %>
+      <% end%>
+    <% else %>
+      <%= link_to "https://www.youtube.com/watch?v=#{item.song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+        <i class="fa-brands fa-youtube"></i><%= item.song.name %>
+      <% end %>
+    <% end %>  
+  </div>  
+
+    <%= content_tag :div, id: "artist-#{item.song.artist.id}" do %>
+    <!-- content -->
+    <% end %>
+
+  <div class="artist">
+    <strong>Artist:</strong>
+    <%= item.song.artist.name %>
+  </div>
+</div>
+
+

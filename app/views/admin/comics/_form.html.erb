@@ -1,0 +1,47 @@
+<%= form_with(model: comic, url: admin_comic_path(comic)) do |form| %>
+  <% if comic.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
+
+      <ul>
+        <% comic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :author, style: "display: block" %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div>
+    <%= form.label :summary, style: "display: block" %>
+    <%= form.text_field :summary %>
+  </div>
+
+  <div>
+    <%= form.label :publisher, style: "display: block" %>
+    <%= form.text_field :publisher %>
+  </div>
+
+  <div>
+    <%= form.label :published_year, style: "display: block" %>
+    <%= form.date_field :published_year %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

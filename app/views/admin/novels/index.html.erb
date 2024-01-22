@@ -1,0 +1,28 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="search-field">
+    <%= render 'admin/novels/novel_search', url: admin_novels_path, frame_id: 'novel' %>
+  </div>
+
+  <h1>Posts</h1>
+  <div class="pager">
+    <%=  paginate @novels, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <%= turbo_frame_tag 'novels' do %>
+    <div id="novels" class="row" >
+      <% @novels.each do |novel| %>
+        <div class="novel col-md-4 border">
+          <%= render novel %>
+          <p>
+            <%= link_to "Show this novel", admin_novel_path(novel), data: { turbo: false }  %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="pager">
+  <%=  paginate @novels, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

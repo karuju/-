@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  skip_before_action :require_login, only: %i[ new create ]
   def new
   end
 
@@ -9,7 +10,7 @@ class UserSessionsController < ApplicationController
       redirect_to(session[:forwarding_url] || root_path )
       session.delete(:forwarding_url)
     else
-      flash.now[:alert] = 'ログインに失敗しました'
+      flash.now[:danger] = 'ログインに失敗しました'
       render :new
       
     end

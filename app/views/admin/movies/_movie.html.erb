@@ -1,0 +1,18 @@
+  
+  <div class="movie-title">
+    <strong>Movie_title:</strong>
+    <%= movie.title %>
+  </div>  
+
+  <div class="movie-director">
+    <strong>Movie_director:</strong>
+    <%= movie.director %>
+  </div>
+  <% if movie.category.present? %>
+    <div class="category">
+      <strong>Category:</strong>
+      <%= movie.category %>
+    </div>
+  <% end %>
+
+  <%= render 'admin/shared/edit_and_delete', item: movie %>

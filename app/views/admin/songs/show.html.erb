@@ -1,0 +1,11 @@
+<h1>Admin::Songs#show</h1>
+<p>Find me in app/views/admin/songs/show.html.erb</p>
+<div class="container"> 
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @song %>
+
+  <div class="model-operation">
+    <%= link_to "Back to songs", admin_songs_path %>
+  </div>
+</div>

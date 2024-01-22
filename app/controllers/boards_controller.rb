@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: %i[ show edit update destroy ]
-  before_action :require_login, only: %i[ new create edit update destroy ]
+  skip_before_action :require_login, only: %i[ index show ]
 
 
   # GET /boards or /boards.json
@@ -12,7 +12,6 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
-    @song = Song
   end
 
   # GET /boards/new
@@ -74,6 +73,6 @@ class BoardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_params
-      params.require(:post).permit(:title, :body, :song_id)
+      params.require(:board).permit(:title, :body, :song_id)
     end
 end

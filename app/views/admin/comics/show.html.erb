@@ -1,0 +1,11 @@
+<h1>Admin::Comics#show</h1>
+<p>Find me in app/views/admin/comics/show.html.erb</p>
+<div class="container"> 
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @comic %>
+
+  <div class="model-operation">
+    <%= link_to "Back to comics", admin_comics_path %>
+  </div>
+</div>

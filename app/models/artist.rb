@@ -8,4 +8,8 @@ class Artist < ApplicationRecord
     ["name"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["song"]
+  end
+
 end

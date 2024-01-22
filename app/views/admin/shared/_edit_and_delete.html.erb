@@ -1,0 +1,10 @@
+
+<div class='d-flex justify-content-start'>
+  <%= link_to polymorphic_path([:edit, :admin, item]), id: "button-edit-#{item.id}", data: { turbo: false } do %>
+    <i class='bi bi-pencil-fill'></i>
+  <% end %>
+  <%= link_to polymorphic_path([:admin, item]), id: "button-delete-#{item.id}", data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+    <i class="bi bi-trash-fill"></i>
+  <% end %>
+</div>
+

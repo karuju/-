@@ -1,0 +1,23 @@
+<div id="<%= dom_id user %>">
+  <p>
+    <strong>Name:</strong>
+    <%= user.name %>
+  </p>
+
+
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag(user.image.present? ? user.image_url : 'user_default.png') %>
+  </p>
+
+
+  <p>
+    <strong>Introduction:</strong>
+    <%= user.introduction %>
+  </p>
+
+  <%= render 'admin/shared/edit_and_delete', item: user %>
+
+
+
+</div>

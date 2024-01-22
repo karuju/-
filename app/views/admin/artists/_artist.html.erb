@@ -1,0 +1,12 @@
+  <div class="artist">
+    <strong>Artist:</strong>
+    <%= artist.name %>
+  </div>
+  <% if artist.image.present? %>
+  <div class="artist-image">
+    <strong>Artist_image:</strong>
+    <%= image_tag artist.image %>
+  </div>
+  <% end %>
+
+  <%= render 'admin/shared/edit_and_delete', item: artist %>

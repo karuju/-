@@ -1,0 +1,28 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="search-field">
+    <%= render 'admin/artists/artist_search', url: admin_artists_path, frame_id: 'artist' %>
+  </div>
+
+  <h1>Posts</h1>
+  <div class="pager">
+    <%=  paginate @artists, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <%= turbo_frame_tag 'artists' do %>
+    <div id="artists" class="row" >
+      <% @artists.each do |artist| %>
+        <div class="artist col-md-4 border">
+          <%= render artist %>
+          <p>
+            <%= link_to "Show this artist", admin_artist_path(artist), data: { turbo: false }  %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="pager">
+  <%=  paginate @artists, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

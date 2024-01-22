@@ -1,0 +1,11 @@
+<h1>Admin::Posts#show</h1>
+<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container"> 
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @post %>
+
+  <div class="model-operation">
+    <%= link_to "Back to posts", admin_posts_path %>
+  </div>
+</div>

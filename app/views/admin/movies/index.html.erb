@@ -1,0 +1,28 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="search-field">
+    <%= render 'admin/movies/movie_search', url: admin_movies_path, frame_id: 'movie' %>
+  </div>
+
+  <h1>Posts</h1>
+  <div class="pager">
+    <%=  paginate @movies, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <%= turbo_frame_tag 'movies' do %>
+    <div id="movies" class="row" >
+      <% @movies.each do |movie| %>
+        <div class="movie col-md-4 border">
+          <%= render movie %>
+          <p>
+            <%= link_to "Show this movie", admin_movie_path(movie), data: { turbo: false }  %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="pager">
+  <%=  paginate @movies, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>
