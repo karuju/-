@@ -4,6 +4,15 @@ Rails.application.routes.draw do
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
+    resources :users, only: %i[ index show edit update destroy ]
+    resources :boards, only: %i[ index show edit update destroy ]
+    resources :answers, only: %i[ index show edit update destroy ]
+    resources :posts, only: %i[ index show edit update destroy ]
+    resources :songs, only: %i[ index show edit update destroy ]
+    resources :artists, only: %i[ index show edit update destroy ]
+    resources :comics, only: %i[ index show edit update destroy ]
+    resources :novels, only: %i[ index show edit update destroy ]
+    resources :movies, only: %i[ index show edit update destroy ]
   end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'contents/new'

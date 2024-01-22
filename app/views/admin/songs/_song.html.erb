@@ -1,0 +1,37 @@
+  
+    <div class="song-title">
+      <strong>Song_title:</strong>
+      <%= song.name %>
+    </div>  
+    <div class="song-uri">
+      <% if song.uri.include?('spotify:track') %> 
+        <%= link_to song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+          <i class="fa-brands fa-spotify"></i><%= song.uri %>
+        <% end %>
+      <% elsif song.uri.include?('http') %>
+        <%= link_to song.uri, target: :_blank, rel: "noopener noreferrer" do %>
+          <i class="fa-solid fa-globe"></i><%= song.uri %>
+        <% end%>
+      <% else %>
+        <%= link_to "https://www.youtube.com/watch?v=#{song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+          <i class="fa-brands fa-youtube"></i><%= song.uri %>
+        <% end %>
+      <% end %>  
+    </div>
+
+  <div class="artist">
+    <strong>Artist:</strong>
+    <%= song.artist.name %>
+  </div>
+
+  <div class="song-image">
+    <strong>Song_image:</strong>
+    <%= image_tag song.image %>
+  </div>
+
+  <div class="release-date">
+    <strong>release_date:</strong>
+    <%= song.release_date %>
+  </div>
+
+  <%= render 'admin/shared/edit_and_delete', item: song %>

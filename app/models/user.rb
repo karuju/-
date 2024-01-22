@@ -42,4 +42,12 @@ class User < ApplicationRecord
   def listed_artist?(artist)
     artists.include?(artist)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "name", "email" ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["answers", "artist_lists", "artists", "boards", "likes", "posts"]
+  end
 end

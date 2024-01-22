@@ -1,0 +1,10 @@
+<%= search_form_for @q, url: url, html: { data: { turbo_frame: frame_id } } do |f| %>
+  <%= f.label :name_cont, 'Song title' %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.label :song_artist_cont, 'Artist Name' %>
+  <%= f.search_field :artist_name_cont %>
+
+  <%= f.submit %>
+<% end %>
+<%= link_to "リセット", request.path, class: "btn btn-outline-secondary" %>

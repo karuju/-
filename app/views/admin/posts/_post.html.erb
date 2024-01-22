@@ -1,0 +1,43 @@
+<div id="<%= dom_id post %>">
+  <div class="detail d-flex justify-content">
+    <div class="detail-left col-4">
+      <div class="song-info">
+        <%= render 'admin/songs/song_info', item: post %>
+      </div>
+    </div>
+    <div class="detail-right col-8">
+      <div class="user">
+        <div class="content-title">
+          <strong>Title:</strong>
+          <%= post.title %>
+        </div>
+        <strong>作成者</strong>
+        <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '40x40' %>
+        <%= link_to admin_user_path(post.user), data: {turbo: :false} do %>
+          <%= post.user.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="content-info">
+    <div class="content-title">
+      <strong>Content-Title:</strong>
+      <%= post.content.contentable.title %>
+      <% if post.content.contentable.respond_to?(:author) %>
+      <strong>Author:</strong>
+      <%= post.content.contentable.author %>
+      <% elsif post.content.contentable.respond_to?(:director) %>
+      <strong>Director:</strong>
+      <%= post.content.contentable.director %>
+      <% end %>
+    </div>
+
+  
+    <div class="content-explain">
+        <strong>Body:</strong>
+        <%= post.body %>
+    </div>
+  </div>
+
+  <%= render 'admin/shared/edit_and_delete', item: post %>
+</div>

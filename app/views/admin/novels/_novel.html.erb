@@ -1,0 +1,18 @@
+  
+  <div class="novel-title">
+    <strong>Novel_title:</strong>
+    <%= novel.title %>
+  </div>  
+
+  <div class="novel-author">
+    <strong>Novel_author:</strong>
+    <%= novel.author %>
+  </div>
+  <% if novel.category.present? %>
+    <div class="category">
+      <strong>Category:</strong>
+      <%= novel.category %>
+    </div>
+  <% end %>
+
+  <%= render 'admin/shared/edit_and_delete', item: novel %>

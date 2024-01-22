@@ -12,7 +12,6 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
-    @song = Song
   end
 
   # GET /boards/new
@@ -74,6 +73,6 @@ class BoardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_params
-      params.require(:post).permit(:title, :body, :song_id)
+      params.require(:board).permit(:title, :body, :song_id)
     end
 end

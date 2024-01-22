@@ -1,0 +1,11 @@
+<h1>Admin::Novels#show</h1>
+<p>Find me in app/views/admin/novels/show.html.erb</p>
+<div class="container"> 
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @novel %>
+
+  <div class="model-operation">
+    <%= link_to "Back to novels", admin_novels_path %>
+  </div>
+</div>

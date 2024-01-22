@@ -1,0 +1,18 @@
+  
+  <div class="comic-title">
+    <strong>Comic_title:</strong>
+    <%= comic.title %>
+  </div>  
+
+  <div class="comic-author">
+    <strong>Comic_author:</strong>
+    <%= comic.author %>
+  </div>
+  <% if comic.category.present? %>
+    <div class="category">
+      <strong>Category:</strong>
+      <%= comic.category %>
+    </div>
+  <% end %>
+
+  <%= render 'admin/shared/edit_and_delete', item: comic %>

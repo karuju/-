@@ -1,0 +1,28 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="search-field">
+    <%= render 'admin/shared/search_field', url: admin_posts_path, frame_id: 'posts' %>
+  </div>
+
+  <h1>Posts</h1>
+  <div class="pager">
+    <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <%= turbo_frame_tag 'posts' do %>
+    <div id="posts" class="row" >
+      <% @posts.each do |post| %>
+        <div class="post col-md-4 border">
+          <%= render post %>
+          <p>
+            <%= link_to "Show this post", admin_post_path(post), data: { turbo: false }  %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="pager">
+  <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

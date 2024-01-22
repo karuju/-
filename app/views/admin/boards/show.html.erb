@@ -1,0 +1,17 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @board %>
+
+<!-- 回答エリア -->
+  <div class="Answers_area">
+    <div>
+      <h3>Answers</h3>
+    </div>
+
+    <%= turbo_frame_tag 'answers' do %>
+      <%= render @board.answers %>
+    <% end %>
+    <br>
+    </div>
+</div>

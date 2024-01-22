@@ -1,0 +1,63 @@
+<%= form_with(model: user, url: admin_user_path(user)) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image, accept: 'image/*', class: 'form-control' %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div>
+    <%= form.label :introduction, style: "display: block" %>
+    <%= form.text_area :introduction %>
+  </div>
+
+  <%= form.radio_button :sex, :male %>
+  <%= form.label :sex_male, "男性" %>
+  
+  <%= form.radio_button :sex, :female %>
+  <%= form.label :sex_female, "女性" %>
+
+  <%= form.radio_button :sex, :not_to_say %>
+  <%= form.label :sex_female, "選択しない" %>
+
+  <div>
+    <%= form.label :birthday, style: "display: block" %>
+    <%= form.date_field :birthday %>
+  </div>
+
+  <div>
+  <%= form.label :password, style: "display: block" %>
+  <%= form.password_field :password %>
+</div>
+
+  <div>
+  <%= form.label :password_confirmation, style: "display: block" %>
+  <%= form.password_field :password_confirmation %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

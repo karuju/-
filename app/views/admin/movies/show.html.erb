@@ -1,0 +1,11 @@
+<h1>Admin::Movies#show</h1>
+<p>Find me in app/views/admin/movies/show.html.erb</p>
+<div class="container"> 
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @movie %>
+
+  <div class="model-operation">
+    <%= link_to "Back to movies", admin_movies_path %>
+  </div>
+</div>

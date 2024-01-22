@@ -1,0 +1,14 @@
+<%= search_form_for @q, url: url, html: { data: { turbo_frame: frame_id } } do |f| %>
+  <%= f.label :title_cont, 'Comic title' %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label :author_cont, 'Author Name' %>
+  <%= f.search_field :author_cont %>
+
+  <%= f.label :category_cont, 'Category' %>
+  <%= f.search_field :category %>
+
+
+  <%= f.submit %>
+<% end %>
+<%= link_to "リセット", request.path, class: "btn btn-outline-secondary" %>

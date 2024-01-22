@@ -1,0 +1,7 @@
+<%= search_form_for @q, url: url, html: { data: { turbo_frame: frame_id } } do |f| %>
+  <%= f.label :answer_body_cont, 'Answer Body' %>
+  <%= f.search_field :body_cont %>
+
+  <%= f.submit %>
+<% end %>
+<%= link_to "リセット", request.path, class: "btn btn-outline-secondary" %>
