@@ -7,6 +7,8 @@ class Board < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :likes, as: :likeable
 
+  enum status: { open: 0, closed: 1 }
+
   def self.ransackable_attributes(auth_object = nil)
     [ ]
   end
