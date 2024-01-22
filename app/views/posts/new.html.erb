@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>New post</h1>
+  <%= t('.title') %>
   <div class="song-info">
     <%= render "songs/song", song: @song %> 
   </div>
@@ -22,8 +22,4 @@
   </div>
 
   <br>
-
-  <div>
-    <%= link_to "Back to posts", posts_path %>
-  </div>
 </div>
