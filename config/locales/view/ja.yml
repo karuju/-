@@ -70,7 +70,7 @@ ja:
   posts:
     index:
       title: 投稿一覧
-      nothing: まだ投稿がありません
+      nothing: まだ投稿がありません #defaultにするかも
     new:
       title: 投稿作成
     create:
@@ -80,10 +80,30 @@ ja:
     edit:
      title: 投稿編集
     update:
-      success: 投稿を編集しました
-      false: 投稿を編集できませんでした
+      success: 投稿を編集しました #defaultにするかも
+      false: 投稿を編集できませんでした #defaultにするかも
     destroy:
-      success: 掲示板を削除しました
+      success: 掲示板を削除しました #defaultにするかも
+  boards:
+    index:
+      title: スレッド一覧
+      nothing: まだスレッドがありません #defaultにするかも
+    new:
+      title: スレッド作成
+    create:
+      success: 投稿しました
+      false: 投稿できませんでした
+    show:
+      change_status: 募集を終了する
+      create_answer: 回答を作成する
+    edit:
+     title: スレッド編集
+    update:
+      success: スレッドを編集しました #defaultにするかも
+      false: スレッドを編集できませんでした #defaultにするかも
+    destroy:
+      success: スレッドを削除しました #defaultにするかも
+
 
     
 

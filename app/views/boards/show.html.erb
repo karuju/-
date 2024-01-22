@@ -15,10 +15,10 @@
     <br>
 
     <div class="create-model">
-      <%= link_to "Create an Answer", save_session_board_answers_path(@board), data: { turbo: false } %>
+      <%= link_to t('.create_answer'), save_session_board_answers_path(@board), data: { turbo: false } %>
     </div>
   </div>
   <div class="model-operation">
-    <%= link_to "Back to boards", boards_path %>
+    <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.board")), boards_path %>
   </div>
 </div>
