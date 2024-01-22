@@ -38,49 +38,39 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = current_user.posts.new(title: params[:post][:title], body: params[:post][:body], song_id: params[:post][:song_id])
-
-    respond_to do |format|
-      if @post.save
-        if session[:comic_id]
+    if @post.save
+      if session[:comic_id]
         Content.create!(post_id: @post.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
-        elsif session[:novel_id]
-          Content.create!(post_id: @post.id, contentable_id:session[:novel_id], contentable_type: 'Novel')
-        elsif session[:movie_id]
+      elsif session[:novel_id]
+        Content.create!(post_id: @post.id, contentable_id:session[:novel_id], contentable_type: 'Novel')
+      elsif session[:movie_id]
         Content.create!(post_id: @post.id, contentable_id:session[:movie_id], contentable_type: 'Movie')
-        end
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
-        clear_session
-      else
-        @song = Song.find(session[:song_id])
-        set_content
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
+      redirect_to post_url(@post), success: t('.create.success')
+      clear_session
+    else
+      @song = Song.find(session[:song_id])
+      set_content
+      flash[:danger] = t('.create.false')
+      render :new, status: :unprocessable_entity 
     end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    if @post.update(post_params)
+      redirect_to post_url(@post), success: t('.update.success')
+    else
+      flash[:danger] = t('.update.false')
+      render :edit, status: :unprocessable_entity
+     end
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = t('.destroy.success')
+    redirect_to posts_url, status: :see_other
   end
 
   private

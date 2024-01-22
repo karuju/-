@@ -70,11 +70,22 @@ ja:
   posts:
     index:
       title: 投稿一覧
+      nothing: まだ投稿がありません
     new:
       title: 投稿作成
+    create:
+      success: 投稿しました
+      false: 投稿できませんでした
     show:
     edit:
      title: 投稿編集
+    update:
+      success: 投稿を編集しました
+      false: 投稿を編集できませんでした
+    destroy:
+      success: 掲示板を削除しました
+
+    
 
 
 
