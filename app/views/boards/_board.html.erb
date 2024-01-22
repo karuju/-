@@ -1,6 +1,6 @@
 <div id="<%= dom_id board %>">
   <div class="status">
-    <% if current_user && current_user.own?(board) %>
+    <% if current_user && current_user.own?(board) && board.status == 0 %>
     <%= link_to board.status, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
       <div class='dropdown-menu dropdown-menu-end'>
         <%= link_to 'Closeにする', change_status_board_path(board), data: {turbo_method: :post} , class: 'dropdown-item' %>
