@@ -33,6 +33,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/1/edit
   def edit
+    @board = @answer.board
   end
 
   # POST /answers or /answers.json
@@ -63,16 +64,12 @@ class AnswersController < ApplicationController
 
   # PATCH/PUT /answers/1 or /answers/1.json
   def update
-    respond_to do |format|
       if @answer.update(answer_params)
         clear_session
-        format.html { redirect_to answer_url(@answer), notice: "Answer was successfully updated." }
-        format.json { render :show, status: :ok, location: @answer }
+        redirect_to board_answers_path(@answer), notice: "Answer was successfully updated." 
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /answers/1 or /answers/1.json

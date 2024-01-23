@@ -1,9 +1,11 @@
 <% if current_user && current_user.own?(item) %>
 <div class='d-flex justify-content-start'>
-  <%= link_to polymorphic_path([:edit, item]), id: "button-edit-#{item.id}", data: { turbo: false } do %>
+  <% edit_path = item.is_a?(Answer) ? [:edit, item.board, item] : [:edit, item] %>
+  <%= link_to polymorphic_path(edit_path), id: "button-edit-#{item.id}", data: { turbo: false } do %>
     <i class='bi bi-pencil-fill'></i>
   <% end %>
-  <%= link_to polymorphic_path(item), id: "button-delete-#{item.id}", data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+  <% delete_path = item.is_a?(Answer) ? [item.board, item] : item %>
+  <%= link_to polymorphic_path(delete_path), id: "button-delete-#{item.id}", data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
     <i class="bi bi-trash-fill"></i>
   <% end %>
 </div>
