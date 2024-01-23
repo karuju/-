@@ -9,6 +9,11 @@
   <%= form.label :author, class: "form-label" %> 
   <%= form.text_field :author, class: "form-control" %>
 </div>
+
+<div class="mb-3">
+  <%= form.label :category, class: "form-label" %> 
+  <%= form.select :category, Novel.categories.keys.map { |c| [c, c] }, {}, class: "form-control" %>
+</div>
 <%= form.submit "保存", class: "btn btn-primary", data: { disable_with: '取得' }%>
 <% end %>
 </div>
