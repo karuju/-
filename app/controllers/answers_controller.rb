@@ -66,7 +66,7 @@ class AnswersController < ApplicationController
   def update
     if @answer.update(answer_params)
       clear_session
-      redirect_to board_answers_path(@answer), notice: "Answer was successfully updated." 
+      redirect_to board_path(@answer.board), notice: "Answer was successfully updated." 
     else
       render :edit, status: :unprocessable_entity
     end
@@ -75,7 +75,7 @@ class AnswersController < ApplicationController
   # DELETE /answers/1 or /answers/1.json
   def destroy
     @answer.destroy
-    redirect_to board_answers_path, notice: "Answer was successfully destroyed." 
+    redirect_to board_path(@answer.board), notice: "Answer was successfully destroyed." 
   end
 
   private
