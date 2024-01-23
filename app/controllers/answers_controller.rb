@@ -64,22 +64,18 @@ class AnswersController < ApplicationController
 
   # PATCH/PUT /answers/1 or /answers/1.json
   def update
-      if @answer.update(answer_params)
-        clear_session
-        redirect_to board_answers_path(@answer), notice: "Answer was successfully updated." 
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @answer.update(answer_params)
+      clear_session
+      redirect_to board_answers_path(@answer), notice: "Answer was successfully updated." 
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # DELETE /answers/1 or /answers/1.json
   def destroy
     @answer.destroy
-
-    respond_to do |format|
-      format.html { redirect_to answers_url, notice: "Answer was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to board_answers_path, notice: "Answer was successfully destroyed." 
   end
 
   private
