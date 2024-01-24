@@ -94,6 +94,7 @@ ja:
       success: 投稿しました
       false: 投稿できませんでした
     show:
+      answers: 回答一覧
       change_status: 募集を終了する
       create_answer: 回答を作成する
     edit:
@@ -103,6 +104,30 @@ ja:
       false: スレッドを編集できませんでした #defaultにするかも
     destroy:
       success: スレッドを削除しました #defaultにするかも
+  answers:
+    index:
+      nothing: まだ回答がありません
+      title: 回答一覧
+    show:
+    new:
+      title: 回答作成
+    create:
+      success: 回答しました
+      false: 回答できませんでした
+    edit:
+      title: 回答編集
+    update:
+      success: 回答を編集しました #defaultにするかも
+      false: 回答を編集できませんでした #defaultにするかも
+    destroy:
+      success: 回答を削除しました #defaultにするかも
+  songs:
+    new:
+      title: 楽曲情報取得
+      loading: ちょっと時間がかかります
+      correct?: この情報が正しいですか？
+      wrong: 正しいURLを入力してください
+
 
 
     
