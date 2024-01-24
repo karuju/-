@@ -1,10 +1,3 @@
-<div class="container">
-  <h3>Songs#new</h3>
-
-  <%= render "songs/form", song: @song %>
-  <%= render "shared/loading_modal" %>
-</div>
-<script>
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelector("form").addEventListener("submit", function() {
     var myModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
@@ -19,5 +12,3 @@ document.addEventListener("DOMContentLoaded", function() {
     myModal.hide();
   });
 });
-</script>
-
