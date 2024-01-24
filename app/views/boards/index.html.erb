@@ -14,7 +14,7 @@
     <div id="boards" class="row">
       <% @boards.each do |board| %>
         <div class="post col-md-4 border">
-          <%= render board %>
+          <%= render 'board_index', board: board %>
           <p>
             <%= link_to t("helpers.defaults.show"), board, data: { turbo: false } %>
           </p>

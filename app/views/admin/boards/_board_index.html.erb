@@ -1,0 +1,31 @@
+<div id="<%= dom_id board %>">
+  <div class="detail d-flex justify-content">
+    <div class="detail-left col-4">
+      <div class="song-info">
+        <%= render 'admin/songs/song_info', item: board %>
+      </div>
+    </div>
+    <div class="detail-right col-8">
+      <div class="user">
+        <strong>作成者</strong>
+        <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), size: '40x40' %>
+        <%= link_to admin_user_path(board.user), data: {turbo: :false} do %>
+          <%= board.user.name %>
+        <% end %>
+      </div>
+      <div class="board-info">
+        <div class="board-title">
+          <strong>Title:</strong>
+          <%= board.title %>
+        </div>
+
+        <div class="board-body">
+          <strong>Body:</strong>
+          <%= board.body %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'admin/shared/edit_and_delete', item: board %>
+</div>
