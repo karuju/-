@@ -13,7 +13,7 @@ class SongsController < ApplicationController
       
     # Spotifyから楽曲情報を取得
     if @song.new_record?
-      spotify_service = SpotifySearchService.new(artist.name, @song.name)
+      spotify_service = SpotifySearchService.new(artist_name: artist.name, song_name: @song.name)
       spotify_result = spotify_service.search
   
       if spotify_result
@@ -28,18 +28,33 @@ class SongsController < ApplicationController
         @song.image = youtube_result[:thumbnail_url]
       end
     else
-
     end
   
     search_result = @song.uri
-  #モーダルウィンドウでの表示(できてない)
-=begin
-    respond_to do |format|
-      format.html { render 'songs/search_result.html.turbo_stream.erb', locals: { uri: @song.uri, imgae_url: @song.image }, layout: false}
-      format.json { render json: {uri: uri, image_url: image_url} }
-    end
-=end
   
+  end
+
+  def research_by_url
+    url = url_params[:manual_uri]
+    @song = Song.new
+    artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
+    @song.artist = artist
+    if url.include?('open.spotify.com')
+      track_id = url.split('/').last
+      spotify_service = SpotifySearchService.new(track_id: track_id)
+      spotify_result = spotify_service.research_by_url
+      if spotify_result
+        @song.name = spotify_result[:track][:name]
+        @song.uri = spotify_result[:track][:uri]
+        @song.image = spotify_result[:track][:album].images[0]['url']
+      end
+    elsif url.include?('youtube.com')
+      video_id = url.match(/(?:\?|&)v=([^&]+)/)[1]
+    end
+    
+    @song.save
+    session[:song_id] = @song.id # これができないからContens#newで@songを取得できない。
+    redirect_based_on_creation_type(@song)
   end
 
   def show
@@ -90,6 +105,10 @@ class SongsController < ApplicationController
   private
   def song_params
     params.require(:song).permit(:name, :artist_name, :uri, :manual_uri, :image, :correct_info)
+  end
+
+  def url_params
+    params.require(:song).permit(:manual_uri, :artist_name)
   end
 
   def redirect_based_on_creation_type(song)

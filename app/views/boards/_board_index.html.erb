@@ -1,0 +1,58 @@
+<div id="<%= dom_id board %>">
+
+  <div class="upper">
+  <div class="d-flex flex-column">
+    <div class="board-title">
+      <strong>Title:</strong>
+      <%= board.title %>
+    </div>
+    <div class="d-flex justify-content-between align-items-start">
+    <div class="status">
+      <% if current_user && current_user.own?(board) && board.status == "open" %>
+        <%= link_to board.status, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
+        <div class='dropdown-menu dropdown-menu-end'>
+          <%= link_to t('boards.show.change_status'), change_status_board_path(board), data: {turbo_method: :post} , class: 'dropdown-item' %>
+      </div>
+      <% else %>
+      <%= board.status %>
+      <% end %>
+    </div>   
+  
+    <div class="user">
+      <strong>作成者</strong>
+      <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), class: 'img-fluid rounded-circle', size: '35x35' %>
+      <%= link_to user_path(board.user), data: {turbo: :false} do %>
+        <%= board.user.name %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+  </div>
+
+  
+  <div class="detail-middle">
+    <div class="song-image song-image-size">
+      <%= image_tag board.song.image, size: '100x100' %>
+    </div>
+  </div>
+
+  <div class="detail-downer">
+    <div class="song-infomation">
+      <%= board.song.name %> / <%= board.song.artist.name %>
+    </div>
+  </div>
+  
+  <div class="like-button">
+    <% if current_user %>
+      <% @likeable = board %>
+      <%= render 'likes/like_button' %>
+    <% end %>
+  </div>
+  <div class="twitter">
+    <%= link_to "https://twitter.com/share?url=#{board_url(board)}&text=【おしえて！】%0a 🎵#{board.song.name} / #{board.song.artist.name}と合うコンテンツは？📚🎥", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+      <i class="fab fa-twitter"></i>
+    <% end %>
+  </div>
+
+  <%= render 'shared/edit_and_delete', item: board %>
+</div>

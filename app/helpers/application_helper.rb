@@ -1,4 +1,5 @@
 module ApplicationHelper
+include MetaTags::ViewHelper
 =begin
   def show_meta_tags
     assign_meta_tags if display_meta_tags.blank?
