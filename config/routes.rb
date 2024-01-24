@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :songs, only: %i[index show new create edit update destroy] do
     collection do 
       get 'search'
+      post 'research', to: 'songs#research_by_url'
     end
   end
 

@@ -10,45 +10,50 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= form_with(model: @song, data: { turbo: false }) do |form| %>
-            <!-- 正しい情報が表示されているかどうかをユーザーがチェックするチェックボックス -->
-            <div class="check_correct">
-              <%= form.check_box :correct_info, { id: "correct_info" } %>
-              <%= form.label :correct_info, t('songs.new.correct?') %>
+          <div class="info-correct">
+            <%= form_with(model: @song, data: { turbo: false }) do |form| %>
+              <!-- 正しい情報が表示されているかどうかをユーザーがチェックするチェックボックス -->
+              <div class="check_correct">
+                <%= form.check_box :correct_info, { id: "correct_info" } %>
+                <%= form.label :correct_info, t('songs.new.correct?') %>
 
-              <div class="to_track_page">
-              <% if @song.uri.include?('spotify:track') %> 
-                <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
-                  <i class="fa-brands fa-spotify"></i><%= @song.name %>
-                <% end %>
-              <% else %>
-                <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
-                  <i class="fa-brands fa-youtube"></i><%= @song.name %>
-                <% end %>
-              <%end%>
-              <%= @song.artist.name %>
-              <% if @song.image.present? %>
-                <%= image_tag @song.image %>
-              <% end %>
+                <div class="to_track_page">
+                  <% if @song.uri.include?('spotify:track') %> 
+                    <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+                      <i class="fa-brands fa-spotify"></i><%= @song.name %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+                      <i class="fa-brands fa-youtube"></i><%= @song.name %>
+                    <% end %>
+                  <%end%>
+                  <%= @song.artist.name %>
+                  <% if @song.image.present? %>
+                    <%= image_tag @song.image %>
+                  <% end %>
+                </div>
               </div>
-            </div>
+              <!-- 検索結果のuriとartist.nameを隠しフィールドとして送信 -->
+              <%= form.hidden_field :uri, value: @song.uri %>
+              <%= form.hidden_field :name, value: @song.name %>
+              <%= form.hidden_field :artist_name, value: @song.artist.name %>
+              <%= form.hidden_field :image, value: @song.image %>
 
-            <!-- URL入力欄 -->
-            <div class="url_form">
-              <%= t('songs.new.wrong') %>
-              <%= form.label :manual_uri, "URL" %>
-              <%= form.url_field :manual_uri, class: "form-control", placeholder: 'https://~' %>
-            </div>
-
-            <!-- 隠しフィールドとして検索結果のURIを設定 -->
-            <%= form.hidden_field :uri, value: @song.uri %>
-            <%= form.hidden_field :name, value: @song.name %>
-            <%= form.hidden_field :artist_name, value: @song.artist.name %>
-            <%= form.hidden_field :image, value: @song.image %>
-
-            <!-- 保存ボタン -->
-            <%= form.submit "保存", class: "btn btn-primary" %>
-          <% end %>
+              <!-- 保存ボタン -->
+              <%= form.submit "保存", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+          <div class="info-wrong">
+            <%= form_with(model: @song, url: research_songs_path, data: { turbo: false }) do |form| %>
+              <div class="url_form">
+                <%= t('songs.new.wrong') %>
+                <%= form.label :manual_uri, "URL" %>
+                <%= form.url_field :manual_uri, class: "form-control", placeholder: 'https://~' %>
+              </div>
+              <%= form.hidden_field :artist_name, value: @song.artist.name %>
+              <%= form.submit "保存", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

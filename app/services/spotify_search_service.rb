@@ -1,7 +1,8 @@
 class SpotifySearchService
-  def initialize(artist_name, song_name)
+  def initialize(artist_name: nil, song_name: nil, track_id: nil)
     @artist_name = artist_name
     @song_name = song_name
+    @track_id = track_id
   end
 
   def search
@@ -35,5 +36,27 @@ class SpotifySearchService
       return { url: artist_uri, image: image_url, track: matching_track } if matching_track
     end
     nil # spotifyで見つからなかったらifを返す
+  end
+
+  def research_by_url
+    @track = RSpotify::Track.find(@track_id)
+    if @track
+      track_name = @track.name
+      track_uri = @track.uri
+      track_album = @track.album
+      track_artist = @track.artists[0]
+
+      return {
+        success: true,
+        track: {
+          name: track_name,
+          uri: track_uri,
+          album: track_album,
+          artist: track_artist
+        }
+      }
+    else 
+      nil
+    end
   end
 end
