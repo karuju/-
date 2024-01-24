@@ -20,14 +20,20 @@
     <div class="content-title">
       <strong>Content-Title:</strong>
       <%= post.content.contentable.title %>
+    <div class="content-author">  
       <% if post.content.contentable.respond_to?(:author) %>
-      <strong>Author:</strong>
-      <%= post.content.contentable.author %>
+        <strong>Author:</strong>
+        <%= post.content.contentable.author %>
       <% elsif post.content.contentable.respond_to?(:director) %>
-      <strong>Director:</strong>
-      <%= post.content.contentable.director %>
+        <strong>Director:</strong>
+        <%= post.content.contentable.director %>
       <% end %>
     </div>
+    <div class="content-category">
+      <strong>Category:</strong>
+      <%= post.content.contentable.category %>
+    </div>
+  </div>
 
   
     <div class="content-explain">

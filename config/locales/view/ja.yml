@@ -1,0 +1,113 @@
+ja:
+  helpers:
+    submit:
+      create: 作成
+      save: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード確認
+    defaults:
+      create: 作成
+      show: 詳細
+      post: 投稿
+      board: スレッド
+      answer: 回答
+      edit: 編集
+      delete: 削除
+      back: "%{item}一覧に戻る"
+      search_word: 検索ワード
+      unspecified: 指定なし
+      delete_confirm: 削除しますか？
+      require_login: ログインしてください
+      not_authorized: 権限がありません
+      flash_message: 
+        created: "%{item}を作成しました"
+        not_created: "%{item}を作成出来ませんでした"
+        updated: "%{item}を更新しました"
+        not_updated: "%{item}を更新出来ませんでした"
+        deleted: "%{item}を削除しました"
+      to_login_page: ログインページへ
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      danger: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      danger: ユーザー登録に失敗しました
+    profiles:
+    edit:
+      title: プロフィール編集
+    show:
+      title: プロフィール
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      send: 送信
+    create:
+      success: パスワードリセット手順を送信しました
+    edit:
+      title: パスワードリセット
+      send: 更新する
+    update:
+      success: パスワードを変更しました
+      fail: パスワードを変更できませんでした
+  user_mailer:
+    reset_password_email:
+      subject: パスワードリセット
+  posts:
+    index:
+      title: 投稿一覧
+      nothing: まだ投稿がありません #defaultにするかも
+    new:
+      title: 投稿作成
+    create:
+      success: 投稿しました
+      false: 投稿できませんでした
+    show:
+    edit:
+     title: 投稿編集
+    update:
+      success: 投稿を編集しました #defaultにするかも
+      false: 投稿を編集できませんでした #defaultにするかも
+    destroy:
+      success: 掲示板を削除しました #defaultにするかも
+  boards:
+    index:
+      title: スレッド一覧
+      nothing: まだスレッドがありません #defaultにするかも
+    new:
+      title: スレッド作成
+    create:
+      success: 投稿しました
+      false: 投稿できませんでした
+    show:
+      change_status: 募集を終了する
+      create_answer: 回答を作成する
+    edit:
+     title: スレッド編集
+    update:
+      success: スレッドを編集しました #defaultにするかも
+      false: スレッドを編集できませんでした #defaultにするかも
+    destroy:
+      success: スレッドを削除しました #defaultにするかも
+
+
+    
+
+
+
+    
+

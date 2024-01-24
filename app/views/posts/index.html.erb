@@ -5,7 +5,7 @@
     <%= render 'shared/search', url: posts_path, frame_id: 'posts' %>
   </div>
 
-  <h1>Posts</h1>
+  <%= t('.title') %>
   <div class="pager">
     <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
@@ -15,7 +15,7 @@
         <div class="post col-md-4 border">
           <%= render post %>
           <p>
-            <%= link_to "Show this post", post, data: { turbo: false }  %>
+            <%= link_to t("helpers.defaults.show"), post, data: { turbo: false }  %>
           </p>
         </div>
       <% end %>
@@ -27,6 +27,6 @@
   </div>
 
   <div class="create-model">
-    <%= link_to "New post", create_post_path %>
+    <%= link_to t('helpers.defaults.create'), create_post_path %>
   </div>
 </div>

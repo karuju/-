@@ -1,5 +1,5 @@
-<%= form_with(model: [ @board, @answer ]) do |form| %>
-  <% if answer.errors.any? %>
+<%= form_with(model: [@board, @answer], local: true) do |form| %>
+  <% if @answer.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
 
 
 <div>

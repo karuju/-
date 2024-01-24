@@ -1,10 +1,10 @@
 <h1>Editing answer</h1>
 
-<%= render "form", answer: @answer %>
+<%= render "form", answer: @answer, board: @board %>
 
 <br>
 
 <div>
-  <%= link_to "Show this answer", @answer %> |
-  <%= link_to "Back to answers", answers_path %>
+  
+  <%= link_to "Back to answers", board_answers_path %>
 </div>
