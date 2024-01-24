@@ -38,6 +38,7 @@ class SongsController < ApplicationController
     url = url_params[:manual_uri]
     @song = Song.new
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
+    @song.artist = artist
     if url.include?('open.spotify.com')
       track_id = url.split('/').last
       spotify_service = SpotifySearchService.new(track_id: track_id)
@@ -50,9 +51,9 @@ class SongsController < ApplicationController
     elsif url.include?('youtube.com')
       video_id = url.match(/(?:\?|&)v=([^&]+)/)[1]
     end
+    
     @song.save
-    session[:song_id] = @song.id
-    session.save
+    session[:song_id] = @song.id # これができないからContens#newで@songを取得できない。
     redirect_based_on_creation_type(@song)
   end
 
