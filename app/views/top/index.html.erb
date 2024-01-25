@@ -1,13 +1,13 @@
 <div class="container">
-  <h1>Top#index</h1>
-  <p>Find me in app/views/top/index.html.erb</p>
-
+  <div class="top">
+    <%= render 'top' %>
+  </div>
   <div class="main">
     <h3>
     <div id="boards" class="row">
       <% @boards.each do |board| %>
         <div class="board col-md-4 border">
-          <%= render board %>
+        <%= render 'boards/board_index', board: board %>
           <p>
             <%= link_to "Show this board", board, data: { turbo: false } %>
           </p>

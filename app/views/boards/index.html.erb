@@ -9,11 +9,11 @@
   <div class="pager">
     <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
   </div>
- 
+
   <%= turbo_frame_tag 'boards' do %>
     <div id="boards" class="row">
       <% @boards.each do |board| %>
-        <div class="post col-md-4 border">
+        <div class="board col-md-4 border card">
           <%= render 'board_index', board: board %>
           <p>
             <%= link_to t("helpers.defaults.show"), board, data: { turbo: false } %>
@@ -22,7 +22,6 @@
       <% end %>
     </div>
   <% end %>
-  
 
   <div class="pager">
   <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>

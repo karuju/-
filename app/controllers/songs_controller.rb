@@ -31,7 +31,7 @@ class SongsController < ApplicationController
     end
   
     search_result = @song.uri
-  
+    
   end
 
   def research_by_url

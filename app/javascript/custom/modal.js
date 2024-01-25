@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbo:load", function() {
   var form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", function() {
@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
       myModal.show();
     });
   }
-
-  document.addEventListener("turbolinks:load", function() {
-    var myModal = bootstrap.Modal.getInstance(document.getElementById('loadingModal'));
-    myModal.hide();
-  });
+  //
+  //document.addEventListener("turbo:load", function() {
+  //  var myModal = bootstrap.Modal.getInstance(document.getElementById('loadingModal'));
+  //  myModal.hide();
+  //});
 })

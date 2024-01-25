@@ -1,8 +1,10 @@
 <div class="container">
   <%= t('.title') %>
+ 
+    <%= render "songs/form", song: @song %>
 
-  <%= render "songs/form", song: @song %>
-  <%= render "shared/loading_modal" %>
+    <%= render "shared/loading_modal" %>
+
 </div>
 
 
