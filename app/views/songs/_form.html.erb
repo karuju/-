@@ -12,4 +12,12 @@
     <%= form.submit "取得", class: "btn btn-primary", data: { disable_with: '取得', toggle: "modal", target: "search_result", whatever: @song }%>
     <% end %>
   </div>
+  <div class="loader">
+    <div class="loader__spinner">
+      <div class="loader__spinner--cube1"></div>
+      <div class="loader__spinner--cube2"></div>
+    </div>
+  </div>
 <% end %>
+
+
