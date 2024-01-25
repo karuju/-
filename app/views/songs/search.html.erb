@@ -1,6 +1,5 @@
 <!-- app/views/songs/_search.html.erb -->
 
-  <%= turbo_frame_tag "songs_create" do %>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -51,10 +50,11 @@
                 <%= form.url_field :manual_uri, class: "form-control", placeholder: 'https://~' %>
               </div>
               <%= form.hidden_field :artist_name, value: @song.artist.name %>
+              <%= form.hidden_field :name, value: @song.name %>
               <%= form.submit "保存", class: "btn btn-primary" %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
+ 

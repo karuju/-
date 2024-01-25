@@ -11,8 +11,7 @@ class UserSessionsController < ApplicationController
       session.delete(:forwarding_url)
     else
       flash.now[:danger] = 'ログインに失敗しました'
-      render :new
-      
+      render :new, status: :unprocessable_entity
     end
   end
 

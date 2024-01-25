@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :song
-  has_many :likes, as: :likeable
+  has_many :likes, as: :likeable, dependent: :destroy
   has_one :content
   has_one :comic, through: :contents, source: :contentable, source_type: 'Comic'
   has_one :novel, through: :contents, source: :contentable, source_type: 'Novel'

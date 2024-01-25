@@ -31,12 +31,13 @@ class SongsController < ApplicationController
     end
   
     search_result = @song.uri
-  
+    
   end
 
   def research_by_url
-    url = url_params[:manual_uri]
+    url = research_params[:manual_uri]
     @song = Song.new
+    name = research_params[:name]
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
     @song.artist = artist
     if url.include?('open.spotify.com')
@@ -48,12 +49,29 @@ class SongsController < ApplicationController
         @song.uri = spotify_result[:track][:uri]
         @song.image = spotify_result[:track][:album].images[0]['url']
       end
-    elsif url.include?('youtube.com')
-      video_id = url.match(/(?:\?|&)v=([^&]+)/)[1]
+    elsif url.include?('youtube.com') || url.include?('youtu.be')
+      if url.include?('youtube.com')
+        video_id = url.match(/(?:\?|&)v=([^&]+)/)[1]
+      elsif url.include?('youtu.be')
+        video_id = url.split('/').last.split('?').first
+      end 
+      if video_id
+        youtube_service = YoutubeSearchService.new
+        youtube_result = youtube_service.research_by_url(video_id)
+        if youtube_result
+          @song.name = name
+          @song.uri = youtube_result[:video_id]
+          @song.image = youtube_result[:thumbnail_url]
+        end
+      end
+    else
+      @song.name = name
+      @song.uri = research_params[:manual_uri]
+      @song.image = ActionController::Base.helpers.asset_path('song_default.png')
     end
-    
+
     @song.save
-    session[:song_id] = @song.id # これができないからContens#newで@songを取得できない。
+    session[:song_id] = @song.id
     redirect_based_on_creation_type(@song)
   end
 
@@ -107,8 +125,8 @@ class SongsController < ApplicationController
     params.require(:song).permit(:name, :artist_name, :uri, :manual_uri, :image, :correct_info)
   end
 
-  def url_params
-    params.require(:song).permit(:manual_uri, :artist_name)
+  def research_params
+    params.require(:song).permit(:manual_uri, :artist_name, :name)
   end
 
   def redirect_based_on_creation_type(song)

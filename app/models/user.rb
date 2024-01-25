@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :boards
   has_many :posts
   has_many :answers
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :artist_lists
   has_many :artists, through: :artist_lists
 
