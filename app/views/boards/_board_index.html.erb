@@ -1,12 +1,6 @@
 <div id="<%= dom_id board %>">
 
-  <div class="upper">
-  <div class="d-flex flex-column">
-    <div class="board-title">
-      <strong>Title:</strong>
-      <%= board.title %>
-    </div>
-    <div class="d-flex justify-content-between align-items-start">
+
     <div class="status">
       <% if current_user && current_user.own?(board) && board.status == "open" %>
         <%= link_to board.status, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
@@ -17,6 +11,11 @@
       <%= board.status %>
       <% end %>
     </div>   
+
+    <div class="board-title">
+      <strong>Title:</strong>
+      <%= board.title %>
+    </div>
   
     <div class="user">
       <strong>作成者</strong>
@@ -25,23 +24,15 @@
         <%= board.user.name %>
       <% end %>
     </div>
-    </div>
-  </div>
-  </div>
 
-  
-  <div class="detail-middle">
     <div class="song-image song-image-size">
-      <%= image_tag board.song.image, size: '100x100' %>
+      <%= image_tag board.song.image %>
     </div>
-  </div>
 
-  <div class="detail-downer">
     <div class="song-infomation">
       <%= board.song.name %> / <%= board.song.artist.name %>
     </div>
-  </div>
-  
+
   <div class="like-button">
     <% if current_user %>
       <% @likeable = board %>

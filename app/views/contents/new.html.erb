@@ -1,31 +1,36 @@
 <div class="container">
-  <h1>Contents#new</h1>
-  <p>Find me in app/views/contents/new.html.erb</p>
-  <div class="song-info">
-    <%= render "songs/song", song: @song %> 
+  <div class="explain">
+    <h3>Step.2<br>紹介するコンテンツのメディアを選択して、<br>情報を書いて保存を押してね</h3>
   </div>
+  <div class="detail d-flex justify-content">
+    <div class="row">
+      <div class="detail-left col-md-6 col-sm-12 "> 
+        <div class="song-info">
+          <%= render "songs/song", song: @song %> 
+        </div>
+      </div>
+      <div class="detail-right col-md-6 col-sm-12">
+        <div class="content-radiobutton">
+          <input type="radio" id="comic-radio" name="content-type" value="comic">漫画<br>
+          <input type="radio" id="novel-radio" name="content-type" value="novel">小説<br>
+          <input type="radio" id="movie-radio" name="content-type" value="movie">映画<br>
+        </div>
+<br>
+        <div class="content-form">
+          <div id="comic-form" style="display: none;">
+          <%= render "comics/form", comic: @comic %>
+          </div>
 
+          <div id="novel-form" style="display: none;">
+            <%= render "novels/form", novel: @novel %>
+          </div>
 
-
-  <div class="content-radiobutton">
-    <input type="radio" id="comic-radio" name="content-type" value="comic">Comic<br>
-    <input type="radio" id="novel-radio" name="content-type" value="novel">Novel<br>
-    <input type="radio" id="movie-radio" name="content-type" value="movie">Movie<br>
-  </div>
-
-  <div class="content-form">
-    <div id="comic-form" style="display: none;">
-    <%= render "comics/form", comic: @comic %>
+          <div id="movie-form" style="display: none;">
+            <%= render "movies/form", movie: @movie %>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div id="novel-form" style="display: none;">
-      <%= render "novels/form", novel: @novel %>
-    </div>
-
-    <div id="movie-form" style="display: none;">
-      <%= render "movies/form", movie: @movie %>
-    </div>
-
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 <% if current_user && current_user.own?(item) %>
-<div class='d-flex justify-content-start'>
+<div class='d-flex justify-content-end'>
   <% edit_path = item.is_a?(Answer) ? [:edit, item.board, item] : [:edit, item] %>
   <%= link_to polymorphic_path(edit_path), id: "button-edit-#{item.id}", data: { turbo: false } do %>
     <i class='bi bi-pencil-fill'></i>

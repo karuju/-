@@ -10,7 +10,7 @@
       <h3><%= link_to "スレッドをもっと見る", boards_path %></h3>
       <div id="boards" class="row">
         <% @boards.each do |board| %>
-          <div class="board col">
+          <div class="board col-md-4 col-sm-6 col-xs-12">
           <div class="card">
           <%= render 'boards/board_index', board: board %>
             <p>

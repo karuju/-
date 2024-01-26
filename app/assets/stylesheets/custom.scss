@@ -8,8 +8,10 @@
   margin: auto;
 }
 
-.song-image-size {
-  width: 80%;
+.song-image-size img{
+  width: 70%;
+  height: auto;
+  margin: auto;
 }
 
 .top {
@@ -22,7 +24,7 @@
 }
 
 .board {
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
 .board-detail {
@@ -65,6 +67,15 @@
   height: auto;
 }
 
+
 .index {
   margin-bottom: 30px;
+}
+
+.song-infomation {
+  height: 20px;
+}
+
+.edit-delete {
+  padding-right: 5%;
 }
