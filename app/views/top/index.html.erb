@@ -1,12 +1,11 @@
-<div class="container">
+<div class="col-lg-10 offset-lg-1">
   <div class="top">
     <%= render 'top' %>
   </div>
   <div class="main">
-    <h3>
     <div id="boards" class="row">
       <% @boards.each do |board| %>
-        <div class="board col-md-4 border">
+        <div class="board col-md-4 border card">
         <%= render 'boards/board_index', board: board %>
           <p>
             <%= link_to "Show this board", board, data: { turbo: false } %>
@@ -21,7 +20,7 @@
     <br>
     <div id="posts" class="row">
       <% @posts.each do |post| %>
-        <div class="post col-md-4 border">
+        <div class="post col-md-4 border card">
           <%= render post %>
           <p>
             <%= link_to "Show this post", post, data: { turbo: false } %>

@@ -84,11 +84,8 @@ class SongsController < ApplicationController
     @song = Song.find_or_initialize_by(name: song_params[:name], artist: artist, image: song_params[:image])
     
     if @song.new_record?
-      if song_params[:correct_info] == '1'
         @song.uri = params[:song][:uri]
-      else
-        @song.uri = params[:song][:manual_uri]
-      end
+
 
       if @song.save
         session[:song_id] = @song.id

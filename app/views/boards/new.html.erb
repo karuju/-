@@ -1,15 +1,24 @@
-<div class="container">
-  <h1>New board</h1>
-
-  <div class="song-info">
-    <%= render "songs/song", song: @song %> 
+<div class="col-lg-10 offset-lg-1">
+  <div class="explain">
+    <h3>Step.2<br>知りたいコンテンツの条件を書いてね</h3>
+    <p>ex) 人が死ぬのは嫌だ〜<br>恋愛感情なしのがいい！</p>
   </div>
-
-  <%= render "form", board: @board %>
-
+  <div class="detail d-flex justify-content">
+    <div class="row">
+      <div class="detail-left col-6"> 
+        <div class="song-info">
+          <%= render "songs/song", song: @song %> 
+        </div>
+      </div>
+    
+      <div class="detail-right col-6">
+        <%= render "form", board: @board %>
+      </div>
+    </div>
+  </div>
   <br>
 
   <div>
-    <%= link_to "Back to boards", boards_path %>
+    <%= link_to "スレッド一覧に戻る", boards_path %>
   </div>
 </div>

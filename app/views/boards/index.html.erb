@@ -1,4 +1,4 @@
-<div class="container">
+<div class="col-lg-10 offset-lg-1">
   <p style="color: green"><%= notice %></p>
 
   <div class="search-field">
@@ -11,15 +11,23 @@
   </div>
 
   <%= turbo_frame_tag 'boards' do %>
-    <div id="boards" class="row">
-      <% @boards.each do |board| %>
-        <div class="board col-md-4 border card">
-          <%= render 'board_index', board: board %>
-          <p>
-            <%= link_to t("helpers.defaults.show"), board, data: { turbo: false } %>
-          </p>
-        </div >
-      <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div id="boards" class="row">
+            <% @boards.each do |board| %>
+              <div class="col-lg-4">
+                <div class="board border card">
+                  <%= render 'board_index', board: board %>
+                  <p>
+                    <%= link_to t("helpers.defaults.show"), board, data: { turbo: false } %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 

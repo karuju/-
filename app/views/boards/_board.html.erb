@@ -1,4 +1,4 @@
-<div id="<%= dom_id board %>">
+<div id="<%= dom_id board %>" >
   <div class="status">
     <% if current_user && current_user.own?(board) && board.status == "open" %>
     <%= link_to board.status, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>

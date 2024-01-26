@@ -1,4 +1,3 @@
-  
     <div class="song-title">
       <strong>Song_title:</strong>
       <% if song.uri.include?('spotify:track') %> 
@@ -21,7 +20,7 @@
       <%= song.artist.name %>
     </div>
 
-    <div class="song-image">
-      <strong>Song_image:</strong>
-      <%= image_tag song.image %>
+    <div class="song-image img">
+      <%= image_tag song.image, size: "100x100" %>
     </div>
+  
