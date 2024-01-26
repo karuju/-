@@ -1,9 +1,11 @@
  <div class="container"> 
-  <p style="color: green"><%= notice %></p>
-
-  <%= render @post %>
-
-  <div class="model-operation">
-    <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.post")), posts_path %>
+   <div class="card">
+    <p style="color: green"><%= notice %></p>
+    <div class="post-detail">
+      <%= render @post %>
+    </div>
+    <div class="model-operation">
+      <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.post")), posts_path %>
+    </div>
   </div>
 </div>

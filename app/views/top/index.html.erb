@@ -32,9 +32,9 @@
       <h3><%= link_to "みんなのイメソンを見る", posts_path %></h3>
       <div id="posts" class="row">
         <% @posts.each do |post| %>
-          <div class="post col">
+          <div class="post col-md-4 col-sm-6 col-xs-12">
             <div class="card">
-              <%= render post %>
+              <%= render 'posts/post_index', post: post %>
               <p>
                 <%= link_to "このポストを開く", post, data: { turbo: false } %>
               </p>

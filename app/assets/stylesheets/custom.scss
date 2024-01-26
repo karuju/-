@@ -3,6 +3,10 @@
   background-image: url("top.webp");
 }
 
+header {
+  background-color: antiquewhite;
+}
+
 .main {
   width: 80%;
   margin: auto;
@@ -31,6 +35,16 @@
   width: 90%;
   height: auto;
   margin: auto;
+}
+
+.post {
+  margin-bottom: 20px;
+}
+
+.post-detail {
+  width: 90%;
+  height: auto;
+  margin: auto; 
 }
 
 .answers-area {
@@ -78,4 +92,7 @@
 
 .edit-delete {
   padding-right: 5%;
+}
+.status {
+  margin-bottom: 5px;
 }
