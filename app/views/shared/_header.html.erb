@@ -11,10 +11,11 @@
 
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
       <ul class='navbar-nav ms-auto main-nav align-items-center'>
+        <li class="nav-item user-icon">
+          <%= image_tag(@current_user.image.present? ? @current_user.image_url : 'user_default.png', size:"35x35" ) %>
+        </li>
         <li class='nav-item dropdown dropdown-slide'>
-          <%= image_tag(@current_user.image.present? ? @current_user.image_url : 'user_default.png', size: '40x40') %>
-          <%= link_to @current_user.name, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
-
+          <%= link_to @current_user.name, user_path(@current_user), class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
           <div class='dropdown-menu dropdown-menu-end'>
             <%= link_to 'ShowUserProfile', profile_path, class: 'dropdown-item' %>
             <%= link_to 'Logout', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
