@@ -1,34 +1,48 @@
-<div class="col-lg-10 offset-lg-1">
+<div class="container-fluid text-center">
   <div class="top">
     <%= render 'top' %>
   </div>
   <div class="main">
-    <div id="boards" class="row">
-      <% @boards.each do |board| %>
-        <div class="board col-md-4 border card">
-        <%= render 'boards/board_index', board: board %>
-          <p>
-            <%= link_to "Show this board", board, data: { turbo: false } %>
-          </p>
-        </div >
-      <% end %>
-      <%= link_to "Boards一覧", boards_path %>
-      <%= link_to "Board作成", create_board_path %>
+    <div class="index boards" >
+      <div class="explain">
+        <h2>好きな曲を投稿して、それっぽいコンテンツを教えてもらおう</h2>
+      </div>
+      <h3><%= link_to "スレッドをもっと見る", boards_path %></h3>
+      <div id="boards" class="row">
+        <% @boards.each do |board| %>
+          <div class="board col">
+          <div class="card">
+          <%= render 'boards/board_index', board: board %>
+            <p>
+              <%= link_to "このスレッドを開く", board, data: { turbo: false } %>
+            </p>
+          </div >
+          </div>
+        <% end %>
+        <h3><%= link_to "募集してみる", create_board_path %></h3>
+      </div>
     </div>
 
-
     <br>
-    <div id="posts" class="row">
-      <% @posts.each do |post| %>
-        <div class="post col-md-4 border card">
-          <%= render post %>
-          <p>
-            <%= link_to "Show this post", post, data: { turbo: false } %>
-          </p>
-        </div >
-      <% end %>
-      <%= link_to "Posts一覧", posts_path %>
-      <%= link_to "Post作成", create_post_path %>
-    </div>    
+
+    <div class="index posts" >
+      <div class="explain">
+        <h2>イメソンを紹介しよう</h2>
+      </div>
+      <h3><%= link_to "みんなのイメソンを見る", posts_path %></h3>
+      <div id="posts" class="row">
+        <% @posts.each do |post| %>
+          <div class="post col">
+            <div class="card">
+              <%= render post %>
+              <p>
+                <%= link_to "このポストを開く", post, data: { turbo: false } %>
+              </p>
+            </div >
+          </div>
+        <% end %>
+        <h3><%= link_to "紹介してみる", create_post_path %></h3>
+      </div>  
+    </div>  
   </div> 
 </div>

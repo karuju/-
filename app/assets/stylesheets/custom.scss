@@ -3,6 +3,10 @@
   background-image: url("top.webp");
 }
 
+.main {
+  width: 80%;
+  margin: auto;
+}
 
 .song-image-size {
   width: 80%;
@@ -17,10 +21,39 @@
   background-image: url("lined_paper.png");
 }
 
+.board {
+  margin: 10px;
+}
+
+.board-detail {
+  width: 90%;
+  height: auto;
+  margin: auto;
+}
+
+.answers-area {
+  width: 80%;
+  height: auto;
+  margin: auto;
+}
+
+.answer {
+  background-image: url("fusen.png");
+  background-size: cover;
+  padding-left: 15px;
+}
+
+.answer .like-button {
+  text-align: right;
+  padding-right: 5%;
+}
+
+.content-info{
+  margin-left: 5%;
+}
 .detail-left .song-image img {
   width: 100%;
   height:auto;
-  object-fit: cover;
 }
 
 .detail-right {
@@ -32,3 +65,6 @@
   height: auto;
 }
 
+.index {
+  margin-bottom: 30px;
+}

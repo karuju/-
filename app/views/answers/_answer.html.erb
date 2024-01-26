@@ -1,9 +1,10 @@
-<div id="<%= dom_id answer %>">
-  <%= image_tag(answer.user.image.present? ? answer.user.image_url : 'user_default.png') %>
-  <%= link_to user_path(answer.user), data: {turbo: :false} do %>
-    <%= answer.user.name %>
-  <% end %>
-
+<div id="<%= dom_id answer %>" class="answer">
+  <div class="user-info">
+    <%= image_tag(answer.user.image.present? ? answer.user.image_url : 'user_default.png', size: '40x40') %>
+    <%= link_to user_path(answer.user), data: {turbo: :false} do %>
+      <%= answer.user.name %>
+    <% end %>
+  </div>
   <div class="content-info">
     <div class="content-title">
       <strong>Content-Title:</strong>

@@ -1,24 +1,27 @@
-<div class="col-lg-10 offset-lg-1 card">
-  <p style="color: green"><%= notice %></p>
-
-  <%= render @board %>
-
-<!-- 回答エリア -->
-  <div class="Answers_area">
-    <div>
-      <%= t('.answers') %>
+<div class="container">
+  <div class="card">
+    <p style="color: green"><%= notice %></p>
+    <div class="board-detail">
+      <%= render @board %>
     </div>
 
-    <%= turbo_frame_tag 'answers' do %>
-      <%= render @board.answers %>
-    <% end %>
-    <br>
+  <!-- 回答エリア -->
+    <div class="answers-area">
+      <div>
+        <%= t('.answers') %>
+      </div>
 
-    <div class="create-model">
-      <%= link_to t('.create_answer'), save_session_board_answers_path(@board), data: { turbo: false } %>
+      <%= turbo_frame_tag 'answers' do %>
+        <%= render @board.answers %>
+      <% end %>
+      <br>
+
+      <div class="create-model">
+        <%= link_to t('.create_answer'), save_session_board_answers_path(@board), data: { turbo: false } %>
+      </div>
     </div>
-  </div>
-  <div class="model-operation">
-    <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.board")), boards_path %>
+    <div class="model-operation">
+      <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.board")), boards_path %>
+    </div>
   </div>
 </div>
