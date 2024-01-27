@@ -1,9 +1,4 @@
 <div id="<%= dom_id post %>">
-
-    <div class="post-title">
-      <strong>Title:</strong>
-      <%= post.title %>
-    </div>
   
     <div class="user">
       <strong>作成者</strong>
@@ -20,6 +15,7 @@
     <div class="song-infomation">
       <%= post.song.name %> / <%= post.song.artist.name %>
     </div>
+    <br>
     <div class='d-flex justify-content-evenly'>
       <div class="like-button">
         <% if current_user %>

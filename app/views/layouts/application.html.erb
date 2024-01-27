@@ -24,9 +24,11 @@
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
-    <%= render 'shared/flash_message' %>
-    <div class="flex-grow bg-yellow-50 ">
-      <%= yield %>
+    <div class="page-body">
+      <%= render 'shared/flash_message' %>
+      <div class="flex-grow bg-yellow-50">
+        <%= yield %>
+      </div>
     </div>
     <%= render 'shared/footer' %>
   </body>

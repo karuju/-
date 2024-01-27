@@ -4,7 +4,7 @@
   <div class="liked" >
     <div class="like_destroy">
       <%= link_to like_path(current_user.likes.find_by(likeable: @likeable)), data: { "turbo-method": :delete} do %>
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" style="color: red;"></i>
       <% end %>
     </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="unliked">
     <div class="like_create">
       <%= link_to likes_path(likeable_type: @likeable.class.to_s, likeable_id: @likeable.id ), data: { "turbo-method": :post} do %>
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart" style="color: red;"></i>
       <% end %>
     </div>
   </div>

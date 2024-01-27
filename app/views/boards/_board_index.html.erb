@@ -10,11 +10,6 @@
       <% end %>
     </div>   
 
-    <div class="board-title">
-      <strong>Title:</strong>
-      <%= board.title %>
-    </div>
-  
     <div class="user">
       <strong>作成者</strong>
       <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), class: 'img-fluid rounded-circle', size: '35x35' %>
@@ -30,6 +25,7 @@
     <div class="song-infomation">
       <%= board.song.name %> / <%= board.song.artist.name %>
     </div>
+    <br>
     <div class='d-flex justify-content-evenly'>
       <div class="like-button">
         <% if current_user %>
