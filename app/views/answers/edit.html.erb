@@ -1,10 +1,25 @@
-<h1>Editing answer</h1>
+<div class="container">
+  <h1>回答編集</h1>
 
-<%= render "form", answer: @answer, board: @board %>
+    <div class="detail d-flex justify-content">
+    <div class="row">
+      <div class="detail-left col-md-6 col-sm-12 "> 
+        <div class="song-info">
+          <%= render "songs/song", song: @board.song %> 
+        </div>
+      </div>
+      <div class="detail-right col-6">
+         <%= render "form", answer: @answer, board: @board %>
+      </div>
+    </div>
+  </div>
 
-<br>
 
-<div>
-  
-  <%= link_to "Back to answers", board_answers_path %>
+
+  <br>
+
+  <div>
+    
+    <%= link_to "一覧に戻る", board_answers_path %>
+  </div>
 </div>

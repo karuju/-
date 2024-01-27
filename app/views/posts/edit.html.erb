@@ -1,10 +1,22 @@
-<%= t('.title') %>
-
-<%= render "form", post: @post %>
-
+<div class="container">
+  <div class="detail d-flex justify-content">
+    <div class="row">
+      <div class="detail-left col-6"> 
+        <div class="song-info">
+          <%= render "songs/song", song: @post.song %> 
+        </div>
+      </div>
+    
+      <div class="detail-right col-6">
+        <%= render "form", post: @post %>
+      </div>
+    </div>
+  </div>
+  <br>
 <br>
 
 <div>
-  <%= link_to t("helpers.defaults.show"), @post %> |
-  <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.post")), posts_path %>
+  <%= link_to "投稿に戻る", @post %> |
+  <%= link_to "投稿一覧に戻る", posts_path %>
+</div>
 </div>
