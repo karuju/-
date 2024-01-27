@@ -1,25 +1,19 @@
 <div class="container">
-  <h1>回答編集</h1>
-
-    <div class="detail d-flex justify-content">
-    <div class="row">
-      <div class="detail-left col-md-6 col-sm-12 "> 
-        <div class="song-info">
-          <%= render "songs/song", song: @board.song %> 
+  <div class="show-card">
+    <h1>回答編集</h1>
+      <div class="detail d-flex justify-content">
+      <div class="row">
+        <div class="detail-left col-md-6 col-sm-12 "> 
+          <div class="song-info">
+            <%= render "songs/song", song: @board.song %> 
+          </div>
+        </div>
+        <div class="detail-right col-md-6 col-sm-12">
+          <%= render "form", answer: @answer, board: @board %>
         </div>
       </div>
-      <div class="detail-right col-6">
-         <%= render "form", answer: @answer, board: @board %>
-      </div>
     </div>
-  </div>
+    <br>
 
-
-
-  <br>
-
-  <div>
-    
-    <%= link_to "一覧に戻る", board_answers_path %>
   </div>
 </div>

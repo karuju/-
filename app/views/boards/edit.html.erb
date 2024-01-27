@@ -2,13 +2,13 @@
   <div class="show-card">
     <div class="detail d-flex justify-content">
       <div class="row">
-        <div class="detail-left col-6"> 
+        <div class="detail-left col-md-6 col-sm-12"> 
           <div class="song-info">
             <%= render "songs/song", song: @board.song %> 
           </div>
         </div>
       
-        <div class="detail-right col-6">
+        <div class="detail-right col-md-6 col-sm-12">
           <%= render "form", board: @board %>
         </div>
       </div>
