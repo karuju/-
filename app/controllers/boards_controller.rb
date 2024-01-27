@@ -7,7 +7,6 @@ class BoardsController < ApplicationController
   def index
     @q = Board.ransack(params[:q])
     @boards = @q.result(distinct: true).includes(:song).page(params[:page]).order(created_at: :desc)
-    #@boards = Board.all.order(created_at: :desc).page(params[:page])
   end
 
   # GET /boards/1 or /boards/1.json

@@ -1,22 +1,26 @@
-<div id="<%= dom_id answer %>">
-  <%= image_tag(answer.user.image.present? ? answer.user.image_url : 'user_default.png') %>
-  <%= link_to user_path(answer.user), data: {turbo: :false} do %>
-    <%= answer.user.name %>
-  <% end %>
-
+<div id="<%= dom_id answer %>" class="answer">
+  <div class="user-info">
+    <%= image_tag(answer.user.image.present? ? answer.user.image_url : 'user_default.png', size: '40x40') %>
+    <%= link_to user_path(answer.user), data: {turbo: :false} do %>
+      <%= answer.user.name %>
+    <% end %>
+  </div>
   <div class="content-info">
     <div class="content-title">
-      <strong>Content-Title:</strong>
+      <strong>作品名:</strong>
       <%= answer.content.contentable.title %>
+    </div>
+    <div class="content-author">
       <% if answer.content.contentable.respond_to?(:author) %>
-      <strong>Author:</strong>
+      <strong>著者:</strong>
       <%= answer.content.contentable.author %>
       <% elsif answer.content.contentable.respond_to?(:director) %>
-      <strong>Director:</strong>
+      <strong>監督:</strong>
       <%= answer.content.contentable.director %>
       <% end %>
     </div>
     <div class="content-explain">
+      <strong>コメント:</strong>
       <%= answer.body %>
     </div>
   </div>
@@ -26,5 +30,7 @@
       <%= render 'likes/like_button' %>
     <% end %>
   </div>
-  <%= render 'shared/edit_and_delete', item: answer %>
+  <div class="edit-delete">
+    <%= render 'shared/edit_and_delete', item: answer %>
+  </div>
 </div>

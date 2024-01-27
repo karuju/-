@@ -1,8 +1,6 @@
 <%= form_with(model: [@board, @answer], local: true) do |form| %>
   <% if @answer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
-
+    <div style="color: white">
       <ul>
         <% @answer.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -14,8 +12,8 @@
 
 
 <div>
-  <%= form.label :body, style: "display: block" %>
-  <%= form.text_field :body %>
+  <%= form.label  :"コメント", style: "display: block" %>
+  <%= form.text_area :body, rows: "20", style: "width: 100%;"%>
 </div>
 <% if @song.present? %>
   <%= form.hidden_field :song_id, value: @song.id %> 

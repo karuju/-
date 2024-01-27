@@ -1,11 +1,103 @@
-.container {
-  background-color: ghostwhite;
+
+.all {
+  background-image: url("top.webp");
 }
 
-.song-image-size {
+header {
+  background-color: antiquewhite;
+}
+
+.main {
   width: 80%;
+  margin: auto;
+}
+
+.song-image-size img{
+  width: 70%;
+  height: auto;
+  margin: auto;
 }
 
 .top {
-  background-color: goldenrod;
+  height: 300px;
+  background-image: url("top.webp");
+}
+
+.card {
+  background-image: url("lined_paper.png");
+}
+
+.board {
+  margin-bottom: 20px;
+}
+
+.board-detail {
+  width: 90%;
+  height: auto;
+  margin: auto;
+}
+
+.post {
+  margin-bottom: 20px;
+}
+
+.post-detail {
+  width: 90%;
+  height: auto;
+  margin: auto; 
+}
+
+.answers-area {
+  width: 80%;
+  height: auto;
+  margin: auto;
+}
+
+.answer {
+  background-image: url("fusen.png");
+  background-size: cover;
+  padding-left: 15px;
+}
+
+.answer .like-button {
+  text-align: right;
+  padding-right: 5%;
+}
+
+.content-info{
+  margin-left: 5%;
+}
+.detail-left .song-image img {
+  width: 100%;
+  height:auto;
+}
+
+.detail-right {
+  padding-left: 5%;
+}
+
+.info-correct .detail-left .song-image img {
+  width: 100%;
+  height: auto;
+}
+
+
+.index {
+  margin-bottom: 30px;
+}
+
+.song-infomation {
+  height: 20px;
+}
+
+.edit-delete {
+  padding-right: 5%;
+}
+.status {
+  margin-bottom: 5px;
+}
+
+
+.user {
+  margin :auto;
 }

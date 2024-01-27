@@ -1,4 +1,4 @@
-<div id="<%= dom_id board %>">
+<div id="<%= dom_id board %>" >
   <div class="status">
     <% if current_user && current_user.own?(board) && board.status == "open" %>
     <%= link_to board.status, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
@@ -36,6 +36,7 @@
       </div>
     </div>
   </div>
+  <div class='d-flex justify-content-end'>
   <div class="like-button">
     <% if current_user %>
       <% @likeable = board %>
@@ -47,6 +48,8 @@
       <i class="fab fa-twitter"></i>
     <% end %>
   </div>
-
-  <%= render 'shared/edit_and_delete', item: board %>
+  </div>
+  <div class="edit-delete">
+    <%= render 'shared/edit_and_delete', item: board %>
+  </div>
 </div>

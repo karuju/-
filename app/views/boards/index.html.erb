@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container-fluid text-center">
+  <div class="main">
   <p style="color: green"><%= notice %></p>
 
   <div class="search-field">
@@ -10,23 +11,27 @@
     <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
   </div>
 
+  <div class="create-model">
+    <h3><%= link_to "スレッドを立てる", create_board_path %></h3>
+  </div>
+  <div class="index boards" >
   <%= turbo_frame_tag 'boards' do %>
     <div id="boards" class="row">
       <% @boards.each do |board| %>
-        <div class="board col-md-4 border card">
-          <%= render 'board_index', board: board %>
-          <p>
-            <%= link_to t("helpers.defaults.show"), board, data: { turbo: false } %>
-          </p>
-        </div >
+        <div class="board col-md-4 col-sm-6 col-xs-12">
+          <div class="card">
+            <%= render 'board_index', board: board %>
+            <p>
+              <%= link_to "このスレッドを開く", board, data: { turbo: false } %>
+            </p>
+          </div>
+        </div>
       <% end %>
     </div>
   <% end %>
-
+  </div>
   <div class="pager">
   <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
   </div>
-  <div class="create-model">
-    <%= link_to t('helpers.defaults.create'), create_board_path %>
   </div>
 </div>

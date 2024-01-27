@@ -1,60 +1,64 @@
 <!-- app/views/songs/_search.html.erb -->
-
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="info-correct">
-            <%= form_with(model: @song, data: { turbo: false }) do |form| %>
-              <!-- 正しい情報が表示されているかどうかをユーザーがチェックするチェックボックス -->
-              <div class="check_correct">
-                <%= form.check_box :correct_info, { id: "correct_info" } %>
-                <%= form.label :correct_info, t('songs.new.correct?') %>
-
-                <div class="to_track_page">
-                  <% if @song.uri.include?('spotify:track') %> 
-                    <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
-                      <i class="fa-brands fa-spotify"></i><%= @song.name %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
-                      <i class="fa-brands fa-youtube"></i><%= @song.name %>
-                    <% end %>
-                  <%end%>
-                  <%= @song.artist.name %>
-                  <% if @song.image.present? %>
-                    <%= image_tag @song.image %>
-                  <% end %>
-                </div>
-              </div>
-              <!-- 検索結果のuriとartist.nameを隠しフィールドとして送信 -->
-              <%= form.hidden_field :uri, value: @song.uri %>
-              <%= form.hidden_field :name, value: @song.name %>
-              <%= form.hidden_field :artist_name, value: @song.artist.name %>
-              <%= form.hidden_field :image, value: @song.image %>
-
-              <!-- 保存ボタン -->
-              <%= form.submit "保存", class: "btn btn-primary" %>
-            <% end %>
-          </div>
-          <div class="info-wrong">
-            <%= form_with(model: @song, url: research_songs_path, data: { turbo: false }) do |form| %>
-              <div class="url_form">
-                <%= t('songs.new.wrong') %>
-                <%= form.label :manual_uri, "URL" %>
-                <%= form.url_field :manual_uri, class: "form-control", placeholder: 'https://~' %>
-              </div>
-              <%= form.hidden_field :artist_name, value: @song.artist.name %>
-              <%= form.hidden_field :name, value: @song.name %>
-              <%= form.submit "保存", class: "btn btn-primary" %>
-            <% end %>
-          </div>
+<div class="container">
+  <div class="explain">
+    <h3>Step.1<br>楽曲情報を取得します</h3>
+    <p>取得した情報が正しかったら保存、間違っていたらURLを入力して訂正を押してね</p>
+    <p>ちょっと面倒でごめんね</p>
+  </div>
+  <div class="info-correct">
+    <div class="detail d-flex justify-content">
+    <div class="row">
+      <div class="detail-left col-6">
+        <div class="song-image img">
+          <% if @song.image.present? %>
+            <%= image_tag @song.image%>
+          <% end %>
         </div>
       </div>
+
+      <div class="detail-rigt col-6">
+        <div class="artist-name">
+        <%= @song.artist.name %>
+        </div>
+        <%= form_with(model: @song, data: { turbo: false }) do |form| %>
+          <div class="to_track_page">
+            <% if @song.uri.include?('spotify:track') %> 
+              <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+                <i class="fa-brands fa-spotify"></i><%= @song.name %>
+              <% end %>
+            <% else %>
+              <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+                <i class="fa-brands fa-youtube"></i><%= @song.name %>
+              <% end %>
+            <%end%>
+          </div>
+          <!-- 検索結果のuriとartist.nameを隠しフィールドとして送信 -->
+          <%= form.hidden_field :uri, value: @song.uri %>
+          <%= form.hidden_field :name, value: @song.name %>
+          <%= form.hidden_field :artist_name, value: @song.artist.name %>
+          <%= form.hidden_field :image, value: @song.image %>
+          <br>
+          <br>
+          <br>
+          <!-- 保存ボタン -->
+          <%= form.submit "保存", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="info-wrong">
+    <%= form_with(model: @song, url: research_songs_path, data: { turbo: false }) do |form| %>
+      <div class="url_form">
+        <%= t('songs.new.wrong') %>
+        <%= form.url_field :manual_uri, class: "form-control", placeholder: 'https://~' %>
+      </div>
+      <%= form.hidden_field :artist_name, value: @song.artist.name %>
+      <%= form.hidden_field :name, value: @song.name %>
+      <%= form.submit "訂正", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
  

@@ -1,7 +1,5 @@
-  
-    <div class="song-title">
-      <strong>Song_title:</strong>
-      <% if song.uri.include?('spotify:track') %> 
+    <div class="song-infomation">
+      <h4><% if song.uri.include?('spotify:track') %> 
         <%= link_to song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
           <i class="fa-brands fa-spotify"></i><%= song.name %>
         <% end %>
@@ -14,14 +12,16 @@
           <i class="fa-brands fa-youtube"></i><%= song.name %>
         <% end %>
       <% end %>  
+      /
+      <%= song.artist.name %></h4>
     </div>  
 
-    <div class="artist">
-      <strong>Artist:</strong>
-      <%= song.artist.name %>
-    </div>
-
-    <div class="song-image">
-      <strong>Song_image:</strong>
+    <br>
+    <br>
+    <br>
+    <div class="song-image song-image-size">
       <%= image_tag song.image %>
+      <br>
+      <br>
     </div>
+  

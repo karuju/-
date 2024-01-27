@@ -1,18 +1,17 @@
-<div id="<%= dom_id user %>">
+
+<div id="<%= dom_id user %>", class="user">
+<br>
   <p>
-    <strong>Name:</strong>
+    <%= image_tag(user.image.present? ? user.image_url : 'user_default.png', size: '75x75;') %>
+  </p>
+
+    <p>
+    <strong>名前:</strong>
     <%= user.name %>
   </p>
 
-
   <p>
-    <strong>Image:</strong>
-    <%= image_tag(user.image.present? ? user.image_url : 'user_default.png') %>
-  </p>
-
-
-  <p>
-    <strong>Introduction:</strong>
+    <strong>自己紹介</strong>
     <%= user.introduction %>
   </p>
 

@@ -52,22 +52,23 @@ class AnswersController < ApplicationController
           Content.create!(answer_id: @answer.id, contentable_id:session[:movie_id], contentable_type: 'Movie')
         end
 
-        format.html { redirect_to board_path(@board), notice: "Answer was successfully created." }
-        format.json { render :show, status: :created, location: @answer }
+        redirect_to board_path(@board), success: "回答しました" 
         clear_session
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+        flash[:danger] = "回答できませんでした"
+        render :new, status: :unprocessable_entity
       end
     end
   end
 
   # PATCH/PUT /answers/1 or /answers/1.json
   def update
+    @board = Board.find(params[:board_id])
     if @answer.update(answer_params)
       clear_session
-      redirect_to board_path(@answer.board), notice: "Answer was successfully updated." 
+      redirect_to board_path(@answer.board), success: "編集しました" 
     else
+      flash[:danger] = "編集できませんでした"
       render :edit, status: :unprocessable_entity
     end
   end

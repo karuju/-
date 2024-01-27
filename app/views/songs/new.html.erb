@@ -1,10 +1,11 @@
 <div class="container">
-  <%= t('.title') %>
- 
+  <div class="explain">
+    <h3>Step.1<br>楽曲情報を取得します</h3>
+    <p>紹介したい / 知りたい曲の名前とアーティストを入れてね</p>
+  </div>
     <%= render "songs/form", song: @song %>
 
     <%= render "shared/loading_modal" %>
-
 </div>
 
 

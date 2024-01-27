@@ -8,10 +8,10 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, success: t('defaults.message.updated', item: User.model_name.human)
+      redirect_to profile_path, success: "プロフィールを編集しました"
     else
-      flash.now['danger'] = t('defaults.message.not_updated', item: User.model_name.human)
-      render :edit
+      flash.now['danger'] = "編集できませんでした"
+      render :edit, status: :unprocessable_entity
     end
   end
 
