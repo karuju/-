@@ -12,7 +12,7 @@
   <% end %>
 
   <div>
-  <%= form.label :title, style: "display: block" %>
+  <%= form.label :"タイトル", style: "display: block" %>
   <%= form.text_field :title, style: "width: 100%;" %>
   </div>
 
@@ -25,6 +25,6 @@
   <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,24 +1,29 @@
 <div class="container">
-  <div class="explain">
-    <h3>Step.2<br>知りたいコンテンツの条件を書いてね</h3>
-    <p>ex) 人が死ぬのは嫌だ〜<br>恋愛感情なしのがいい！</p>
-  </div>
-  <div class="detail d-flex justify-content">
-    <div class="row">
-      <div class="detail-left col-6"> 
-        <div class="song-info">
-          <%= render "songs/song", song: @song %> 
+<br>
+  <div class="show-card">
+    <div class="explain">
+      <h3>スレッドのタイトルとコメントを書いてね</h3>
+      <p>地雷を避けるためになんとなく希望を伝えておこう！
+      <br>ex) 人が死ぬのは嫌だ〜<br>恋愛感情なしのがいい！</p>
+
+    </div>
+    <div class="detail d-flex justify-content">
+      <div class="row">
+        <div class="detail-left col-md-6 col-sm-12"> 
+          <div class="song-info">
+            <%= render "songs/song", song: @song %> 
+          </div>
+        </div>
+      
+        <div class="detail-right col-md-6 col-sm-12">
+          <%= render "form", board: @board %>
         </div>
       </div>
-    
-      <div class="detail-right col-6">
-        <%= render "form", board: @board %>
-      </div>
     </div>
-  </div>
-  <br>
+    <br>
 
-  <div>
-    <%= link_to "スレッド一覧に戻る", boards_path %>
+    <div>
+      <%= link_to "スレッド一覧に戻る", boards_path %>
+    </div>
   </div>
 </div>

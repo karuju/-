@@ -6,11 +6,6 @@
     <%= render 'shared/search', url: boards_path, frame_id: 'boards' %>
   </div>
 
-  <%= t('.title') %>
-  <div class="pager">
-    <%=  paginate @boards, theme: 'twitter-bootstrap-4' %>
-  </div>
-
   <div class="to-create">
     <h3><%= link_to "スレッドを立てる", create_board_path %></h3>
   </div>

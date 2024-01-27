@@ -44,15 +44,14 @@ header {
 }
 
 .chikuonki {
-  text-align: left;
+  text-align: center;
   display: flex;
   align-items: flex-end;
 }
 .chikuonki img {
   width: 70%;
   height: auto;
-  margin-left: 0;
-  margin-right: auto;
+
 }
 
 .main {
@@ -60,7 +59,9 @@ header {
   margin: auto;
 }
 
-
+.boards {
+  margin-top: 10%;
+}
 
 .song-image-size img{
   width: 70%;
@@ -78,7 +79,8 @@ header {
 
 .show-card {
   background-image: url("lined_paper.png");
-  padding-top: 5%;
+  padding: 5%;
+
 }
 
 .board {
@@ -137,6 +139,7 @@ header {
 
 
 .index {
+  margin-top: 20px;
   margin-bottom: 200px;
 }
 
@@ -190,4 +193,29 @@ header {
   width: 70%;
   height: auto;
   margin-bottom: 10%;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.search-field {
+  margin: auto;
+}
+
+.pager {
+  margin: 0 auto;
 }
