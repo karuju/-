@@ -3,9 +3,16 @@
     <%= render 'top' %>
   </div>
   <div class="main">
+    <div class="row">
+      <div class="line col">
+        <%= image_tag "gosenfu.png", class: "img-fuild" %>
+      </div>
+    </div>
     <div class="index boards" >
       <div class="explain">
         <h2>好きな曲を投稿して、それっぽいコンテンツを教えてもらおう</h2>
+        <h4>スレッドを立てて、コンテンツを募集してみましょう</h4>
+        <h4>好きな曲や知っている曲が投稿されていたら、それっぽいコンテンツを布教するチャンス！</h4>
       </div>
       <br>
 
@@ -41,8 +48,15 @@
     <br>
 
     <div class="index posts" >
+    <div class="row">
+      <div class="line col">
+        <%= image_tag "gosenfu.png", class: "img-fuild" %>
+      </div>
+    </div>
       <div class="explain">
         <h2>イメソンを紹介しよう</h2>
+        <h4>好きな曲とコンテンツを合わせて紹介してみましょう</h4>
+        <h4>自由に布教するチャンス！</h4>
       </div>
       <div id="posts" class="row">
         <% @posts.each do |post| %>
@@ -51,7 +65,7 @@
               <%= render 'posts/post_index', post: post %>
               <br>
               <p>
-                <%= link_to "このポストを開く", post, data: { turbo: false } %>
+                <%= link_to "このポストを開く", post, class: "btn btn-secondary", data: { turbo: false } %>
               </p>
             </div >
           </div>

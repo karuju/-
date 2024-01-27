@@ -39,6 +39,10 @@ header {
   text-align: center;
 }
 
+.explain {
+  padding-bottom: 5%;
+}
+
 .chikuonki {
   text-align: left;
   display: flex;
@@ -56,9 +60,6 @@ header {
   margin: auto;
 }
 
-.explain {
-  background-image: url("memo.png");
-}
 
 
 .song-image-size img{
@@ -182,4 +183,11 @@ header {
   margin-right: 16%;
   padding-top: 4%;
   text-align: center;
+}
+
+.line img {
+  object-fit: cover;
+  width: 70%;
+  height: auto;
+  margin-bottom: 10%;
 }
