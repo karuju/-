@@ -30,6 +30,10 @@ footer {
   background-image: url("top.webp");
 }
 
+.search-form {
+  margin-top: 20px;
+}
+
 .page-body {
   padding-top: 65px;
 }
@@ -209,6 +213,11 @@ footer {
   width: 70%;
   height: auto;
   margin-bottom: 10%;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
 }
 
 /*ページネーション自体のデザイン*/

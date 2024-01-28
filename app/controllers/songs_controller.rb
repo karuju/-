@@ -35,11 +35,12 @@ class SongsController < ApplicationController
   end
 
   def research_by_url
-    url = research_params[:manual_uri]
-    @song = Song.new
-    name = research_params[:name]
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
+    @song = Song.find_or_initialize_by(name: research_params[:name], artist: artist)
+    url = research_params[:manual_uri]
+    name = research_params[:name]
     @song.artist = artist
+
     if url.include?('open.spotify.com')
       track_id = url.split('/').last
       spotify_service = SpotifySearchService.new(track_id: track_id)
@@ -104,7 +105,7 @@ class SongsController < ApplicationController
 
   def update
     artist = Artist.find_by(name: song_params[:artist_name])
-    @song = Song.find_by(name: song_params[:name], artist: artist, image: song_params[:image])
+    @song = Song.find_by(name: song_params[:name], artist: artist)
     if song_params[:correct_info] == '1'
       @song.uri = params[:song][:uri]
     else
