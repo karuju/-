@@ -1,14 +1,12 @@
-<div >
+<div class="search-form">
 
   <%= search_form_for @q, url: url, html: { data: { turbo_frame: frame_id } } do |f| %>
-    <%= f.label :song_name_cont, '曲名' %>
-    <%= f.search_field :song_name_cont %>
+    <%= f.search_field :song_name_cont, placeholder: "曲名" %>
 
-    <%= f.label :song_artist_name_cont, 'アーティスト' %>
-    <%= f.search_field :song_artist_name_cont %>
+    <%= f.search_field :song_artist_name_cont, placeholder: "アーティスト" %>
 
     <%= f.submit class: "btn btn-primary", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 10px;" %>
   <% end %>
-  <%= link_to "リセット", request.path, class: "btn btn-light", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 10px;" %>
+  <!-- <%= link_to "リセット", request.path, class: "btn btn-light", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 10px;" %> -->
 </div>
 

@@ -58,7 +58,7 @@
         </div>
         <%= form.hidden_field :artist_name, value: @song.artist.name %>
         <%= form.hidden_field :name, value: @song.name %>
-        <%= form.submit "訂正", class: "btn btn-danger" %>
+        <%= form.submit "訂正", class: "btn btn-danger", data: { "turbo-method": :post }%>
       <% end %>
     </div>
   </div>

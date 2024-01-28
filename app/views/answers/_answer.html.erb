@@ -12,11 +12,13 @@
     </div>
     <div class="content-author">
       <% if answer.content.contentable.respond_to?(:author) %>
-      <strong>著者:</strong>
-      <%= answer.content.contentable.author %>
+        <strong>著者:</strong>
+        <%= answer.content.contentable.author %>
       <% elsif answer.content.contentable.respond_to?(:director) %>
-      <strong>監督:</strong>
-      <%= answer.content.contentable.director %>
+        <strong>監督:</strong>
+        <%= answer.content.contentable.director %>
+      <% elsif answer.content.contentable.respond_to?(:creator) %>
+        <strong>制作会社:</strong>
       <% end %>
     </div>
     <div class="content-explain">

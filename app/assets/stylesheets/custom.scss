@@ -3,15 +3,35 @@
   padding: 0;
 }
 
-.all {
-  background-image: url("top.webp");
-}
 
 header {
   background-color: antiquewhite;
   position: fixed;
   z-index: 1;
   width: 100%;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', serif;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+footer {
+  height: auto;
+  background-color: antiquewhite;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.all {
+  background-image: url("top.webp");
+}
+
+.search-form {
+  margin-top: 20px;
 }
 
 .page-body {
@@ -80,7 +100,7 @@ header {
 .show-card {
   background-image: url("lined_paper.png");
   padding: 5%;
-
+  margin-top: 5%;
 }
 
 .board {
@@ -195,6 +215,11 @@ header {
   margin-bottom: 10%;
 }
 
+.pager {
+  display: flex;
+  justify-content: center;
+}
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
@@ -231,3 +256,4 @@ header {
 .like-and-share {
   padding-right: 30px;
 }
+

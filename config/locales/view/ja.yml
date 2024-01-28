@@ -127,12 +127,7 @@ ja:
       loading: ちょっと時間がかかります
       correct?: この情報が正しいですか？
       wrong: 正しいURLを入力してください
-  pagination: 
-      first: <i class="fas fa-angle-double-left"></i>
-      last: <i class="fas fa-angle-double-right"></i>
-      previous: <i class="fas fa-angle-left"></i>
-      next: <i class="fas fa-angle-right"></i>
-      truncate: "..."
+
 
 
 

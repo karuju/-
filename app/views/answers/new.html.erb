@@ -1,4 +1,5 @@
 <div class="container">
+<div class="show-card">
   <div class="explain">
     <h3>Step.2<br>その曲とどんなふうに合うのか、存分に布教してね</h3>
   </div>
@@ -23,6 +24,13 @@
         <% if @movie.present? %>
           <%= render "movies/movie", movie: @movie %> 
         <% end %>
+        <% if @anime.present? %>
+          <%= render "animes/anime", novel: @anime %> 
+        <% end %>
+        <% if @game.present? %>
+          <%= render "games/game", movie: @game %> 
+        <% end %>
+
       </div>
       <br>
       <div class="form">
@@ -30,5 +38,6 @@
       </div>
     </div>
   </div>
+ </div> 
 </div>
 
