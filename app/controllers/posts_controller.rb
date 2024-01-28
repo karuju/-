@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(title: params[:post][:title], body: params[:post][:body], song_id: params[:post][:song_id])
+    @post = current_user.posts.new(body: params[:post][:body], song_id: params[:post][:song_id])
     if @post.save
       if session[:comic_id]
         Content.create!(post_id: @post.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
@@ -45,6 +45,10 @@ class PostsController < ApplicationController
         Content.create!(post_id: @post.id, contentable_id:session[:novel_id], contentable_type: 'Novel')
       elsif session[:movie_id]
         Content.create!(post_id: @post.id, contentable_id:session[:movie_id], contentable_type: 'Movie')
+      elsif session[:anime_id]
+        Content.create!(post_id: @post.id, contentable_id:session[:anime_id], contentable_type: 'Anime')
+      elsif session[:game_id]
+        Content.create!(post_id: @post.id, contentable_id:session[:game_id], contentable_type: 'Game')
       end
       redirect_to post_url(@post), success: t('.create.success')
       clear_session
@@ -86,12 +90,16 @@ class PostsController < ApplicationController
         @novel = Novel.find(session[:novel_id])
       elsif session[:movie_id]
         @movie = Movie.find(session[:movie_id])
+      elsif session[:anime_id]
+        @anime = Anime.find(session[:anime_id])
+      elsif session[:game_id]
+        @game = Game.find(session[:game_id])
       end
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :song_id)
+      params.require(:post).permit(:body, :song_id)
     end
 
     def clear_session
@@ -101,5 +109,7 @@ class PostsController < ApplicationController
       session[:comic_id] = nil
       session[:novel_id] = nil
       session[:movie_id] = nil
+      session[:anime_id] = nil
+      session[:game_id] = nil
     end
 end

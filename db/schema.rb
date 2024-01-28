@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_094331) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
+  create_table "animes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "creator"
+    t.integer "category"
+    t.string "uri"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -40,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_094331) do
   end
 
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title", null: false
     t.text "body"
     t.integer "status", default: 0
     t.bigint "user_id", null: false
@@ -72,6 +81,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_094331) do
     t.bigint "answer_id"
     t.index ["answer_id"], name: "fk_rails_a1873bd348"
     t.index ["post_id"], name: "index_contents_on_post_id"
+  end
+
+  create_table "games", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "creator"
+    t.integer "category"
+    t.string "uri"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -111,8 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_094331) do
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "body"
+    t.text "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

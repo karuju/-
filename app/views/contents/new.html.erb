@@ -12,22 +12,32 @@
         </div>
         <div class="detail-right col-md-6 col-sm-12">
           <div class="content-radiobutton">
-            <input type="radio" id="comic-radio" name="content-type" value="comic">漫画<br>
             <input type="radio" id="novel-radio" name="content-type" value="novel">小説<br>
+            <input type="radio" id="comic-radio" name="content-type" value="comic">漫画<br>
+            <input type="radio" id="anime-radio" name="content-type" value="anime">アニメ<br>
+            <input type="radio" id="game-radio" name="content-type" value="game">ゲーム<br>
             <input type="radio" id="movie-radio" name="content-type" value="movie">映画<br>
           </div>
   <br>
           <div class="content-form">
-            <div id="comic-form" style="display: none;">
-            <%= render "comics/form", comic: @comic %>
-            </div>
-
             <div id="novel-form" style="display: none;">
               <%= render "novels/form", novel: @novel %>
             </div>
 
+            <div id="comic-form" style="display: none;">
+              <%= render "comics/form", comic: @comic %>
+            </div>
+
+            <div id="anime-form" style="display: none;">
+              <%= render "animes/form", anime: @anime %>              
+            </div>
+
+            <div id="game-form" style="display: none;">
+              <%= render "games/form", game: @game %>              
+            </div>
+
             <div id="movie-form" style="display: none;">
-              <%= render "movies/form", movie: @movie %>
+              <%= render "movies/form", movie: @movie %>              
             </div>
           </div>
         </div>

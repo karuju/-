@@ -7,10 +7,6 @@
     </div>
     <div class="detail-right col-8">
       <div class="user">
-        <div class="content-title">
-          <strong>Title:</strong>
-          <%= post.title %>
-        </div>
         <strong>作成者</strong>
         <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '40x40' %>
         <%= link_to admin_user_path(post.user), data: {turbo: :false} do %>

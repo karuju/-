@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'games/new'
+  get 'games/search'
+  get 'games/show'
+  get 'games/create'
+  get 'animes/new'
+  get 'animes/search'
+  get 'animes/show'
+  get 'animes/create'
   namespace :admin do
     root 'dashboards#index'
     get 'login', to: 'user_sessions#new'
@@ -13,6 +21,9 @@ Rails.application.routes.draw do
     resources :comics, only: %i[ index show edit update destroy ]
     resources :novels, only: %i[ index show edit update destroy ]
     resources :movies, only: %i[ index show edit update destroy ]
+    resources :animes, only: %i[ index show edit update destroy ]
+    resources :games, only: %i[ index show edit update destroy ]
+
   end
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
@@ -35,9 +46,12 @@ Rails.application.routes.draw do
   end
 
   resources :artists, only: %i[index show new create edit update destroy]
-  resources :movies
-  resources :novels
-  resources :comics
+  resources :movies, only: %i[ new create search]
+  resources :novels, only: %i[ new create search]
+  resources :comics, only: %i[ new create search]
+  resources :animes, only: %i[ new create search]
+  resources :games, only: %i[ new create search]
+
 
   resources :boards do
     member do
