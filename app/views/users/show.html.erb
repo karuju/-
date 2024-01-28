@@ -1,6 +1,15 @@
-<div class="container">
-  <p style="color: green"><%= notice %></p>
-  <div class="card">
-    <%= render @user %>
-  </div>
+<div class="main">
+  <div class="show-card">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 text-center">
+        <h1 class="mb-5">ユーザー情報</h1>
+        <%= image_tag @user.image.url, class: 'rounded-circle', size: '50x50' %>
+        <p>名前：</p>
+        <p><%= @user.name %></p>
+        <br>
+        <p>自己紹介：</p>
+        <p><%= @user.introduction %></p>
+      </div>
+    </div>
+  </div>  
 </div>

@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'games/new'
-  get 'games/search'
-  get 'games/show'
-  get 'games/create'
-  get 'animes/new'
-  get 'animes/search'
-  get 'animes/show'
-  get 'animes/create'
   namespace :admin do
     root 'dashboards#index'
     get 'login', to: 'user_sessions#new'
@@ -45,7 +37,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :artists, only: %i[index show new create edit update destroy]
+  resources :artists, only: %i[new create update]
   resources :movies, only: %i[ new create search]
   resources :novels, only: %i[ new create search]
   resources :comics, only: %i[ new create search]

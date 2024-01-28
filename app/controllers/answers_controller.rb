@@ -41,8 +41,6 @@ class AnswersController < ApplicationController
     @board = Board.find(params[:board_id])
     @answer = current_user.answers.new(answer_params)
     @answer.board = @board
-
-    respond_to do |format|
       if @answer.save
         if session[:comic_id]
           Content.create!(answer_id: @answer.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
@@ -50,6 +48,10 @@ class AnswersController < ApplicationController
           Content.create!(answer_id: @answer.id, contentable_id:session[:novel_id], contentable_type: 'Novel')
         elsif session[:movie_id]
           Content.create!(answer_id: @answer.id, contentable_id:session[:movie_id], contentable_type: 'Movie')
+        elsif session[:anime_id]
+          Content.create!(answer_id: @answer.id, contentable_id:session[:anime_id], contentable_type: 'Anime')
+        elsif session[:game_id]
+          Content.create!(answer_id: @answer.id, contentable_id:session[:game_id], contentable_type: 'Game')
         end
 
         redirect_to board_path(@board), success: "回答しました" 
@@ -58,7 +60,6 @@ class AnswersController < ApplicationController
         flash[:danger] = "回答できませんでした"
         render :new, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /answers/1 or /answers/1.json
@@ -97,5 +98,7 @@ class AnswersController < ApplicationController
       session[:comic_id] = nil
       session[:novel_id] = nil
       session[:movie_id] = nil
+      session[:anime_id] = nil
+      session[:game_id] = nil
     end
 end
