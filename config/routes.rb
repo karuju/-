@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'games/new'
+  get 'games/search'
+  get 'games/show'
+  get 'games/create'
+  get 'animes/new'
+  get 'animes/search'
+  get 'animes/show'
+  get 'animes/create'
   namespace :admin do
     root 'dashboards#index'
     get 'login', to: 'user_sessions#new'
