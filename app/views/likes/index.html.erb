@@ -1,26 +1,36 @@
 <div class="container">
-  <h1>お気に入り一覧</h1>
-  <% if current_user.likes.present? %>
-  <% @likes.each do |like| %>
-    <% if like.likeable_type == 'Post' %>
-    <div class="post">
-      <%= link_to like.likeable.title, post_path(like.likeable) %>
-      <%= render 'posts/post', post: like.likeable%>
-    </div>
-    <% elsif like.likeable_type == 'Board' %>
-    <div class="board">
-      <%= link_to like.likeable.title, board_path(like.likeable) %>
-      <%= render 'boards/board', board: like.likeable%>
-    </div>
-    <% elsif like.likeable_type == 'Answer' %>
-    <div class="answer">
-      <%= link_to like.likeable.body, board_path(like.likeable.board) %>
-      <%= render 'answers/answer', answer: like.likeable%>
-    </div>
-    <% end %>
-  <% end %>
-  <% else %>
-    お気に入りはありません
-  <% end %>
+  <div class="index likes row">
+    <h1>お気に入り一覧</h1>
+    <% if current_user.likes.present? %>
+      <% @likes.each do |like| %>
+        <% if like.likeable_type == 'Post' %>
+          <div class="post col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+              <%= render 'posts/post', post: like.likeable%>
+              <%= link_to "この投稿を開く", post_path(like.likeable) %>
+            </div>
+          </div>
 
+        <% elsif like.likeable_type == 'Board' %>
+          <div class="board col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+              <%= render 'boards/board', board: like.likeable%>
+              <%= link_to "このスレッドを開く", board_path(like.likeable) %>  
+            </div>
+          </div>
+        <% elsif like.likeable_type == 'Answer' %>
+          <div class="answer col-md-4 col-sm-6 col-xs-12">
+
+              <%= render 'answers/answer', answer: like.likeable%>
+              <%= link_to "この回答のスレッドを開く", board_path(like.likeable.board) %>
+
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="card">
+        お気に入りはありません
+      </div> 
+    <% end %>
+  </div>
 </div>

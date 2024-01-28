@@ -1,25 +1,34 @@
 <div class="container">
-  <%= t('.title') %>
-  <div class="song-info">
-    <%= render "songs/song", song: @song %> 
-  </div>
-
-  <div class="content-info">
-  <% if @comic.present? %>
-    <%= render "comics/comic", comic: @comic %> 
-  <% end %>
-  <% if @novel.present? %>
-    <%= render "novels/novel", novel: @novel %> 
-  <% end %>
-  <% if @movie.present? %>
-    <%= render "movies/movie", movie: @movie %> 
-  <% end %>
-  </div>
-
-
-  <div class="form">
-    <%= render "form", post: @post %>
-  </div>
-
-  <br>
+<br>
+  <div class="show-card">
+    <div class="explain">
+      <h3>紹介したいイメソンとコンテンツを存分に布教してね</h3>
+    </div>
+    <div class="detail d-flex justify-content">
+      <div class="row">
+        <div class="detail-left col-6"> 
+          <div class="song-info">
+            <%= render "songs/song", song: @song %> 
+          </div>
+        </div>
+        <div class="detail-right col-6">
+          <div class="content-info">
+          <% if @comic.present? %>
+            <%= render "comics/comic", comic: @comic %> 
+          <% end %>
+          <% if @novel.present? %>
+            <%= render "novels/novel", novel: @novel %> 
+          <% end %>
+          <% if @movie.present? %>
+            <%= render "movies/movie", movie: @movie %> 
+          <% end %>
+          </div>
+          <div class="form">
+            <%= render "form", post: @post %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div> 
 </div>

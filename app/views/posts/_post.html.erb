@@ -2,11 +2,7 @@
 
     <div class="detail d-flex justify-content">
       <div class="detail-left col-4">
-        <div class="song-info">
-          <%= render 'songs/song_info', item: post %>
-        </div>
-      </div>
-      <div class="detail-right col-8">
+
         <div class="user">
           <strong>作成者</strong>
           <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '40x40' %>
@@ -15,9 +11,20 @@
           <% end %>
         </div>
 
+
+
+        <div class="song-image">
+          <%= image_tag post.song.image %>
+        </div>
+      </div>
+      <div class="detail-right col-8">
+        <div class="song-info">
+          <%= render 'songs/song_info', item: post %>
+        </div>
+
         <div class="content-info">
           <div class="content-title">
-            <strong>作品タイトル</strong>
+            <strong>作品タイトル:</strong>
             <%= post.content.contentable.title %>
           </div>
           <div class="content-author">  
@@ -50,7 +57,7 @@
     </div>
 
     <div class="twitter">
-      <%= link_to "https://twitter.com/share?url=#{post_url(post)}&text=【投稿しました！】%0a%0a 🎵#{post.song.name} / #{post.song.artist.name}と #{post.content.contentable.title}📚🎥", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+      <%= link_to "https://twitter.com/share?url=#{post_url(post)}&text=【投稿しました！】%0a%0a 📚#{post.content.contentable.title}🎥のイメソンをシェア！", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
         <i class="fab fa-twitter"></i>
       <% end %>
     </div>

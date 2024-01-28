@@ -11,11 +11,6 @@
   </div>
   <div class="detail d-flex justify-content">
     <div class="detail-left col-4">
-      <div class="song-info">
-        <%= render 'songs/song_info', item: board %>
-      </div>
-    </div>
-    <div class="detail-right col-8">
       <div class="user">
         <strong>作成者</strong>
         <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), size: '40x40' %>
@@ -23,26 +18,31 @@
           <%= board.user.name %>
         <% end %>
       </div>
-      <div class="board-info">
-        <div class="board-title">
-          <strong>Title:</strong>
-          <%= board.title %>
-        </div>
+      <div class="song-image">
+        <%= image_tag board.song.image %>
+      </div>
+    </div>
 
+    <div class="detail-right col-8">
+      <div class="song-info">
+        <%= render 'songs/song_info', item: board %>
+      </div>
+
+      <div class="board-info">
         <div class="board-body">
-          <strong>Body:</strong>
+          <strong>スレッド主コメント:</strong><br>
           <%= board.body %>
         </div>
       </div>
     </div>
   </div>
-  <div class='d-flex justify-content-end'>
-  <div class="like-button">
-    <% if current_user %>
-      <% @likeable = board %>
-      <%= render 'likes/like_button' %>
-    <% end %>
-  </div>
+  <div class='like-and-share d-flex justify-content-end'>
+    <div class="like-button">
+      <% if current_user %>
+        <% @likeable = board %>
+        <%= render 'likes/like_button' %>
+      <% end %>
+    </div>
   <div class="twitter">
     <%= link_to "https://twitter.com/share?url=#{board_url(board)}&text=【おしえて！】%0a 🎵#{board.song.name} / #{board.song.artist.name}と合うコンテンツは？📚🎥", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
       <i class="fab fa-twitter"></i>

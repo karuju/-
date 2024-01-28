@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 
 .all {
   background-image: url("top.webp");
@@ -5,11 +9,58 @@
 
 header {
   background-color: antiquewhite;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.page-body {
+  padding-top: 65px;
+}
+
+.top {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  padding-top: 8%;
+}
+
+.top-explain {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.top-explain h1{
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+}
+
+.explain {
+  padding-bottom: 5%;
+}
+
+.chikuonki {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+}
+.chikuonki img {
+  width: 70%;
+  height: auto;
+
 }
 
 .main {
   width: 80%;
   margin: auto;
+}
+
+.boards {
+  margin-top: 10%;
 }
 
 .song-image-size img{
@@ -18,13 +69,18 @@ header {
   margin: auto;
 }
 
-.top {
-  height: 300px;
-  background-image: url("top.webp");
+.card {
+  background-image: url("memo.png");
+  background-size: cover; /* This will resize the background image to cover the entire container */
+  background-position: center; /* This will center the background image */
+  background-color: transparent;
+  border-color: transparent;
 }
 
-.card {
+.show-card {
   background-image: url("lined_paper.png");
+  padding: 5%;
+
 }
 
 .board {
@@ -53,7 +109,7 @@ header {
   margin: auto;
 }
 
-.answer {
+.answers-area .answer {
   background-image: url("fusen.png");
   background-size: cover;
   padding-left: 15px;
@@ -83,7 +139,8 @@ header {
 
 
 .index {
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 200px;
 }
 
 .song-infomation {
@@ -100,4 +157,77 @@ header {
 
 .user {
   margin :auto;
+}
+
+.likes .card {
+  padding: 5%;
+}
+
+.likes .answer {
+  background-image: url("answer.png");
+  padding-top: 5%;
+}
+
+.to-create {
+  background-image: url("fusen.png");
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  margin-left: 16%;
+  margin-right: 16%;
+  padding-top: 4%;
+  text-align: center;
+}
+
+.to-index{
+  background-image: url("fusen-ao.png");
+  background-size: cover;
+  background-repeat: no-repeat; 
+  margin-left: 16%;
+  margin-right: 16%;
+  padding-top: 4%;
+  text-align: center;
+}
+
+.line img {
+  object-fit: cover;
+  width: 70%;
+  height: auto;
+  margin-bottom: 10%;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.search-field {
+  margin: auto;
+}
+
+.pager {
+  margin: 0 auto;
+}
+
+.content-title {
+  border-bottom: #696969;
+}
+
+.board-info {
+  border: #696969;
+}
+
+.like-and-share {
+  padding-right: 30px;
 }

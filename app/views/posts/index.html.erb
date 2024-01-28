@@ -11,7 +11,7 @@
     <%=  paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
 
-  <div class="create-model">
+  <div class="to-create">
     <h3><%= link_to "投稿する", create_post_path %></h3>
   </div>
   <div class="index posts" >
@@ -22,7 +22,7 @@
           <div class="card">
             <%= render 'post_index', post: post %>
             <p>
-              <%= link_to "この投稿を開く", post, data: { turbo: false } %>
+              <%= link_to "この投稿を開く", post, class: "btn btn-secondary", data: { turbo: false } %>
             </p>
           </div>
         </div>

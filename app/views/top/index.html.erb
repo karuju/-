@@ -3,46 +3,89 @@
     <%= render 'top' %>
   </div>
   <div class="main">
+    <div class="row">
+      <div class="line col">
+        <%= image_tag "gosenfu.png", class: "img-fuild" %>
+      </div>
+    </div>
     <div class="index boards" >
       <div class="explain">
-        <h2>好きな曲を投稿して、それっぽいコンテンツを教えてもらおう</h2>
+        <h2>好きな曲を投稿して、<br>それっぽいコンテンツを教えてもらおう</h2>
+        <h4>スレッドを立てて、コンテンツを募集してみましょう</h4>
+        <h4>好きな曲や知っている曲が投稿されていたら、<br>それっぽいコンテンツを布教するチャンス！</h4>
       </div>
-      <h3><%= link_to "スレッドをもっと見る", boards_path %></h3>
+      <br>
+
       <div id="boards" class="row">
         <% @boards.each do |board| %>
           <div class="board col-md-4 col-sm-6 col-xs-12">
           <div class="card">
           <%= render 'boards/board_index', board: board %>
+          <br>
             <p>
-              <%= link_to "このスレッドを開く", board, data: { turbo: false } %>
+              <%= link_to "このスレッドを開く", board, class: "btn btn-secondary", data: { turbo: false } %>
             </p>
           </div >
           </div>
         <% end %>
-        <h3><%= link_to "募集してみる", create_board_path %></h3>
+      </div>
+      <div class="menu">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div class="to-index">
+            <h3><%= link_to "スレッドをもっと見る", boards_path %> </h3>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="to-create">          
+            <h3><%= link_to "募集してみる", create_board_path %></h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <br>
 
     <div class="index posts" >
+    <div class="row">
+      <div class="line col">
+        <%= image_tag "gosenfu.png", class: "img-fuild" %>
+      </div>
+    </div>
       <div class="explain">
         <h2>イメソンを紹介しよう</h2>
+        <h4>好きな曲とコンテンツを合わせて紹介してみましょう</h4>
+        <h4>自由に布教するチャンス！</h4>
       </div>
-      <h3><%= link_to "みんなのイメソンを見る", posts_path %></h3>
       <div id="posts" class="row">
         <% @posts.each do |post| %>
           <div class="post col-md-4 col-sm-6 col-xs-12">
             <div class="card">
               <%= render 'posts/post_index', post: post %>
+              <br>
               <p>
-                <%= link_to "このポストを開く", post, data: { turbo: false } %>
+                <%= link_to "このポストを開く", post, class: "btn btn-secondary", data: { turbo: false } %>
               </p>
             </div >
           </div>
         <% end %>
-        <h3><%= link_to "紹介してみる", create_post_path %></h3>
       </div>  
+      <div class="menu">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div class="to-index">
+            <h3><%= link_to "みんなのイメソンをもっと見る", posts_path %> </h3>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="to-create">
+            <h3><%= link_to "紹介してみる", create_post_path %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>  
   </div> 
 </div>

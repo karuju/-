@@ -1,13 +1,14 @@
 <div class="container">
+<div class="show-card">
   <div class="detail d-flex justify-content">
     <div class="row">
-      <div class="detail-left col-6"> 
+      <div class="detail-left col-md-6 col-sm-12"> 
         <div class="song-info">
           <%= render "songs/song", song: @post.song %> 
         </div>
       </div>
     
-      <div class="detail-right col-6">
+      <div class="detail-right col-md-6 col-sm-12">
         <%= render "form", post: @post %>
       </div>
     </div>
@@ -18,5 +19,6 @@
 <div>
   <%= link_to "投稿に戻る", @post %> |
   <%= link_to "投稿一覧に戻る", posts_path %>
+</div>
 </div>
 </div>
