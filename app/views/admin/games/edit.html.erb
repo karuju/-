@@ -1,0 +1,12 @@
+<h1>Admin::Games#edit</h1>
+<p>Find me in app/views/admin/games/edit.html.erb</p>
+<h1>Editing game</h1>
+
+<%= render "form", game: @game %>
+
+<br>
+
+<div>
+  <%= link_to "Show this game", admin_game_path(@game) %> |
+  <%= link_to "Back to games", admin_games_path %>
+</div>

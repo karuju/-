@@ -1,0 +1,18 @@
+  
+  <div class="anime-title">
+    <strong>Anime_title:</strong>
+    <%= anime.title %>
+  </div>  
+
+  <div class="anime-author">
+    <strong>Anime_creator:</strong>
+    <%= anime.creator %>
+  </div>
+  <% if anime.category.present? %>
+    <div class="category">
+      <strong>Category:</strong>
+      <%= anime.category %>
+    </div>
+  <% end %>
+
+  <%= render 'admin/shared/edit_and_delete', item: anime %>

@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'games/index'
+    get 'games/show'
+    get 'games/edit'
+    get 'games/update'
+    get 'games/destroy'
+    get 'animes/index'
+    get 'animes/show'
+    get 'animes/edit'
+    get 'animes/update'
+    get 'animes/destroy'
     root 'dashboards#index'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
