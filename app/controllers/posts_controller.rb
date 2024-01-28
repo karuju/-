@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(title: params[:post][:title], body: params[:post][:body], song_id: params[:post][:song_id])
+    @post = current_user.posts.new(body: params[:post][:body], song_id: params[:post][:song_id])
     if @post.save
       if session[:comic_id]
         Content.create!(post_id: @post.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
@@ -91,7 +91,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :song_id)
+      params.require(:post).permit(:body, :song_id)
     end
 
     def clear_session

@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
 
   # POST /boards or /boards.json
   def create
-    @board = current_user.boards.new(title: params[:board][:title], body: params[:board][:body], song_id:params[:board][:song_id])
+    @board = current_user.boards.new(body: params[:board][:body], song_id:params[:board][:song_id])
     if @board.save
       redirect_to board_url(@board), success: t('.create.success')
     else
@@ -66,6 +66,6 @@ class BoardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_params
-      params.require(:board).permit(:title, :body, :song_id)
+      params.require(:board).permit(:body, :song_id)
     end
 end
