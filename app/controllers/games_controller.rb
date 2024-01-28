@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def new
-    @anime = Anime.new
+    @game = Game.new
     @song = Song.find(session[:song_id])
   end
 
@@ -8,13 +8,13 @@ class GamesController < ApplicationController
   end
 
   def show
-    @anime = Anime.find(params[:id])
+    @game = Game.find(params[:id])
   end
 
   def create
-    @anime = Anime.find_or_initialize_by(anime_params)
-    if @anime.save
-      session[:anime_id] = @anime.id
+    @game = Game.find_or_initialize_by(game_params)
+    if @game.save
+      session[:game_id] = @game.id
       set_redirect_path
     else
       render new
@@ -25,15 +25,15 @@ class GamesController < ApplicationController
 
 private
   
-  def anime_params
-    params.require(:anime).permit(:title, :creator, :category, :uri, :release_date)
+  def game_params
+    params.require(:game).permit(:title, :creator, :category, :uri, :release_date)
   end
 
   def set_redirect_path
     if session[:creation_type] == 'answer'
-      redirect_to new_board_answer_path(session[:board_id], @anime)
+      redirect_to new_board_answer_path(session[:board_id], @game)
     else
-      redirect_to new_post_path(@anime)
+      redirect_to new_post_path(@game)
     end
   end
 end

@@ -14,4 +14,3 @@ class Anime < ApplicationRecord
   end
 
 end
-end
