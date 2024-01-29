@@ -92,7 +92,8 @@ class SongsController < ApplicationController
         session[:song_id] = @song.id
         redirect_based_on_creation_type(@song)
       else
-        render new
+        flash[:danger] = "保存できませんでした"
+        render new, status: :unprocessable_entity
       end
     else
     end

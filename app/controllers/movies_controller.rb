@@ -16,11 +16,13 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.find_or_initialize_by(movie_params)
+    @song = Song.find(session[:song_id])
     if @movie.save
       session[:movie_id] = @movie.id
       set_redirect_path
     else
-      render new
+      flash[:danger] = "保存できませんでした"
+      redirect_to contents_new_path, status: :see_other
     end
 
   end
@@ -31,7 +33,8 @@ class MoviesController < ApplicationController
       session[:movie_id] = @movie.id
       redirect_to new_post_path(@movie, @song)
     else
-      render new
+      flash[:danger] = "編集できませんでした"
+      render new, status: :unprocessable_entity
     end
   end
 

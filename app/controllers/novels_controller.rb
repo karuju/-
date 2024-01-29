@@ -16,29 +16,14 @@ class NovelsController < ApplicationController
 
   def create
     @novel = Novel.find_or_initialize_by(novel_params)
+    @song = Song.find(session[:song_id])
     if @novel.save
       session[:novel_id] = @novel.id
       set_redirect_path
     else
-      render new
+      flash[:danger] = "保存できませんでした"
+      redirect_to contents_new_path, status: :see_other
     end
-
-  end
-
-  def edit
-    @novel = Novel.find_by(novel_params)
-    if @novel.save
-      session[:novel_id] = @novel.id
-      #redirect_to new_post_path(@novel, @song)
-    else
-      render new
-    end
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

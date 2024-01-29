@@ -16,11 +16,13 @@ class ComicsController < ApplicationController
 
   def create
     @comic = Comic.find_or_initialize_by(comic_params)
+    @song = Song.find(session[:song_id])
     if @comic.save
       session[:comic_id] = @comic.id
       set_redirect_path
     else
-      render new
+      flash[:danger] = "保存できませんでした"
+      redirect_to contents_new_path, status: :see_other
     end
 
   end
@@ -31,7 +33,8 @@ class ComicsController < ApplicationController
       session[:comic_id] = @comic.id
       #redirect_to new_post_path(@comic, @song)
     else
-      render new
+      flash[:danger] = "編集できませんでした"
+      render new, status: :unprocessable_entity
     end
   end
 
