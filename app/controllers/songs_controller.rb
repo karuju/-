@@ -96,8 +96,6 @@ class SongsController < ApplicationController
       end
     else
     end
-    #session[:song_id] = @song.id
-    #redirect_to song_path(@song)
   end
 
   def edit

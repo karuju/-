@@ -28,6 +28,11 @@ class AnswersController < ApplicationController
       @novel = Novel.find(session[:novel_id])
     elsif session[:movie_id]
       @movie = Movie.find(session[:movie_id])
+    elsif session[:anime_id]
+      @anime = Anime.find(session[:anime_id])
+    elsif session[:game_id]
+      @game = Game.find(session[:game_id])
+
     end
   end
 
@@ -77,7 +82,7 @@ class AnswersController < ApplicationController
   # DELETE /answers/1 or /answers/1.json
   def destroy
     @answer.destroy
-    redirect_to board_path(@answer.board), notice: "Answer was successfully destroyed." 
+    redirect_to board_path(@answer.board), notice: "回答を削除しました" 
   end
 
   private

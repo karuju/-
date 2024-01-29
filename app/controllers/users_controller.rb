@@ -23,16 +23,13 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    respond_to do |format|
       if @user.save
         login(@user.email, user_params[:password])
-        format.html { redirect_to user_path(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        redirect_to user_path(@user), success: "ユーザー登録が成功しました" 
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:danger] = "ユーザー登録に失敗しました"
+        render :new, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
@@ -43,11 +40,7 @@ class UsersController < ApplicationController
   def destroy
     @user.assign_boards_and_answers_and_posts_to_deleted_user
     @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to root_path, success: "ユーザーを削除しました" 
   end
 
   private
