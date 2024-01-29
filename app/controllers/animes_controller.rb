@@ -13,11 +13,13 @@ class AnimesController < ApplicationController
 
   def create
     @anime = Anime.find_or_initialize_by(anime_params)
+    @song = Song.find(session[:song_id])
     if @anime.save
       session[:anime_id] = @anime.id
       set_redirect_path
     else
-      render new
+      flash[:danger] = "保存できませんでした"
+      redirect_to contents_new_path, status: :see_other
     end
   end
 

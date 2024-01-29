@@ -13,11 +13,13 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.find_or_initialize_by(game_params)
+    @song = Song.find(session[:song_id])
     if @game.save
       session[:game_id] = @game.id
       set_redirect_path
     else
-      render new
+      flash[:danger] = "保存できませんでした"
+      redirect_to contents_new_path, status: :see_other
     end
   end
 

@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
   def new
     @board = Board.find(params[:board_id])
     @answer = @board.answers.build
-    @song = @board.song
+    @song = Song.find(session[:song_id])
     if session[:comic_id]
       @comic = Comic.find(session[:comic_id])
     elsif session[:novel_id]
@@ -46,6 +46,7 @@ class AnswersController < ApplicationController
     @board = Board.find(params[:board_id])
     @answer = current_user.answers.new(answer_params)
     @answer.board = @board
+    @song = @board.song
       if @answer.save
         if session[:comic_id]
           Content.create!(answer_id: @answer.id, contentable_id:session[:comic_id], contentable_type: 'Comic')
