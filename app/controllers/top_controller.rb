@@ -8,7 +8,6 @@ class TopController < ApplicationController
 
   def create_post
     session[:creation_type] = 'post'
-    #このセッションの活かし方
     redirect_to new_song_path
   end
 

@@ -1,0 +1,18 @@
+  
+  <div class="game-title">
+    <strong>Game-title:</strong>
+    <%= game.title %>
+  </div>  
+
+  <div class="game-author">
+    <strong>Game_creator:</strong>
+    <%= game.creator %>
+  </div>
+  <% if game.category.present? %>
+    <div class="category">
+      <strong>Category:</strong>
+      <%= game.category %>
+    </div>
+  <% end %>
+
+  <%= render 'admin/shared/edit_and_delete', item: game %>

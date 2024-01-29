@@ -16,7 +16,7 @@
           <%= image_tag(@current_user.image.present? ? @current_user.image_url : 'user_default.png', size:"35x35" ) %>
         </li>
         <li class='nav-item dropdown dropdown-slide'>
-          <%= link_to @current_user.name, user_path(@current_user), class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
+          <%= link_to @current_user.name, user_path(@current_user), class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true', expanded: 'false'}  %>
           <div class='dropdown-menu dropdown-menu-end'>
             <%= link_to 'プロフィール', profile_path, class: 'dropdown-item' %>
             <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>

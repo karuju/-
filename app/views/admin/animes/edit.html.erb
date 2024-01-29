@@ -1,0 +1,12 @@
+<h1>Admin::Animes#edit</h1>
+<p>Find me in app/views/admin/animes/edit.html.erb</p>
+<h1>Editing anime</h1>
+
+<%= render "form", anime: @anime %>
+
+<br>
+
+<div>
+  <%= link_to "Show this anime", admin_anime_path(@anime) %> |
+  <%= link_to "Back to animes", admin_animes_path %>
+</div>

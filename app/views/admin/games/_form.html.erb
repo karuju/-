@@ -1,0 +1,40 @@
+<%= form_with(model: anime, url: admin_comic_path(anime)) do |form| %>
+  <% if anime.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(anime.errors.count, "error") %> prohibited this anime from being saved:</h2>
+
+      <ul>
+        <% anime.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :creator, style: "display: block" %>
+    <%= form.text_field :creator %>
+  </div>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category %>
+  </div>
+
+
+
+
+  <div>
+    <%= form.label :release_date, style: "display: block" %>
+    <%= form.date_field :release_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

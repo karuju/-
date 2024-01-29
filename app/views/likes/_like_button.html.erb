@@ -4,7 +4,7 @@
   <% if current_user.likes.exists?(likeable: @likeable) %> 
   <div class="liked" >
     <%= link_to like_path(current_user.likes.find_by(likeable: @likeable)), data: { "turbo-method": :delete}, title: "お気に入り解除" do %>
-      <i class="fa-solid fa-heart">html</i>
+      <i class="fa-solid fa-heart" style="color: red;">html</i>
     <% end %>
   </div>
 
@@ -12,7 +12,7 @@
 
   <div class="unliked">
     <%= link_to likes_path(likeable_type: @likeable.class.to_s, likeable_id: @likeable.id), data: { "turbo-method": :post}, title: "お気に入り" do %>
-      <i class="fa-regular fa-heart">html</i>
+      <i class="fa-regular fa-heart" style="color: red;">html</i>
     <% end %>
   </div>
 

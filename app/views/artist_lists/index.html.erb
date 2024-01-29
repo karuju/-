@@ -1,10 +1,12 @@
 <div class="container">
-<h2>準備中</h2>
-  <div class="listed-artists">
-    <% if current_user.artists.present? %>
-      <%= render partial: 'artist', collection: @artists %>
-    <% else %>
-      アーティストリストは空です
-    <% end %>
+  <div class="show-card">
+  <h2>準備中</h2>
+    <div class="listed-artists">
+      <% if current_user.artists.present? %>
+        <%= render partial: 'artist', collection: @artists %>
+      <% else %>
+        アーティストリストは空です
+      <% end %>
+    </div>
   </div>
 </div>

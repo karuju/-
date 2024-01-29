@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="search-field">
+    <%= render 'admin/animes/anime_search', url: admin_animes_path, frame_id: 'anime' %>
+  </div>
+
+  <h1>Posts</h1>
+  <div class="pager">
+    <%=  paginate @animes, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <%= turbo_frame_tag 'animes' do %>
+    <div id="animes" class="row" >
+      <% @animes.each do |anime| %>
+        <div class="anime col-md-4 border">
+          <%= render anime %>
+          <p>
+            <%= link_to "Show this anime", admin_anime_path(anime), data: { turbo: false }  %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="pager">
+  <%=  paginate @animes, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>
