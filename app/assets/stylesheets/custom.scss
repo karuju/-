@@ -257,3 +257,26 @@ footer {
   padding-right: 30px;
 }
 
+.spinner-border {
+  border: none !important;
+}
+
+.icon:before{
+  
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Font Awesome 5 Free"; 
+	font-weight: 900;
+	content: '\f110';
+	display: inline-block;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: fa-spin;
+}
