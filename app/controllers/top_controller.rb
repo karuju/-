@@ -21,4 +21,10 @@ class TopController < ApplicationController
     redirect_to contents_new_path
   end
 
+  def privacy_policy
+  end
+
+  def terms
+  end
+
 end

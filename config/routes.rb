@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'games/index'
-    get 'games/show'
-    get 'games/edit'
-    get 'games/update'
-    get 'games/destroy'
-    get 'animes/index'
-    get 'animes/show'
-    get 'animes/edit'
-    get 'animes/update'
-    get 'animes/destroy'
     root 'dashboards#index'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
@@ -74,6 +64,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "top#index"
 
+  get 'privacy_policy', to: 'top#privacy_policy'
+  get 'terms', to: 'top#terms'
   get 'create_post', to: 'top#create_post'
   get 'create_board', to: 'top#create_board'
   get 'create_answer', to: 'top#create_answer'
