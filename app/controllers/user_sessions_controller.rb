@@ -7,6 +7,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
+      flash[:success] = 'ログインしました'
       redirect_to(session[:forwarding_url] || root_path )
       session.delete(:forwarding_url)
     else
