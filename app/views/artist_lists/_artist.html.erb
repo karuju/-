@@ -1,5 +1,7 @@
 <div class="artist-info" >
+<%= link_to artist_list_path(artist), data: { turbo: false } do %>
   <%= artist.name %>
+<% end %>
   <% artist_list = current_user.artist_lists.find_by(artist_id: artist.id) %>
   <%= link_to "リストから削除", artist_list_path(artist_list), data: { turbo_method: :delete } %> 
 </div>

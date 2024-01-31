@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: %i[create destroy]
-  resources :artist_lists, only: %i[create destroy]
+  resources :artist_lists, only: %i[create destroy show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
