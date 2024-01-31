@@ -90,6 +90,7 @@ footer {
 }
 
 .card {
+  padding-top: 25px;
   background-image: url("memo.png");
   background-size: cover; /* This will resize the background image to cover the entire container */
   background-position: center; /* This will center the background image */
@@ -103,24 +104,14 @@ footer {
   margin-top: 5%;
 }
 
-.board {
+.item {
   margin-bottom: 20px;
 }
 
-.board-detail {
+.item-detail {
   width: 90%;
   height: auto;
   margin: auto;
-}
-
-.post {
-  margin-bottom: 20px;
-}
-
-.post-detail {
-  width: 90%;
-  height: auto;
-  margin: auto; 
 }
 
 .answers-area {

@@ -1,10 +1,10 @@
-
+<div class="container-fluid text-center">
 <div class="main">
+  <h1>このアーティストの曲の投稿一覧</h1>
   <div class="index artist row">
-    <h1>このアーティストの曲の投稿一覧</h1>
     <% if @boards.present? %>
       <% @boards.each do |board| %>
-          <div class="post col-md-4 col-sm-6 col-xs-12">
+          <div class="item col-md-4 col-sm-6 col-xs-12">
             <div class="card">
               <%= render 'boards/board_index', board: board%>
               <%= link_to "このスレッドを開く", board_path(board) %>
@@ -14,7 +14,7 @@
     <% end %>
     <% if @posts.present? %>
       <% @posts.each do |post| %>
-          <div class="board col-md-4 col-sm-6 col-xs-12">
+          <div class="item col-md-4 col-sm-6 col-xs-12">
             <div class="card">
               <%= render 'posts/post_index', post: post%>
               <%= link_to "この投稿を開く", post_path(post) %>  
@@ -23,4 +23,5 @@
       <% end %>
     <% end %>
   </div>
+</div>
 </div>

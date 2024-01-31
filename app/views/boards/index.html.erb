@@ -1,7 +1,5 @@
 <div class="container-fluid text-center">
   <div class="main">
-  <p style="color: green"><%= notice %></p>
-
   <div class="search-field">
     <%= render 'shared/search', url: boards_path, frame_id: 'boards' %>
   </div>
@@ -13,7 +11,7 @@
   <%= turbo_frame_tag 'boards' do %>
     <div id="boards" class="row">
       <% @boards.each do |board| %>
-        <div class="board col-md-4 col-sm-6 col-xs-12">
+        <div class="item col-md-4 col-sm-6 col-xs-12">
           <div class="card">
             <%= render 'board_index', board: board %>
             <p>
