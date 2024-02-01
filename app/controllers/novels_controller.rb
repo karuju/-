@@ -1,4 +1,5 @@
 class NovelsController < ApplicationController
+  require 'rakuten_web_service'
   def index
   end
 
@@ -7,8 +8,6 @@ class NovelsController < ApplicationController
     @song = Song.find(session[:song_id])
   end
 
-  def search
-  end
 
   def show
     @novel = Novel.find(params[:id])
@@ -17,6 +16,14 @@ class NovelsController < ApplicationController
   def create
     @novel = Novel.find_or_initialize_by(novel_params)
     @song = Song.find(session[:song_id])
+
+    if @novel.new_record?
+      @books = RakutenWebService::Books::Book.search(title: novel_params[:title], author: novel_params[:author])
+      book = @books.first
+      @novel.summary = book['itemCaption']
+      @novel.uri = book['itemUrl']
+      @novel.publisher = book['publisherName']
+    end
     if @novel.save
       session[:novel_id] = @novel.id
       set_redirect_path
