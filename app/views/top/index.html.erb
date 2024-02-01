@@ -18,7 +18,7 @@
 
       <div id="boards" class="row">
         <% @boards.each do |board| %>
-          <div class="board col-md-4 col-sm-6 col-xs-12">
+          <div class="item col-md-4 col-sm-6 col-xs-12">
           <div class="card">
           <%= render 'boards/board_index', board: board %>
           <br>
@@ -60,7 +60,7 @@
       </div>
       <div id="posts" class="row">
         <% @posts.each do |post| %>
-          <div class="post col-md-4 col-sm-6 col-xs-12">
+          <div class="item col-md-4 col-sm-6 col-xs-12">
             <div class="card">
               <%= render 'posts/post_index', post: post %>
               <br>

@@ -13,7 +13,7 @@
   <%= turbo_frame_tag 'answers' do %>
     <div id="answers" class="row">
       <% @answers.each do |answer| %>
-        <div class="post col-md-4 border">
+        <div class="item col-md-4 border">
           <%= render answer %>
           <p>
             <%= link_to "Show this answer", admin_answer_path(answer), data: { turbo: false } %>

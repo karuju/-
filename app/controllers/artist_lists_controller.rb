@@ -19,4 +19,19 @@ class ArtistListsController < ApplicationController
     current_user.remove_from_artist_list(@artist)
     redirect_to artist_lists_users_path, success: "アーティストリストから削除しました", status: :see_other
   end
+
+  def show
+    @artist = Artist.find(params[:id])
+    songs = Song.where(artist_id: @artist.id)
+    @boards = []
+    songs.each do |song|
+      boards = Board.where(song_id: song.id)
+      @boards.concat(boards)
+    end
+    @posts = []
+    songs.each do |song|
+      posts = Post.where(song_id: song.id)
+      @posts.concat(posts)
+    end
+  end
 end

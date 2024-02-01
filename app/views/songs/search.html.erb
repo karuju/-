@@ -18,20 +18,22 @@
         </div>
 
         <div class="detail-rigt col-6">
-          <div class="artist-name">
-          <%= @song.artist.name %>
-          </div>
           <%= form_with(model: @song, data: { turbo: false }) do |form| %>
             <div class="to_track_page">
-              <% if @song.uri.include?('spotify:track') %> 
-                <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
-                  <i class="fa-brands fa-spotify"></i><%= @song.name %>
-                <% end %>
-              <% else %>
-                <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
-                  <i class="fa-brands fa-youtube"></i><%= @song.name %>
-                <% end %>
-              <%end%>
+              <h2>
+                <% if @song.uri.include?('spotify:track') %> 
+                  <%= link_to @song.uri.gsub('spotify:track:', 'https://open.spotify.com/track/'), target: :_blank, rel: "noopener noreferrer" do %>
+                    <i class="fa-brands fa-spotify"></i><%= @song.name %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "https://www.youtube.com/watch?v=#{@song.uri}", target: :_blank, rel: "noopener noreferrer" do %>
+                    <i class="fa-brands fa-youtube"></i><%= @song.name %>
+                  <% end %>
+                <%end%>
+              </h2>
+              <div class="artist-name">
+                <%= @song.artist.name %>
+              </div>              
             </div>
             <!-- 検索結果のuriとartist.nameを隠しフィールドとして送信 -->
             <%= form.hidden_field :uri, value: @song.uri %>

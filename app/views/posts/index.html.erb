@@ -12,7 +12,7 @@
     <%= turbo_frame_tag 'posts' do %>
       <div id="posts" class="row">
         <% @posts.each do |post| %>
-          <div class="post col-md-4 col-sm-6 col-xs-12">
+          <div class="item col-md-4 col-sm-6 col-xs-12">
             <div class="card">
               <%= render 'post_index', post: post %>
               <p>
