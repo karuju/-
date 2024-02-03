@@ -1,42 +1,73 @@
 <div class="container-fluid text-center">
 <div class="main">
   <h1>お気に入り一覧</h1>
-  <div class="index likes row">
-    <% if current_user.likes.present? %>
-      <% @likes.each do |like| %>
-        <% if like.likeable_type == 'Post' %>
-          <div class="item col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-              <%= render 'posts/post_index', post: like.likeable%>
-              <p>
-                <%= link_to "この投稿を開く", post_path(like.likeable), class: "btn btn-secondary", data: { turbo: false } %>
-              </p>
-            </div>
-          </div>
+  <div class="tabs">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#section1">スレッド</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#section2">投稿</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#section3">回答</a>
+      </li>
+    <ul>
+  </div>
 
-        <% elsif like.likeable_type == 'Board' %>
-          <div class="item col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-              <%= render 'boards/board_index', board: like.likeable%>
-              <p>
-                <%= link_to "このスレッドを開く", board_path(like.likeable), class: "btn btn-secondary", data: { turbo: false } %>  
-              </p>
-            </div>
-          </div>
-        <% elsif like.likeable_type == 'Answer' %>
-          <div class="item col-md-4 col-sm-6 col-xs-12">
-            <%= render 'answers/answer', answer: like.likeable%>
-            <p>
-              <%= link_to "この回答のスレッドを開く", board_path(like.likeable.board), class: "btn btn-secondary", data: { turbo: false } %>
-            </p>
-          </div>
+  <div class="tab-content">
+    <div id="section1" class="tab-pane fade show active">
+      <div class="index likes row">
+        <% if current_user.likes.present? %>
+          <% @likes.each do |like| %>
+            <% if like.likeable_type == 'Post' %>
+              <div class="item col-md-4 col-sm-6 col-xs-12">
+                <div class="card">
+                  <%= render 'posts/post_index', post: like.likeable%>
+                  <p>
+                    <%= link_to "この投稿を開く", post_path(like.likeable), class: "btn btn-secondary", data: { turbo: false } %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% else %>
-      <div class="card">
-        お気に入りはありません
-      </div> 
-    <% end %>
+      </div>
+    </div>   
+    <div id="section2" class="tab-pane fade">
+      <div class="index artist row">
+        <% if current_user.likes.present? %>
+          <% @likes.each do |like| %>
+            <% if like.likeable_type == 'Board' %>
+              <div class="item col-md-4 col-sm-6 col-xs-12">
+                <div class="card">
+                  <%= render 'boards/board_index', board: like.likeable%>
+                  <p>
+                    <%= link_to "このスレッドを開く", board_path(like.likeable), class: "btn btn-secondary", data: { turbo: false } %>  
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div id="section3" class="tab-pane fade">
+      <div class="index artist row">
+        <% if current_user.likes.present? %>
+          <% @likes.each do |like| %>
+            <% if like.likeable_type == 'Answer' %>
+              <div class="item col-md-4 col-sm-6 col-xs-12">
+                <%= render 'answers/answer', answer: like.likeable%>
+                <p>
+                  <%= link_to "この回答のスレッドを開く", board_path(like.likeable.board), class: "btn btn-secondary", data: { turbo: false } %>
+                </p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 </div>
