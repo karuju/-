@@ -69,6 +69,9 @@ gem "rest-client"
 #Youtube api
 gem "google-apis-youtube_v3"
 
+#楽天api
+gem 'rakuten_web_service'
+
 #検索とページネーション
 gem "ransack"
 gem "kaminari"
