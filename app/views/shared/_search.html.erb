@@ -1,6 +1,6 @@
 <div class="search-form">
 
-  <%= search_form_for @q, url: url, html: { data: { turbo_frame: frame_id } } do |f| %>
+  <%= search_form_for @q, url: url, html: { data: { turbo_frame: frame_id, controller: "search", action: "input->search#submit" } } do |f| %>
     <%= f.search_field :song_name_cont, placeholder: "曲名" %>
 
     <%= f.search_field :song_artist_name_cont, placeholder: "アーティスト" %>
