@@ -8,31 +8,9 @@ class SongsController < ApplicationController
 
   
   def search
-    if song_params[:name].present? && song_params[:artist_name].present?
-
-      artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
-      @song = Song.find_or_initialize_by(name: song_params[:name], artist: artist)  
-        
-      # Spotifyから楽曲情報を取得
-      if @song.new_record?
-        spotify_service = SpotifySearchService.new(artist_name: artist.name, song_name: @song.name)
-        spotify_result = spotify_service.search
-    
-        if spotify_result
-          @song.uri = spotify_result[:track].uri
-          @song.release_date = spotify_result[:track].album.release_date
-          @song.image = spotify_result[:track].album.images[0]['url'] #spotifyに見つからない時の
-        else
-        #spotifyになければyoutubeを検索
-          youtube_service = YoutubeSearchService.new
-          youtube_result = youtube_service.search("#{@song.name} #{@song.artist.name} -カラオケ -歌ってみた -UTAU -ボーカロイド -ボカロ")
-          @song.uri = youtube_result[:video_id]
-          @song.image = youtube_result[:thumbnail_url]
-        end
-      else
-      end
-
-    search_result = @song.uri
+    @song = Song.search(song_params)
+    if @song
+      render "search"
     else
       flash[:danger] = "検索できませんでした"
       redirect_to new_song_path, status: :see_other
@@ -46,37 +24,8 @@ class SongsController < ApplicationController
     name = research_params[:name]
     @song.artist = artist
 
-    if url.include?('open.spotify.com')
-      track_id = url.split('/').last
-      spotify_service = SpotifySearchService.new(track_id: track_id)
-      spotify_result = spotify_service.research_by_url
-      if spotify_result
-        @song.name = spotify_result[:track][:name]
-        @song.uri = spotify_result[:track][:uri]
-        @song.image = spotify_result[:track][:album].images[0]['url']
-      end
-    elsif url.include?('youtube.com') || url.include?('youtu.be')
-      if url.include?('youtube.com')
-        video_id = url.match(/(?:\?|&)v=([^&]+)/)[1]
-      elsif url.include?('youtu.be')
-        video_id = url.split('/').last.split('?').first
-      end 
-      if video_id
-        youtube_service = YoutubeSearchService.new
-        youtube_result = youtube_service.research_by_url(video_id)
-        if youtube_result
-          @song.name = name
-          @song.uri = youtube_result[:video_id]
-          @song.image = youtube_result[:thumbnail_url]
-        end
-      end
-    else
-      @song.name = name
-      @song.uri = research_params[:manual_uri]
-      @song.image = ActionController::Base.helpers.asset_path('song_default.png')
-    end
+    @song = SongResearchService.research_by_url(@song, artist, url, name)
 
-    @song.save
     session[:song_id] = @song.id
     redirect_based_on_creation_type(@song)
   end
