@@ -11,25 +11,25 @@
   </div>
   <div class="detail d-flex justify-content">
     <div class="detail-left col-4">
-      <div class="user">
+      <div class="user" id="board_user">
         <strong>作成者</strong>
         <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), size: '40x40' %>
         <%= link_to user_path(board.user), data: {turbo: :false} do %>
           <%= board.user.name %>
         <% end %>
       </div>
-      <div class="song-image">
+      <div class="song-image" id="board_song_image">
         <%= image_tag board.song.image %>
       </div>
     </div>
 
     <div class="detail-right col-8">
-      <div class="song-info">
+      <div class="song-info" id="board_song_info">
         <%= render 'songs/song_info', item: board %>
       </div>
 
       <div class="board-info">
-        <div class="board-body">
+        <div class="board-body" id="board_body">
           <strong>スレッド主コメント:</strong><br>
           <%= board.body %>
         </div>

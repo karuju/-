@@ -2,7 +2,7 @@ class TopController < ApplicationController
   skip_before_action :require_login, only: %i[ index ]
 
   def index
-    @boards = Board.order(created_at: :desc).limit(3)
+    random_board
     @posts = Post.order(created_at: :desc).limit(3)
   end
 
@@ -25,6 +25,12 @@ class TopController < ApplicationController
   end
 
   def terms
+  end
+
+  private
+
+  def random_board
+    @board = Board.order("RAND()").first
   end
 
 end
