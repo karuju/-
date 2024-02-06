@@ -1,13 +1,5 @@
 <div id="<%= dom_id post %>">
-  
-    <div class="user">
-      <strong>作成者</strong>
-      <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), class: 'img-fluid rounded-circle', size: '35x35' %>
-      <%= link_to user_path(post.user), data: {turbo: :false} do %>
-        <%= post.user.name %>
-      <% end %>
-    </div>
-
+  <br>
     <div class="song-image song-image-size">
       <%= image_tag post.song.image %>
     </div>
@@ -16,18 +8,4 @@
       <%= post.song.name %> / <%= post.song.artist.name %>
     </div>
     <br>
-    <div class='d-flex justify-content-evenly'>
-      <div class="like-button">
-        <% if current_user %>
-          <% @likeable = post %>
-          <%= render 'likes/like_button' %>
-        <% end %>
-      </div>
-      <div class="twitter">
-        <%= link_to "https://twitter.com/share?url=#{post_url(post)}&text=【投稿しました！】%0a 📚#{post.content.contentable.title}🎥のイメソンをシェア！", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
-          <i class="fab fa-twitter"></i>
-        <% end %>
-      </div>
-    </div>
-  <%= render 'shared/edit_and_delete', item: post %>
 </div>

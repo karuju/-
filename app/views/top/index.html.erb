@@ -43,23 +43,15 @@
         <%= image_tag "gosenfu.png", class: "img-fuild" %>
       </div>
     </div>
-      <div class="explain">
-        <h2>イメソンを紹介しよう</h2>
-        <h4>好きな曲とコンテンツを合わせて紹介してみましょう</h4>
-        <h4>自由に布教するチャンス！</h4>
-      </div>
       <div id="posts" class="row">
-        <% @posts.each do |post| %>
-          <div class="item col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-              <%= render 'posts/post_index', post: post %>
-              <br>
-              <p>
-                <%= link_to "このポストを開く", post, class: "btn btn-secondary", data: { turbo: false } %>
-              </p>
-            </div >
-          </div>
-        <% end %>
+        <div class="item col-md-4 col-sm-6 col-xs-12">
+          <%= render 'posts/show', post: @post %>
+        </div>
+        <div class="explain col-md-4 col-sm-6 col-xs-12">
+          <h2>イメソンを紹介しよう</h2>
+          <h4>好きな曲とコンテンツを合わせて紹介してみましょう</h4>
+          <h4>自由に布教するチャンス！</h4>
+        </div>
       </div>  
       <div class="menu">
         <div class="row">

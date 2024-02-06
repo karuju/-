@@ -90,8 +90,6 @@ footer {
 }
 
 .card {
-  padding-top: 25px;
-  background-image: url("memo.png");
   background-size: cover; /* This will resize the background image to cover the entire container */
   background-position: center; /* This will center the background image */
   background-color: transparent;
@@ -105,7 +103,21 @@ footer {
 }
 
 .item {
-  margin-bottom: 20px;
+  margin-top: 20px 10px 0px 10px;
+  padding-top: 65px;
+  padding-bottom: 40px;
+  background-image: url("memo2.png");
+  background-size: cover; /* This will resize the background image to cover the entire container */
+  background-position: center; /* This will center the background image */
+  background-color: transparent;
+  border-color: transparent;
+  min-height: 350px;
+  display: block;
+}
+
+.item:hover {
+  box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
+	transform: translateY(-4px);
 }
 
 .item-detail {

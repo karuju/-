@@ -3,7 +3,7 @@ class TopController < ApplicationController
 
   def index
     random_board
-    @posts = Post.order(created_at: :desc).limit(3)
+    random_post
   end
 
   def create_post
@@ -33,4 +33,7 @@ class TopController < ApplicationController
     @board = Board.order("RAND()").first
   end
 
+  def random_post
+    @post = Post.order("RAND()").first
+  end
 end
