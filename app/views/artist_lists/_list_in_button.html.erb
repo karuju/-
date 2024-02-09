@@ -1,9 +1,9 @@
 <% tag_id = "artist-#{item.song.artist.id}" %>
 <% Rails.logger.debug "Tag ID: #{tag_id}" %>
   <% if current_user.listed_artist?(artist) %>
-    リストに登録済み
+    <i class="fa-regular fa-square-check" style="color: gray;" title="アーティストリストに登録済み"></i>
   <% else %>
-    <%= link_to artist_lists_path(artist_id: artist.id, item_id: item.id, item_type: item.class.to_s), data: { "turbo-method": :post } do %>
-    ⇨リストに入れる
+    <%= link_to artist_lists_path(artist_id: artist.id, item_id: item.id, item_type: item.class.to_s), data: { "turbo-method": :post }, title: "アーティストリストに入れる" do %>
+    <i class="fa-regular fa-square" style="color: gray;"></i>
     <% end %>
   <% end %>

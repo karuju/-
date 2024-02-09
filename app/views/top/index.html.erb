@@ -11,7 +11,11 @@
     <div class="index boards" >
       <div id="boards" class="row">
         <div class="col-sm-6 col-xs-12">
-          <%= render 'boards/show', board: @board %>
+          <div class="show-card">
+            <div class="item-detail">
+              <%= render 'boards/show', board: @board %>
+            </div>
+          </div>
         </div>
         <div class="explain col-sm-6 col-xs-12">
           <h2>好きな曲を投稿して、<br>それっぽいコンテンツを教えてもらおう</h2>
@@ -44,10 +48,10 @@
       </div>
     </div>
       <div id="posts" class="row">
-        <div class="item col-md-4 col-sm-6 col-xs-12">
+        <div class="col-sm-6 col-xs-12">
           <%= render 'posts/show', post: @post %>
         </div>
-        <div class="explain col-md-4 col-sm-6 col-xs-12">
+        <div class="explain col-sm-6 col-xs-12">
           <h2>イメソンを紹介しよう</h2>
           <h4>好きな曲とコンテンツを合わせて紹介してみましょう</h4>
           <h4>自由に布教するチャンス！</h4>

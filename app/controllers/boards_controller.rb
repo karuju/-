@@ -11,6 +11,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
+    @answers = @board.answers.page(3)
   end
 
   # GET /boards/new

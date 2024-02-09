@@ -19,8 +19,8 @@
 
 
 
-    <div class="artist">
-      <%= item.song.artist.name %>
+    <div class="artist" style="display: flex;">
+      <h3> / <%= item.song.artist.name %>   </h3>
       <div class="artist-list-in-button">
         <%= turbo_frame_tag "artist-#{item.song.artist.id}" do %>
           <% if current_user %>
