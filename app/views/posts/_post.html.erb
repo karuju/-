@@ -2,17 +2,6 @@
 
     <div class="detail d-flex justify-content">
       <div class="detail-left col-4">
-
-        <div class="user">
-          <strong>作成者</strong>
-          <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '40x40' %>
-          <%= link_to user_path(post.user), data: {turbo: :false} do %>
-            <%= post.user.name %>
-          <% end %>
-        </div>
-
-
-
         <div class="song-image">
           <%= image_tag post.song.image %>
         </div>
@@ -21,32 +10,42 @@
         <div class="song-info">
           <%= render 'songs/song_info', item: post %>
         </div>
+        <br>
+        <div class="user">
+          <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '30x30' %>
+          <%= link_to user_path(post.user), data: {turbo: :false} do %>
+            <%= post.user.name %>
+          <% end %>
+        </div>
+
 
         <div class="content-info">
           <div class="content-title">
-            <strong>作品タイトル:</strong>
-            <%= post.content.contentable.title %>
+            <h2>
+              <% case post.content.contentable_type %>
+              <% when "Novel", "Comic" then %>
+                <i class="fa-solid fa-book"></i><%= post.content.contentable.title %>
+              <% when "Anime", "Movie" then%>
+                <i class="fa-solid fa-book"></i><%= post.content.contentable.title %>
+              <% when "Game" then %>
+                <i class="fa-solid fa-gamepad"></i></i><%= post.content.contentable.title %>
+              <% end %>  
+            </h2>
           </div>
           <div class="content-author">  
             <% if post.content.contentable.respond_to?(:author) %>
-              <strong>作者:</strong>
-              <%= post.content.contentable.author %>
+              <h3> / <%= post.content.contentable.author %> </h3>
             <% elsif post.content.contentable.respond_to?(:director) %>
-              <strong>監督:</strong>
-              <%= post.content.contentable.director %>
+              <h3> / <%= post.content.contentable.director %></h3>
             <% end %>
           </div>
-          <div class="content-category">
-            <strong>Category:</strong>
+          <div class="content-category btn btn-outline-primary">
             <%= post.content.contentable.category %>
           </div>
         </div>
         <br>
-        <div class="content-explain">
-          <strong>コメント:</strong>
-          <div>
+        <div class="item-body">
           <%= post.body %>
-          </div>
         </div>
       </div>
     </div>
