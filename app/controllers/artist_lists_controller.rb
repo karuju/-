@@ -1,7 +1,10 @@
 class ArtistListsController < ApplicationController
   before_action :require_login
   def index
-    @artists = current_user.artists
+    @artists = current_user.artists.includes(:artist_lists)
+    @artist_list = @artists.map do |artist|
+      current_user.artist_lists.find_by(artist_id: artist.id)
+    end
   end
 
   def create

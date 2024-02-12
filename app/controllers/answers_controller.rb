@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
 
   # GET /answers or /answers.json
   def index
-    @answers = Answer.all
+    @answers = Answer.page(3)
   end
 
   def save_session

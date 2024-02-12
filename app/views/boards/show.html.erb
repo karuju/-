@@ -2,26 +2,26 @@
 <br>
   <div class="show-card">
     <div class="item-detail">
-      <%= render @board %>
-    </div>
+      <%= render 'show', board: @board %>
 
   <!-- 回答エリア -->
-    <div class="answers-area">
-      <div>
-        <%= t('.answers') %>
-      </div>
+      <div class="answers-area">
+        <div>
+          <%= t('.answers') %>
+        </div>
 
-      <%= turbo_frame_tag 'answers' do %>
-        <%= render @board.answers %>
-      <% end %>
-      <br>
+        <%= turbo_frame_tag 'answers' do %>
+          <%= render @board.answers %>
+        <% end %>
+        <br>
 
-      <div class="create-model">
-        <%= link_to t('.create_answer'), save_session_board_answers_path(@board), data: { turbo: false } %>
+        <div class="create-model">
+          <%= link_to t('.create_answer'), save_session_board_answers_path(@board), data: { turbo: false } %>
+        </div>
       </div>
-    </div>
-    <div class="model-operation">
-      <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.board")), boards_path %>
+      <div class="model-operation">
+        <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.board")), boards_path %>
+      </div>
     </div>
   </div>
 </div>

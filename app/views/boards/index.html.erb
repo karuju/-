@@ -11,14 +11,11 @@
   <%= turbo_frame_tag 'boards' do %>
     <div id="boards" class="row">
       <% @boards.each do |board| %>
-        <div class="item col-md-4 col-sm-6 col-xs-12">
+        <%= link_to board, data: { turbo: false }, class: "item col-md-4 col-sm-6 col-xs-12" do %>
           <div class="card">
             <%= render 'board_index', board: board %>
-            <p>
-              <%= link_to "このスレッドを開く", board, class: "btn btn-secondary", data: { turbo: false } %>
-            </p>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>

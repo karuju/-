@@ -1,4 +1,5 @@
 <div id="<%= dom_id board %>" >
+<!-- つけるかも
   <div class="status">
     <% if current_user && current_user.own?(board) && board.status == "open" %>
     <%= link_to board.status, '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}  %>
@@ -9,28 +10,28 @@
       <%= board.status %>
     <% end %>
   </div>
+  -->
   <div class="detail d-flex justify-content">
     <div class="detail-left col-4">
-      <div class="user">
-        <strong>作成者</strong>
-        <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), size: '40x40' %>
-        <%= link_to user_path(board.user), data: {turbo: :false} do %>
-          <%= board.user.name %>
-        <% end %>
-      </div>
-      <div class="song-image">
+      <div class="song-image" id="board_song_image">
         <%= image_tag board.song.image %>
       </div>
     </div>
 
     <div class="detail-right col-8">
-      <div class="song-info">
+      <div class="song-info" id="board_song_info">
         <%= render 'songs/song_info', item: board %>
       </div>
-
+<br>
       <div class="board-info">
-        <div class="board-body">
-          <strong>スレッド主コメント:</strong><br>
+      <div class="user" id="board_user">
+        <%= image_tag (board.user.image.present? ? board.user.image_url : 'user_default.png'), size: '30x30' %>
+        <%= link_to user_path(board.user), data: {turbo: :false} do %>
+          <%= board.user.name %>
+        <% end %>
+      </div>
+<br>
+        <div class="item-body" id="board_body">
           <%= board.body %>
         </div>
       </div>
