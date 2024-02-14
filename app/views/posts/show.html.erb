@@ -1,4 +1,11 @@
  <div class="container"> 
   <br>
-  <%= render 'show', post: @post %>
+   <div class="show-card">
+    <div class="item-detail">
+       <%= render 'show', post: @post %>
+      <div class="model-operation">
+        <%= link_to t("helpers.defaults.back", item: t("helpers.defaults.post")), posts_path %>
+      </div>
+    </div>
+  </div>
 </div>
