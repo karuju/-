@@ -5,7 +5,11 @@
     </div>
 
     <div class="song-infomation">
-      <%= post.song.name %> / <%= post.song.artist.name %>
+      <% if post.song.uri.include?('spotify:track') %> 
+        <i class="fa-brands fa-spotify"></i><%= post.song.name %> / <%= post.song.artist.name %>
+      <% else %>
+        <%= post.song.name %> / <%= post.song.artist.name %>
+      <% end %>
     </div>
     <br>
 </div>

@@ -3,9 +3,12 @@
     <div class="song-image song-image-size">
       <%= image_tag board.song.image %>
     </div>
-
     <div class="song-infomation">
-      <%= board.song.name %> / <%= board.song.artist.name %>
+      <% if board.song.uri.include?('spotify:track') %> 
+        <i class="fa-brands fa-spotify"></i><%= board.song.name %> / <%= board.song.artist.name %>
+      <% else %>
+        <%= board.song.name %> / <%= board.song.artist.name %>
+      <% end %>
     </div>
     <br>
 </div>
