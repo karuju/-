@@ -46,15 +46,28 @@
           <div class="show-card">
             <div class="item-detail">
               <%= render 'boards/show', board: @board %>
+                <!-- 回答エリア -->
+              <div class="answers-area">
+                <div>
+                  回答一覧
+                  <%= turbo_frame_tag 'answers' do %>
+                    <%= render @board.answers %>
+                  <% end %>
+                </div>
+                <br>
+                <div class="create-model">
+                  <%= link_to "回答する", save_session_board_answers_path(@board), data: { turbo: false } %>
+                </div>
+              </div>
             </div>
           </div>  
         </div>
-        <div class="explain col-sm-6 col-xs-12">
+      <div class="explain col-sm-6 col-xs-12">
         <br>
           <h2>コンテンツを募集しよう</h2>
           <h4>好きな曲を投稿して、コンテンツを募集してみましょう</h4>
 
-      <div class="menu">
+        <div class="menu">
             <div class="to-index">
               <h3><%= link_to "スレッドをもっと見る", boards_path %> </h3>
             </div>

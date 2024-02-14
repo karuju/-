@@ -1,69 +1,66 @@
 <div id="<%= dom_id post %>">
-
-    <div class="detail d-flex justify-content">
-      <div class="detail-left col-4">
-        <div class="song-image">
-          <%= image_tag post.song.image %>
-        </div>
-      </div>
-      <div class="detail-right col-8">
-        <div class="song-info">
-          <%= render 'songs/song_info', item: post %>
-        </div>
-        <br>
-        <div class="user">
-          <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '30x30' %>
-          <%= link_to user_path(post.user), data: {turbo: :false} do %>
-            <%= post.user.name %>
-          <% end %>
-        </div>
-
-
-        <div class="content-info">
-          <div class="content-title">
-            <h2>
-              <% case post.content.contentable_type %>
-              <% when "Novel", "Comic" then %>
-                <i class="fa-solid fa-book"></i><%= post.content.contentable.title %>
-              <% when "Anime", "Movie" then%>
-                <i class="fa-solid fa-video"></i><%= post.content.contentable.title %>
-              <% when "Game" then %>
-                <i class="fa-solid fa-gamepad"></i></i><%= post.content.contentable.title %>
-              <% end %>  
-            </h2>
-          </div>
-          <div class="content-author">  
-            <% if post.content.contentable.respond_to?(:author) %>
-              <h3> / <%= post.content.contentable.author %> </h3>
-            <% elsif post.content.contentable.respond_to?(:director) %>
-              <h3> / <%= post.content.contentable.director %></h3>
-            <% end %>
-          </div>
-          <div class="content-category btn btn-outline-primary">
-            <%= post.content.contentable.category %>
-          </div>
-        </div>
-        <br>
-        <div class="item-body">
-          <%= post.body %>
-        </div>
+  <div class="detail d-flex justify-content">
+    <div class="detail-left col-4">
+      <div class="song-image">
+        <%= image_tag post.song.image %>
       </div>
     </div>
+    <div class="detail-right col-8">
+      <div class="song-info">
+        <%= render 'songs/song_info', item: post %>
+      </div>
+      <br>
+      <div class="user">
+        <%= image_tag (post.user.image.present? ? post.user.image_url : 'user_default.png'), size: '30x30' %>
+        <%= link_to user_path(post.user), data: {turbo: :false} do %>
+          <%= post.user.name %>
+        <% end %>
+      </div>
 
-    <div class='d-flex justify-content-end'>
-    <div class="like-button">
+      <div class="content-info">
+        <div class="content-title">
+          <h2>
+            <% case post.content.contentable_type %>
+            <% when "Novel", "Comic" then %>
+              <i class="fa-solid fa-book"></i><%= post.content.contentable.title %>
+            <% when "Anime", "Movie" then%>
+              <i class="fa-solid fa-video"></i><%= post.content.contentable.title %>
+            <% when "Game" then %>
+              <i class="fa-solid fa-gamepad"></i></i><%= post.content.contentable.title %>
+            <% end %>  
+          </h2>
+        </div>
+        <div class="content-author">  
+          <% if post.content.contentable.respond_to?(:author) %>
+            <h3> / <%= post.content.contentable.author %> </h3>
+          <% elsif post.content.contentable.respond_to?(:director) %>
+            <h3> / <%= post.content.contentable.director %></h3>
+          <% end %>
+        </div>
+        <div class="content-category btn btn-outline-primary">
+          <%= post.content.contentable.category %>
+        </div>
+      </div>
+      <br>
+      <div class="item-body">
+        <%= post.body %>
+      </div>
+    </div>
+  </div>
+
+  <div class='d-flex justify-content-end'>
+    <div class="like-and-share">
       <% if current_user %>
         <% @likeable = post %>
         <%= render 'likes/like_button' %>
       <% end %>
     </div>
 
-    <div class="twitter">
+    <div class="like-and-share">
       <%= link_to "https://twitter.com/share?url=#{post_url(post)}&text=【投稿しました！】%0a%0a 📚#{post.content.contentable.title}🎥のイメソンをシェア！", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
         <i class="fab fa-twitter"></i>
       <% end %>
     </div>
   </div>
-    <%= render 'shared/edit_and_delete', item: post %>
-
+  <%= render 'shared/edit_and_delete', item: post %>
 </div>
