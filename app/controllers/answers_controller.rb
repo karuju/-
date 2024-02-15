@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
     @board = Board.find(params[:board_id])
     @answer = @board.answers.build
     @song = Song.find(session[:song_id])
-    set_session
+    set_content
   end
 
   # GET /answers/1/edit
@@ -86,14 +86,4 @@ class AnswersController < ApplicationController
       params.require(:answer).permit(:body, :content)
     end
 
-    def clear_session
-      session[:creation_type] = nil
-      session[:song_id] = nil
-      session[:board_id] = nil
-      session[:comic_id] = nil
-      session[:novel_id] = nil
-      session[:movie_id] = nil
-      session[:anime_id] = nil
-      session[:game_id] = nil
-    end
 end
