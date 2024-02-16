@@ -1,28 +1,30 @@
 <div id="<%= dom_id answer %>" class="answer">
   <div class="user-info">
-    <%= image_tag(answer.user.image.present? ? answer.user.image_url : 'user_default.png', size: '40x40') %>
+    <%= image_tag(answer.user.image.present? ? answer.user.image_url : 'user_default.png', size: '30x30') %>
     <%= link_to user_path(answer.user), data: {turbo: :false} do %>
       <%= answer.user.name %>
     <% end %>
   </div>
   <div class="content-info">
     <div class="content-title">
-      <strong>作品名:</strong>
-      <%= answer.content.contentable.title %>
+            <% case answer.content.contentable_type %>
+            <% when "Novel", "Comic" then %>
+              <i class="fa-solid fa-book"></i> <%= answer.content.contentable.title %>
+            <% when "Anime", "Movie" then%>
+              <i class="fa-solid fa-video"></i> <%= answer.content.contentable.title %>
+            <% when "Game" then %>
+              <i class="fa-solid fa-gamepad"></i></i> <%= answer.content.contentable.title %>
+            <% end %>  
     </div>
     <div class="content-author">
       <% if answer.content.contentable.respond_to?(:author) %>
-        <strong>著者:</strong>
-        <%= answer.content.contentable.author %>
+         / <%= answer.content.contentable.author %>
       <% elsif answer.content.contentable.respond_to?(:director) %>
-        <strong>監督:</strong>
-        <%= answer.content.contentable.director %>
+         / <%= answer.content.contentable.director %>
       <% elsif answer.content.contentable.respond_to?(:creator) %>
-        <strong>制作会社:</strong>
       <% end %>
     </div>
     <div class="content-explain">
-      <strong>コメント:</strong>
       <%= answer.body %>
     </div>
   </div>

@@ -19,7 +19,7 @@
           <%= link_to 'イメソン一覧', posts_path, class: 'nav-link' %>
         </li>
         <li class="nav-item user-icon">
-          <%= image_tag(@current_user.image.present? ? @current_user.image_url : 'user_default.png', size:"35x35" ) %>
+          <%= image_tag(@current_user.image.present? ? @current_user.image_url : 'user_default.png', size:"32x32" ) %>
         </li>
         <li class='nav-item dropdown dropdown-slide'>
           <%= link_to @current_user.name, user_path(@current_user), class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown'}, aria: { haspopup: 'true', expanded: 'false'}  %>
