@@ -1,5 +1,5 @@
 class NovelsController < ApplicationController
-  require 'rakuten_web_service'
+  #require 'rakuten_web_service'
   def index
   end
 
