@@ -1,14 +1,12 @@
 class MoviesController < ApplicationController
-  def index
-  end
+  def index; end
 
   def new
     @movie = Movie.new
-    #@song = Song.find(session[:song_id])
+    # @song = Song.find(session[:song_id])
   end
 
-  def search
-  end
+  def search; end
 
   def show
     @movie = Movie.find(params[:id])
@@ -24,7 +22,6 @@ class MoviesController < ApplicationController
       flash[:danger] = "保存できませんでした"
       redirect_to contents_new_path, status: :see_other
     end
-
   end
 
   def edit
@@ -38,15 +35,14 @@ class MoviesController < ApplicationController
     end
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
+
   def movie_params
-    params.require(:movie).permit(:title, :director, :leading_actor, :category, :summary, :uri,  :distributer, :published_year)
+    params.require(:movie).permit(:title, :director, :leading_actor, :category, :summary, :uri, :distributer, :published_year)
   end
 
   def set_redirect_path
@@ -56,5 +52,5 @@ class MoviesController < ApplicationController
       redirect_to new_post_path(@movie)
     end
   end
-
 end
+

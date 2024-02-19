@@ -10,10 +10,10 @@ class Answer < ApplicationRecord
   has_one :movie, through: :contents, source: :contentable, source_type: 'Movie'
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "body" ]
+    %w[body]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["user", "board"]  #アソシエーション先を記述
+    %w[user board] # アソシエーション先を記述
   end
 end

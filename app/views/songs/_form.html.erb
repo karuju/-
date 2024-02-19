@@ -1,9 +1,11 @@
 
   <div class="searching_song">
     <%= form_with model: Song.new, url: search_songs_path, method: :get do |form| %>
+    <div data-controller="autocomplete" data-autocomplete-url-value="/birds/search" role="combobox">
       <div class="mb-3">
-      <%= form.label :"曲名", class: "form-label" %> 
-      <%= form.text_field :name, class: "form-control" %>
+        <%= form.label :"曲名", data: { autocomplete_target: 'input' }, class: "form-label" %> 
+        <%= form.text_field :name, data: { autocomplete_target: 'hidden' }, class: "form-control" %>
+      </div>
     </div>
     <div class="mb-3">
       <%= form.label :"アーティスト", class: "form-label" %> 

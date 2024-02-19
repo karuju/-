@@ -1,7 +1,6 @@
 class NovelsController < ApplicationController
-  #require 'rakuten_web_service'
-  def index
-  end
+  # require 'rakuten_web_service'
+  def index; end
 
   def new
     @novel = Novel.new
@@ -26,6 +25,7 @@ class NovelsController < ApplicationController
   end
 
   private
+
   def novel_params
     params.require(:novel).permit(:title, :author, :category, :summary, :uri, :publisher, :published_year)
   end
@@ -37,5 +37,4 @@ class NovelsController < ApplicationController
       redirect_to new_post_path(@novel)
     end
   end
-
 end

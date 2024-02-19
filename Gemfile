@@ -92,6 +92,11 @@ group :development do
   gem "binding_of_caller"
   gem 'letter_opener_web', '~> 2.0'
 
+  gem 'rubocop', require: false # 追加
+  gem 'rubocop-performance', require: false # 追加
+  gem 'rubocop-rails', require: false # 追加
+  gem 'rubocop-rspec' # 追加
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

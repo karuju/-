@@ -25,5 +25,4 @@ module SetSessionService
     session[:anime_id] = nil
     session[:game_id] = nil
   end
-  
 end

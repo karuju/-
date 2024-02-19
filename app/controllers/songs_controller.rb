@@ -1,12 +1,10 @@
 class SongsController < ApplicationController
-  def index
-  end
+  def index; end
 
   def new
     @song = Song.new
   end
 
-  
   def search
     @song = Song.search(song_params)
     if @song
@@ -14,12 +12,12 @@ class SongsController < ApplicationController
     else
       flash[:danger] = "検索できませんでした"
       redirect_to new_song_path, status: :see_other
-    end  
+    end
   end
 
   def research_by_url
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
-    @song = Song.find_or_initialize_by(name: research_params[:name], artist: artist)
+    @song = Song.find_or_initialize_by(name: research_params[:name], artist:)
     url = research_params[:manual_uri]
     name = research_params[:name]
     @song.artist = artist
@@ -36,12 +34,10 @@ class SongsController < ApplicationController
 
   def create
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
-    @song = Song.find_or_initialize_by(name: song_params[:name], artist: artist, image: song_params[:image])
+    @song = Song.find_or_initialize_by(name: song_params[:name], artist:, image: song_params[:image])
     
     if @song.new_record?
-        @song.uri = params[:song][:uri]
-
-
+      @song.uri = params[:song][:uri]
       if @song.save
         session[:song_id] = @song.id
         redirect_based_on_creation_type(@song)
@@ -53,12 +49,11 @@ class SongsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     artist = Artist.find_by(name: song_params[:artist_name])
-    @song = Song.find_by(name: song_params[:name], artist: artist)
+    @song = Song.find_by(name: song_params[:name], artist:)
     if song_params[:correct_info] == '1'
       @song.uri = params[:song][:uri]
     else
@@ -68,10 +63,10 @@ class SongsController < ApplicationController
     redirect_based_on_creation_type(@song)
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
+
   def song_params
     params.require(:song).permit(:name, :artist_name, :uri, :manual_uri, :image, :correct_info)
   end
@@ -87,5 +82,4 @@ class SongsController < ApplicationController
       redirect_to new_board_path(song)
     end
   end
-
 end

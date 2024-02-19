@@ -4,7 +4,7 @@ module SongResearchService
 
     if url.include?('open.spotify.com')
       track_id = url.split('/').last
-      spotify_service = SpotifySearchService.new(track_id: track_id)
+      spotify_service = SpotifySearchService.new(track_id:)
       spotify_result = spotify_service.research_by_url
       if spotify_result
         song.name = spotify_result[:track][:name]
@@ -16,7 +16,7 @@ module SongResearchService
         video_id = url.match(/(?:\?|&)v=([^&]+)/)[1]
       elsif url.include?('youtu.be')
         video_id = url.split('/').last.split('?').first
-      end 
+      end
       if video_id
         youtube_service = YoutubeSearchService.new
         youtube_result = youtube_service.research_by_url(video_id)
