@@ -6,10 +6,10 @@
   <div class="tabs">
     <ul class="nav nav-underline">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#section1">スレッド</a>
+        <a class="nav-link active" data-toggle="tab" href="#section1">イメソン</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#section2">投稿</a>
+        <a class="nav-link" data-toggle="tab" href="#section2">募集中</a>
       </li>
     <ul>
   </div>
@@ -17,28 +17,26 @@
   <div class="tab-content">
     <div id="section1" class="tab-pane fade show active">
       <div class="index artist row">
-        <% if @boards.present? %>
-          <% @boards.each do |board| %>
-              <div class="item col-md-4 col-sm-6 col-xs-12">
-                <div class="card">
-                  <%= render 'boards/board_index', board: board%>
-                  <%= link_to "このスレッドを開く", board_path(board) %>
-                </div>
+        <% if @posts.present? %>
+          <% @posts.each do |post| %>
+            <%= link_to post_path(post), class: "item col-md-4 col-sm-6 col-xs-12", data: { turbo: false } do %> 
+              <div class="card">
+                <%= render 'posts/post_index', post: post%>
               </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
     <div id="section2" class="tab-pane fade">
       <div class="index artist row">
-        <% if @posts.present? %>
-          <% @posts.each do |post| %>
-            <div class="item col-md-4 col-sm-6 col-xs-12">
-              <div class="card">
-                <%= render 'posts/post_index', post: post%>
-                <%= link_to "この投稿を開く", post_path(post) %>  
-              </div>
-            </div>
+        <% if @boards.present? %>
+          <% @boards.each do |board| %>
+              <%= link_to board_path(board), class: "item col-md-4 col-sm-6 col-xs-12", data: { turbo: false } do %>
+                <div class="card">
+                  <%= render 'boards/board_index', board: board%>
+                </div>
+              <% end %>
           <% end %>
         <% end %>
       </div>
