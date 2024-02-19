@@ -4,8 +4,7 @@ class GamesController < ApplicationController
     @song = Song.find(session[:song_id])
   end
 
-  def search
-  end
+  def search; end
 
   def show
     @game = Game.find(params[:id])
@@ -23,9 +22,7 @@ class GamesController < ApplicationController
     end
   end
 
-
-
-private
+  private
   
   def game_params
     params.require(:game).permit(:title, :creator, :category, :uri, :release_date)

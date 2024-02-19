@@ -55,7 +55,7 @@ class SpotifySearchService
           artist: track_artist
         }
       }
-    else 
+    else
       nil
     end
   end

@@ -1,5 +1,5 @@
 class TopController < ApplicationController
-  skip_before_action :require_login, only: %i[ index ]
+  skip_before_action :require_login, only: %i[index]
 
   def index
     random_board
@@ -21,11 +21,9 @@ class TopController < ApplicationController
     redirect_to contents_new_path
   end
 
-  def privacy_policy
-  end
+  def privacy_policy; end
 
-  def terms
-  end
+  def terms; end
 
   private
 

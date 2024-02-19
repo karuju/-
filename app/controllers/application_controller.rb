@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :require_login #sorceryが実行してくれるメソッド。not_authenticatedを確認する
+  before_action :require_login # sorceryが実行してくれるメソッド。not_authenticatedを確認する
   before_action :set_current_user
   add_flash_types :success, :info, :warning, :danger
 

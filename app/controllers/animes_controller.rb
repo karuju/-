@@ -4,8 +4,7 @@ class AnimesController < ApplicationController
     @song = Song.find(session[:song_id])
   end
 
-  def search
-  end
+  def search; end
 
   def show
     @anime = Anime.find(params[:id])
@@ -23,8 +22,8 @@ class AnimesController < ApplicationController
     end
   end
 
-private
-  
+  private
+ 
   def anime_params
     params.require(:anime).permit(:title, :creator, :category, :uri, :release_date)
   end

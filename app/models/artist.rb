@@ -5,11 +5,10 @@ class Artist < ApplicationRecord
   has_many :users, through: :artist_lists
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    %w[name]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["song"]
+    %w[song]
   end
-
 end

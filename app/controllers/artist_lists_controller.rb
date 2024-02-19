@@ -9,11 +9,10 @@ class ArtistListsController < ApplicationController
 
   def create
     @artist = Artist.find(params[:artist_id])
-    #@post = Post.find(params[:post_id])
+    # @post = Post.find(params[:post_id])
     item_type = params[:item_type].constantize
     @item = item_type.find(params[:item_id])
     current_user.add_to_artist_list(@artist)
-
   end
 
   def destroy

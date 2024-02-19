@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-include ActionView::RecordIdentifier #モデルオブジェクトに関連するHTML要素のIDやクラス名を生成するためヘルパーメソッドを使えるようにする
+  include ActionView::RecordIdentifier # モデルオブジェクトに関連するHTML要素のIDやクラス名を生成するためヘルパーメソッドを使えるようにする
   before_action :require_login
 
   def index
@@ -51,5 +51,4 @@ include ActionView::RecordIdentifier #モデルオブジェクトに関連する
       redirect_to root_path
     end
   end
-
 end
