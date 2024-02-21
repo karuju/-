@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index show]
-  include SetSessionService
+  include SessionHandler
   # GET /answers or /answers.json
   def index
     @answers = Answer.page(3)
