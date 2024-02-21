@@ -33,25 +33,16 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.new(answer_params)
     @answer.board = @board
     @song = @board.song
+    ActiveRecord::Base.transaction do
       if @answer.save
-        if session[:comic_id]
-          Content.create!(answer_id: @answer.id, contentable_id: session[:comic_id], contentable_type: 'Comic')
-        elsif session[:novel_id]
-          Content.create!(answer_id: @answer.id, contentable_id: session[:novel_id], contentable_type: 'Novel')
-        elsif session[:movie_id]
-          Content.create!(answer_id: @answer.id, contentable_id: session[:movie_id], contentable_type: 'Movie')
-        elsif session[:anime_id]
-          Content.create!(answer_id: @answer.id, contentable_id: session[:anime_id], contentable_type: 'Anime')
-        elsif session[:game_id]
-          Content.create!(answer_id: @answer.id, contentable_id: session[:game_id], contentable_type: 'Game')
-        end
-
+        create_content_for_answer(@answer)
         redirect_to board_path(@board), success: "回答しました"
         clear_session
       else
         flash[:danger] = "回答できませんでした"
         render :new, status: :unprocessable_entity
       end
+    end
   end
 
   def update
@@ -78,5 +69,15 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:body, :content)
+  end
+
+  def create_content_for_answer(answer)
+    content_types = %w[comic novel movie anime game]
+    content_types.each do |type|
+      if session["#{type}_id"]
+        Content.create!(answer_id: answer.id, contentable_id: session["#{type}_id"], contentable_type: type.capitalize)
+        break
+      end
+    end
   end
 end
