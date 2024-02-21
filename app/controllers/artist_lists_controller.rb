@@ -24,16 +24,8 @@ class ArtistListsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    songs = Song.where(artist_id: @artist.id)
-    @boards = []
-    songs.each do |song|
-      boards = Board.where(song_id: song.id)
-      @boards.concat(boards)
-    end
-    @posts = []
-    songs.each do |song|
-      posts = Post.where(song_id: song.id)
-      @posts.concat(posts)
-    end
+    songs = Song.includes(:boards, :posts).where(artist_id: @artist.id)
+    @boards = songs.map(&:boards).flatten
+    @posts = songs.map(&:posts).flatten
   end
 end

@@ -1,4 +1,4 @@
-module SetSessionService
+module SessionHandler
   extend ActiveSupport::Concern
 
   def set_content

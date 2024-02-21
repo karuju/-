@@ -4,9 +4,8 @@
       <%= render 'shared/search', url: posts_path, frame_id: 'posts' %>
     </div>
     <br>
-    <h1><%= t('.title') %></h1>
     <div class="to-create">
-      <h3><%= link_to "投稿する", create_post_path %></h3>
+      <h3><%= link_to "イメソンを投稿する", create_post_path %></h3>
     </div>
     <div class="index posts" >
     <%= turbo_frame_tag 'posts' do %>
