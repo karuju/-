@@ -5,7 +5,7 @@
     </div>
     <br>
     <div class="to-create">
-      <h3><%= link_to "イメソンを投稿する", create_post_path %></h3>
+      <h3><%= link_to "イメソンを投稿する", new_song_path(creation_type: 'post') %></h3>
     </div>
     <div class="index posts" >
     <%= turbo_frame_tag 'posts' do %>

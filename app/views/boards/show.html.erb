@@ -16,7 +16,7 @@
         <br>
 
         <div class="create-model">
-          <%= link_to t('.create_answer'), save_session_board_answers_path(@board), data: { turbo: false } %>
+          <%= link_to t('.create_answer'), contents_new_path(board_id: @board.id, creation_type: 'answer'), data: { turbo: false } %>
         </div>
       </div>
       <div class="model-operation">

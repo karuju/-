@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  before_action :set_creation_type, only: %i[new]
   def index; end
 
   def new
@@ -66,6 +67,10 @@ class SongsController < ApplicationController
   def destroy; end
 
   private
+
+  def set_creation_type
+    session[:creation_type] = params[:creation_type] if params[:creation_type].present?
+  end
 
   def song_params
     params.require(:song).permit(:name, :artist_name, :uri, :manual_uri, :image, :correct_info)
