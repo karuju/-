@@ -7,12 +7,6 @@ class AnswersController < ApplicationController
     @answers = Answer.page(3)
   end
 
-  def save_session
-    session[:creation_type] = 'answer'
-    session[:board_id] = params[:board_id] # answerはboardにネストしたルーティングにしているから通常は不要。今回は行程が通常より多いからsessionに保存
-    redirect_to contents_new_path
-  end
-
   def show
     @answer = Answer.find(params[:id])
   end

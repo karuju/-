@@ -66,9 +66,6 @@ Rails.application.routes.draw do
 
   get 'privacy_policy', to: 'top#privacy_policy'
   get 'terms', to: 'top#terms'
-  get 'create_post', to: 'top#create_post'
-  get 'create_board', to: 'top#create_board'
-  get 'create_answer', to: 'top#create_answer'
   get "login", to: 'user_sessions#new'
   post "login", to: 'user_sessions#create'
   delete "logout", to: 'user_sessions#destroy'
