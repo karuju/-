@@ -1,10 +1,9 @@
 class Comic < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
-
   has_many :content, as: :contentable
 
-  enum category: { 恋愛: 0, ヒューマンドラマ: 1, サスペンス・ミステリー: 2, ホラー: 3, ギャグ・コメディー: 4, 職業・ビジネス: 5, 医療・病院系: 6, グルメ: 7, 歴史・時代劇: 8, アクション・アドベンチャー: 9, SF・ファンタジー: 10, ヤンキー・任侠: 11, ギャンブル: 12, スポーツ: 13 }
+  enum category: { romance: 0, human: 1, suspense_mystery: 2, horror: 3, gag_comedy: 4, business_job: 5, medical_hospoital: 6, gourmet: 7, historical_periodical: 8, action_adventure: 9, scific_fantasy: 10, yankee: 11, gambling: 12, sports: 13 }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[title author category]

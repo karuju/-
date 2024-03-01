@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   validates :title, presence: true
   has_many :content, as: :contentable
-  enum category: { アクション: 0, アドベンチャー: 1, SF・ファンタジー: 2, ホラー: 3, コメディ: 4, ロマンス: 5, ヒューマンドラマ: 6, ミュージカル: 7, ミステリー・サスペンス: 8, 歴史・伝記: 9, ドキュメンタリー: 10, スポーツ: 11, 戦争: 12, 西部劇: 13 }
+  enum category: { action: 0, adventure: 1, scific_fantasy: 2, horror: 3, comedy: 4, romance: 5, human: 6, musical: 7, suspense_mystery: 8, history_biography: 9, documentary: 10, sports: 11, war: 12, western: 13 }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[title director category]

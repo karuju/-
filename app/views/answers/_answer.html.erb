@@ -24,6 +24,9 @@
       <% elsif answer.content.contentable.respond_to?(:creator) %>
       <% end %>
     </div>
+    <div class="content-category btn btn-outline-secondary btn-sm disabled">
+      <%= I18n.t("activerecord.attributes.#{answer.content.contentable.class.name.downcase}.category.#{answer.content.contentable.category}") %>
+    </div>
     <div class="content-explain">
       <%= answer.body %>
     </div>

@@ -11,3 +11,86 @@ ja:
         introductiton: 自己紹介
         sex: 性別
         birthdat: 誕生日
+      anime:
+        category:
+          romance: 恋愛
+          human: ヒューマンドラマ
+          suspense_mystery: サスペンス・ミステリー
+          horror: ホラー
+          gag_comedy: ギャグ・コメディー
+          business_job: 職業・ビジネス
+          medical_hospoital: 医療・病院系
+          gourmet: グルメ
+          historical_periodical: 歴史・時代劇
+          action_adventure: アクション・アドベンチャー
+          scific_fantasy: SF・ファンタジー
+          yankee: ヤンキー・任侠
+          gambling: ギャンブル
+          sports: スポーツ
+      comic:
+        category:
+          romance: 恋愛
+          human: ヒューマンドラマ
+          suspense_mystery: サスペンス・ミステリー
+          horror: ホラー
+          gag_comedy: ギャグ・コメディー
+          business_job: 職業・ビジネス
+          medical_hospoital: 医療・病院系
+          gourmet: グルメ
+          historical_periodical: 歴史・時代劇
+          action_adventure: アクション・アドベンチャー
+          scific_fantasy: SF・ファンタジー
+          yankee: ヤンキー・任侠
+          gambling: ギャンブル
+          sports: スポーツ
+      game:
+        category:
+          romance: 恋愛
+          human: ヒューマンドラマ
+          suspense_mystery: サスペンス・ミステリー
+          horror: ホラー
+          gag_comedy: ギャグ・コメディー
+          business_job: 職業・ビジネス
+          medical_hospoital: 医療・病院系
+          gourmet: グルメ
+          historical_periodical: 歴史・時代劇
+          action_adventure: アクション・アドベンチャー
+          scific_fantasy: SF・ファンタジー
+          yankee: ヤンキー・任侠
+          gambling: ギャンブル
+          sports: スポーツ
+      movie:
+        category:
+          action: アクション
+          adventure: アドベンチャー
+          scific_fantasy: SF・ファンタジー
+          horror: ホラー
+          comedy: コメディ
+          romance: ロマンス
+          human: ヒューマンドラマ
+          musical: ミュージカル
+          suspense_mystery: サスペンス・ミステリー
+          history_biography: 歴史・伝記
+          documentary: ドキュメンタリー
+          sports: スポーツ
+          war: 戦争
+          western: 西部劇
+      novel:
+        category:
+          romance: 恋愛
+          human: ヒューマン
+          suspense_mystery: サスペンス・ミステリー
+          horror: ホラー
+          gag_comedy: ギャグ・コメディー
+          scific_fantasy: SF・ファンタジー
+          business_job: 職業・ビジネス
+          medical_hospoital: 医療・病院系
+          gourmet: グルメ
+          historical_periodical: 歴史・時代劇
+          politics: 政治
+          light_novel: ライトノベル
+          childrens_literature: 児童文学
+
+          
+
+

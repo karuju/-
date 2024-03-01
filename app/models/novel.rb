@@ -2,7 +2,7 @@ class Novel < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   has_many :content, as: :contentable
-  enum category: { 恋愛: 0, ヒューマンドラマ: 1, サスペンス・ミステリー: 2, ホラー: 3, ギャグ・コメディー: 4, SF・ファンタジー: 5, 職業・ビジネス: 6, 医療・病院系: 7, グルメ: 8, 歴史・時代劇: 9, 政治: 10,  ライトノベル: 11, 児童文学: 12 }
+  enum category: { romance: 0, human: 1, suspense_mystery: 2, horror: 3, gag_comedy: 4, scific_fantasy: 5, business_job: 6, medical_hospoital: 7, gourmet: 8, historical_periodical: 9, politics: 10, light_novel: 11, childrens_literature: 12 }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[title author category]
