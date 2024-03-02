@@ -7,7 +7,6 @@ class NovelsController < ApplicationController
     @song = Song.find(session[:song_id])
   end
 
-
   def show
     @novel = Novel.find(params[:id])
   end

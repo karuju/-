@@ -11,8 +11,8 @@ module ApplicationHelper
       keywords: 'おたく, イメソン', # キーワードを「,」区切りで設定する
       canonical: request.original_url, # 優先するurlを指定する
       noindex: !Rails.env.production?,
-      icon: [                    
-        { href: image_url('favicon.png') }
+      icon: [
+      { href: image_url('favicon.png') }
       ],
       og: {
         site_name: :site,

@@ -22,7 +22,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(body: params[:post][:body], song_id: params[:post][:song_id])
-  
     ActiveRecord::Base.transaction do
       if @post.save
         create_content_for_post(@post)
@@ -43,7 +42,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = t('.update.false')
       render :edit, status: :unprocessable_entity
-     end
+    end
   end
 
   def destroy

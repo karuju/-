@@ -20,14 +20,14 @@ class SpotifySearchService
       unique_tracks = Set.new
 
       # アルバムを取得してトラックをセットに追加
-      albums = spotify_artist.albums(limit: limit, offset: offset)
+      albums = spotify_artist.albums(limit:, offset:)
       albums.each do |album|
         album.tracks.each { |track| unique_tracks.add(track) }
       end
       matching_track = unique_tracks.find { |track| track.name == @song_name }
 
       # 残りのアルバムを取得するためにループ
-      while !matching_track && (albums = spotify_artist.albums(limit: limit, offset: offset += limit)).any?
+      while !matching_track && (albums = spotify_artist.albums(limit:, offset: offset += limit)).any?
         albums.each do |album|
           album.tracks.each { |track| unique_tracks.add(track) }
         end
@@ -45,7 +45,6 @@ class SpotifySearchService
       track_uri = @track.uri
       track_album = @track.album
       track_artist = @track.artists[0]
-
       return {
         success: true,
         track: {

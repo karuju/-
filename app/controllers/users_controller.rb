@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      if @user.save
-        login(@user.email, user_params[:password])
-        redirect_to user_path(@user), success: "ユーザー登録が成功しました"
-      else
-        flash[:danger] = "ユーザー登録に失敗しました"
-        render :new, status: :unprocessable_entity
-      end
+    if @user.save
+      login(@user.email, user_params[:password])
+      redirect_to user_path(@user), success: "ユーザー登録が成功しました"
+    else
+      flash[:danger] = "ユーザー登録に失敗しました"
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update; end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :image, :introduction, :sex, :birthday, :password, :password_confirmation)
   end

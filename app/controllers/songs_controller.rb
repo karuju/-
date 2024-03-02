@@ -35,8 +35,7 @@ class SongsController < ApplicationController
 
   def create
     artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
-    @song = Song.find_or_initialize_by(name: song_params[:name], artist:, image: song_params[:image])
-    
+    @song = Song.find_or_initialize_by(name: song_params[:name], artist:, image: song_params[:image])    
     if @song.new_record?
       @song.uri = params[:song][:uri]
       if @song.save
@@ -46,7 +45,6 @@ class SongsController < ApplicationController
         flash[:danger] = "保存できませんでした"
         render new, status: :unprocessable_entity
       end
-    else
     end
   end
 
