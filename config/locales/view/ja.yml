@@ -4,6 +4,7 @@ ja:
       create: 作成
       save: 保存
       update: 更新
+      get: 取得
     label:
       email: メールアドレス
       password: パスワード
