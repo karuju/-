@@ -8,7 +8,7 @@ class Song < ApplicationRecord
   def self.search(song_params)
     if song_params[:name].present? && song_params[:artist_name].present?
       artist = Artist.find_or_initialize_by(name: song_params[:artist_name])
-      song = Song.find_or_initialize_by(name: song_params[:name], artist: artist)   
+      song = Song.find_or_initialize_by(name: song_params[:name], artist:)  
       # Spotifyから楽曲情報を取得
       if song.new_record?
         spotify_service = SpotifySearchService.new(artist_name: artist.name, song_name: song.name)
@@ -18,7 +18,7 @@ class Song < ApplicationRecord
           song.release_date = spotify_result[:track].album.release_date
           song.image = spotify_result[:track].album.images[0]['url']
         else
-      # spotifyになければyoutubeを検索
+          # spotifyになければyoutubeを検索
           youtube_service = YoutubeSearchService.new
           youtube_result = youtube_service.search("#{song.name} #{song.artist.name} -カラオケ -歌ってみた -UTAU -ボーカロイド -ボカロ")
           song.uri = youtube_result[:video_id]

@@ -23,7 +23,7 @@ class AnimesController < ApplicationController
   end
 
   private
- 
+
   def anime_params
     params.require(:anime).permit(:title, :creator, :category, :uri, :release_date)
   end

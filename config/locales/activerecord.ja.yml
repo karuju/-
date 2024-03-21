@@ -1,8 +1,20 @@
 ja:
   activerecord:
     models:
-      user:
+      user: ユーザー
       post:
+      board:
+      answer:
+      artist: アーティスト
+      artist_list: アーティストリスト
+      content: コンテンツ
+      anime: アニメ
+      comic: 漫画
+      game: ゲーム
+      movie: 映画
+      novel: 小説
+      song: 曲
+      like: お気に入り
     attributes:
       user:
         name: 名前
@@ -10,9 +22,31 @@ ja:
         image: アイコン
         introductiton: 自己紹介
         sex: 性別
-        birthdat: 誕生日
+        birthday: 誕生日
       anime:
-        category:
+        title: 作品タイトル
+        creator: 制作会社
+        category: ジャンル
+      comic:
+        title: 作品タイトル
+        author: 作者
+        category: ジャンル
+      game:
+        title: 作品タイトル
+        creator: 制作会社
+        category: ジャンル
+      movie:
+        title: 作品タイトル
+        director: 監督
+        leading_actor: 主演
+        category: ジャンル
+      novel:
+        title: 作品タイトル
+        author: 著者
+        category: ジャンル
+    enum:
+      anime:
+        category: 
           romance: 恋愛
           human: ヒューマンドラマ
           suspense_mystery: サスペンス・ミステリー
@@ -90,7 +124,3 @@ ja:
           politics: 政治
           light_novel: ライトノベル
           childrens_literature: 児童文学
-
-          
-
-

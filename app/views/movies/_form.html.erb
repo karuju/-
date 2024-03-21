@@ -2,18 +2,18 @@
 <div class="searching_movie">
 <%= form_with(model: Movie.new, data: { turbo: false }) do |form| %>
   <div class="mb-3">
-  <%= form.label :"作品タイトル", class: "form-label" %> 
+  <%= form.label :title, class: "form-label" %> 
   <%= form.text_field :title, class: "form-control" %>
 </div>
 <div class="mb-3">
-  <%= form.label :"監督", class: "form-label" %> 
+  <%= form.label :director, class: "form-label" %> 
   <%= form.text_field :director, class: "form-control", placeholder: "空欄OK" %>
 </div>
 <div class="mb-3">
-  <%= form.label :"ジャンル", class: "form-label" %> 
-  <%= form.select :category, Movie.categories.keys.map { |c| [c, c] }, {}, class: "form-control" %>
+  <%= form.label :category, class: "form-label" %> 
+      <%= form.select :category, Movie.categories.keys.map { |c| [I18n.t("activerecord.enum.movie.category.#{c}"), c] }, {}, class: "form-control" %>
 </div>
 
-<%= form.submit "保存", class: "btn btn-primary", data: { disable_with: '取得' }%>
+  <%= form.submit I18n.t('helpers.submit.save'), class: "btn btn-primary", data: { disable_with: I18n.t('helpers.submit.get') }%>
 <% end %>
 </div>
