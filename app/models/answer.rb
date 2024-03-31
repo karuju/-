@@ -8,6 +8,8 @@ class Answer < ApplicationRecord
   has_one :comic, through: :contents, source: :contentable, source_type: 'Comic'
   has_one :novel, through: :contents, source: :contentable, source_type: 'Novel'
   has_one :movie, through: :contents, source: :contentable, source_type: 'Movie'
+  has_one :game, through: :contents, source: :contentable, source_type: 'Game'
+  has_one :anime, through: :contents, source: :contentable, source_type: 'Anime'
 
   def self.ransackable_attributes(auth_object = nil)
     %w[body]
