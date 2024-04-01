@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
-  create_table "animes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "animes", force: :cascade do |t|
     t.string "title", null: false
     t.string "creator"
     t.integer "category"
@@ -21,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "answers", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
@@ -31,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "artist_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "artist_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
@@ -41,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.index ["user_id"], name: "index_artist_lists_on_user_id"
   end
 
-  create_table "artists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "uri"
     t.string "image"
@@ -49,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "boards", force: :cascade do |t|
     t.text "body"
     t.integer "status", default: 0
     t.bigint "user_id", null: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
-  create_table "comics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comics", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
     t.integer "category"
@@ -72,18 +75,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "contents", force: :cascade do |t|
     t.integer "contentable_id", null: false
     t.string "contentable_type", null: false
     t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "answer_id"
-    t.index ["answer_id"], name: "fk_rails_a1873bd348"
+    t.index ["answer_id"], name: "index_contents_on_answer_id"
     t.index ["post_id"], name: "index_contents_on_post_id"
   end
 
-  create_table "games", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.string "title", null: false
     t.string "creator"
     t.integer "category"
@@ -93,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.string "likeable_type", null: false
     t.bigint "likeable_id", null: false
     t.bigint "user_id", null: false
@@ -104,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "movies", force: :cascade do |t|
     t.string "title", null: false
     t.string "director"
     t.string "leading_actor"
@@ -117,7 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "novels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "novels", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
     t.integer "category"
@@ -129,7 +132,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.text "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -139,7 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "songs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "songs", force: :cascade do |t|
     t.string "name"
     t.string "uri"
     t.string "image"
@@ -150,7 +153,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_033741) do
     t.index ["artist_id"], name: "index_songs_on_artist_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "image"

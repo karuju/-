@@ -27,6 +27,13 @@
 <% elsif @movie.present? %>
   <%= form.hidden_field :contentable_id, value: @movie.id %> 
   <%= form.hidden_field :contentable_type, value: 2 %> 
+<% elsif @anime.present? %>
+  <%= form.hidden_field :contentable_id, value: @anime.id %> 
+  <%= form.hidden_field :contentable_type, value: 1 %> 
+<% elsif @game.present? %>
+  <%= form.hidden_field :contentable_id, value: @game.id %> 
+  <%= form.hidden_field :contentable_type, value: 2 %> 
+
 <% end %>
 <div>
   <%= form.submit class: "btn btn-primary"%>
