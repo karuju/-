@@ -10,11 +10,11 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: postgresql
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: "password"
+  username: postgres
+  password: password
   host: db
 
 development:
@@ -31,10 +31,10 @@ test:
 
 production:
   <<: *default
-  username: <%= Rails.application.credentials.planetscale&.fetch(:username) %>
-  password: <%= Rails.application.credentials.planetscale&.fetch(:password) %>
-  database: <%= Rails.application.credentials.planetscale&.fetch(:database) %>
-  host: <%= Rails.application.credentials.planetscale&.fetch(:host) %>
-  ssl_mode: verify_identity
-  sslca: "/etc/ssl/certs/ca-certificates.crt"
-
+  # username: <%= Rails.application.credentials.planetscale&.fetch(:username) %>
+  # password: <%= Rails.application.credentials.planetscale&.fetch(:password) %>
+  # database: <%= Rails.application.credentials.planetscale&.fetch(:database) %>
+  # host: <%= Rails.application.credentials.planetscale&.fetch(:host) %>
+  # ssl_mode: verify_identity
+  # sslca: "/etc/ssl/certs/ca-certificates.crt"
+  url: <%= ENV['DATABASE_URL'] %>

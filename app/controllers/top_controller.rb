@@ -13,10 +13,10 @@ class TopController < ApplicationController
   private
 
   def random_board
-    @board = Board.order("RAND()").first
+    @board = Board.order("RANDOM()").first
   end
 
   def random_post
-    @post = Post.order("RAND()").first
+    @post = Post.order("RANDOM()").first
   end
 end
