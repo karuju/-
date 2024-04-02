@@ -1,7 +1,7 @@
   <div class="to-content-page">
     <h4><i class="fa-solid fa-book"></i><%= @novel.title %> /
     <%= @novel.author %> /
-    <%= @novel.category %>
+    <%= I18n.t("activerecord.enum.novel.category.#{@novel.category}")%></h4>
     <%= @novel.summary %>
     <%= @novel.uri %>
     <%= @novel.publisher %></h4>
